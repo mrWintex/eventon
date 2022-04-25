@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <?php require("./php/errors.php") ?>
+    <form method="post">
+        <div>
+            <label for="username">Jméno</label>
+            <input type="text" name="username" id="username">
+        </div>
+
+        <div>
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email">
+        </div>
+
+        <div>
+            <label for="password_1">Heslo</label>
+            <input type="password" name="password_1" id="password_1">
+        </div>
+
+        <div>
+            <label for="password_2">Heslo opakovat</label>
+            <input type="password" name="password_2" id="password_2">
+        </div>
+
+        <div>
+            <input type="submit" value="Registrovat" name="reg_user">
+        </div>
+    </form>
+</body>
+</html>

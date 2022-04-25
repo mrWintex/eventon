@@ -1,0 +1,64 @@
+@mixin default_settings{
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+}
+
+@mixin font_settings {
+    font: {
+        family: "Spartan", sans-serif;
+        weight: 600;
+    }
+}
+
+@mixin navigation_links{
+    color: $navigation-link-color;
+    text-decoration: none;
+}
+
+@mixin fancy-button($padding: 5px 40px, $border: 2px solid white){
+    padding: $padding;
+    @include border($border, 50px);
+}
+
+@mixin icon-preset($size: $navigation-icon-size){
+    @include rounded(50%);
+    width: $size;
+    height: $size;
+    margin-right: 10px;
+}
+
+@mixin flex($display-flex: flex, $align-items: none, $justify-content: none, $flex-direction: row){
+    display: $display-flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-direction: $flex-direction;
+}
+@mixin margin-auto{
+    margin: 0 auto;
+}
+
+@mixin rounded($radius: 15px){
+    border-radius: $radius;
+}
+
+@mixin border($border: 1px solid, $radius: 0px, $side: all){
+    @if($side == all){
+        border: $border;
+    }
+    @else if($side == left){
+        border-left: $border;
+    }
+    @else if($side == right){
+        border-right: $border;     
+    }
+    @else if($side == bottom){
+        border-bottom: $border;
+    }
+    @else if($side == top){
+        border-top: $border;
+    }
+    @include rounded($radius);
+}

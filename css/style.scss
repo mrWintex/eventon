@@ -1,0 +1,367 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import "partials/variables";
+@import "partials/mixins";
+
+@include default_settings;
+
+body{
+    @include font_settings;
+    background: $background-color;
+    color: $text-color;
+}
+
+.navigation{
+    height: $navigation-height;
+    background: $navigation-color;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    min-width: 350px;
+    font-size: 0;
+    z-index: 10;
+    text-align: right;
+
+    > li{
+        @include flex(inline-flex, center, center);
+        font-size: $navigation-font-size;
+        padding-inline: $navigation-link-inline-padding;
+        height: $navigation-height;
+        vertical-align: top;
+
+        a{
+            @include navigation_links;
+            &.basic-button{
+                padding: 10px;
+            }
+
+            &.fancy-button{
+                @include fancy-button;
+            }
+        }
+
+        .icon{
+            @include icon-preset;
+        }
+
+        &.logo{
+            float: left;
+        }
+
+        &.profile{
+            position: relative;
+            font-size: .8rem !important;
+            cursor: pointer;
+
+            span{
+                @include flex(flex, center, center);
+            }
+        }
+
+        .addpost-button{
+            @include border(2px solid, 50px);
+            @include flex(flex, center, left);
+            width: 40px;
+            height: 40px;
+            padding-right: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            transition: width 500ms;
+
+            .plus{
+                padding-inline: 9.5px;
+                padding-bottom: 1px;
+            }
+
+            &:hover{
+                width: 110px;
+            }
+        }
+
+        .user-options{
+            display: block;
+
+            position: absolute;
+            top: 100%;
+            right: -$user-options-width;
+
+            background: $navigation-color;
+            width: $user-options-width;
+            margin-top: 2px;
+            text-align: left;
+            opacity: 0;
+            transition: all 500ms;
+
+            .user-options-item{
+                @include flex($flex-direction:column);
+                font-size: .8rem;
+                .user-options-content{
+                    width: 100%;
+                    color: $navigation-link-color;
+                    padding-block: $user-options-spacing;
+                    padding-left: 15px;
+    
+                    .options-icon{
+                        margin-right: 15px;
+                    }
+                }
+            }
+
+            
+
+            &.user-options-show{
+                right: 0;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.border-left{
+    @include border($navigation-border, $side: left);
+}
+
+//settings page
+.back-button{
+    margin-top: 80px;
+    a{
+        font-size: 2rem;
+        margin-left: 40px;
+        color: $navigation-link-color;
+    }
+}
+
+.settings-container{
+    @include margin-auto;
+    width: $settings-container-width;
+    
+    section{
+        @include flex($align-items: none, $justify-content: left, $flex-direction: row);
+        @include border($settings-border, $side: bottom);
+        padding-block: $settings-form-spacing;
+        width: 100%;
+
+        &:first-of-type{
+            margin-top: $settings-form-margin
+        }
+
+        &:last-child{
+            margin-bottom: $settings-form-margin
+        }
+
+        > div{
+            max-width: 700px;
+            min-width: 360px;
+            width: 100%;
+            height: 100%;
+            padding-inline: 20px;
+            
+            
+            &.section-headline{
+                width: 400px;
+                height: 100%;
+                margin-right: 50px;
+                h3{
+                    color: white;
+                    margin-bottom: 10px;
+                }
+                p{
+                    color: rgb(177, 177, 177);
+                    font-weight: 400;
+                }
+            }
+            
+            &:not(.section-headline){
+                padding-block: 40px;
+                background-color: darken($background-color, .5);
+                @include border($settings-border, 5px, all);
+            }
+
+            .form-item{
+                .form-item-label{
+                    font-weight: 300;
+                    color: rgb(228, 228, 228);
+                }
+
+                input[type="text"],input[type="email"],input[type="password"]{
+                    @include border($settings-border, 7px, all);
+                    width: 100%;
+                    padding: 10px;
+                    margin-top: 10px;
+                    background: lighten($color: $background-color, $amount: 2);
+                    color: white;
+                }
+                
+                .error-container{
+                    @include flex($align-items: center);
+                    margin-right: 20px;
+                    .error{
+                        color: rgb(211, 84, 84);
+                    }
+                    .success{
+                        color: rgb(76, 177, 67);
+                    }
+                }
+
+                &.submit{
+                    @include flex($align-items: center, $justify-content: right);
+
+                    input[type="submit"]{
+                        @include fancy-button(10px 40px, $settings-border);
+                        background-color: lighten($color: $background-color, $amount: 2);
+                        color: white;
+                        font-family: 'Spartan', sans-serif;
+                        cursor: pointer;
+                    }
+                }
+                 
+                &.icon_upload{
+                    @include flex($justify-content: left, $align-items: top);
+                }
+                
+                &:not(:last-child){
+                    margin-bottom: 50px;
+                }
+                
+                .icon{
+                    @include icon-preset(60px);
+                }
+            }
+        }
+    }
+}
+@media (max-width: 1200px) {
+    .settings-container{
+        @include margin-auto;
+        @include flex($align-items: center, $justify-content: center, $flex-direction: column);
+        width: 90%;
+        h1{
+            margin-top: $settings-form-margin;
+        }
+        section{
+            @include flex($align-items: center, $justify-content: center, $flex-direction: column);
+
+            &:first-of-type{
+                margin-top: 0;
+            }
+
+            > div{
+                margin-top: $settings-form-margin;
+                &.section-headline{
+                    width: 90%;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        }
+    }
+}
+
+//admin-page
+.admin-page{
+    .admin-nav{
+        height: 100vh;
+        overflow: hidden;
+        width: $admin-navigation-width;
+        position: fixed;
+        .admin-nav-ul{
+            width: 100%;
+            height: 100%;
+            background: $navigation-color;
+            li{
+                @include flex($flex-direction:column);
+                height: 50px;
+                a{
+                    @include flex($align-items: center, $justify-content: left);
+                    @include navigation_links;
+                    height: 200px;
+                    width: 200px;
+                    cursor: pointer;
+                    padding-left: 10px;
+                    i{
+                        font-size: 1.2rem;
+                        padding-right: 20px;
+                    }
+
+                    &.header{
+                        i{
+                            padding-left: 5px;
+                        }
+                    }
+                    &.active{
+                        background-color: lighten($color: $navigation-color, $amount: 4);
+                    }
+                }
+            }
+        }
+    }
+    main{
+        .content-container{
+            width: calc(100vw - 200px);
+            margin-left: $admin-navigation-width - ($admin-content-padding / 2);
+            padding: $admin-content-padding;
+            
+            .admin-inputs{
+                @include flex($align-items: start, $justify-content: flex-start);
+                input[type="text"]{
+                    width: 500px;
+                    height: 40px;
+                    padding-left: 10px;
+                    margin-bottom: 10px;
+                }
+                select{
+                    height: 40px;
+                }
+            }
+
+            .data-wrapper{
+                height: 800px;
+                overflow: auto;
+                padding: 20px;
+                @include border($admin-border);
+                .data-table{
+                    width: 100%;
+                    
+                    
+                    @include border(1px solid grey);
+                    border-collapse: collapse;
+                    tr{
+                        th{
+                            padding-block: 10px;
+                            background-color: darken($color: $background-color, $amount: 3)
+                        }
+                        td, th{
+                            @include border(1px solid grey);
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            max-width: 100px;
+                        }
+                        td{
+                            input{
+                                width: 100%;
+                                padding: 10px;
+                                background: $background-color;
+                                color: white;
+                                @include border(none);
+                            }
+                        }
+                        .buttons{
+                            text-align: center;
+                            button{
+                                color: white;
+                                @include border(none);
+                                padding: 5px 10px;
+                                cursor: pointer;
+                            
+                                &.delete-button{
+                                    background: rgb(141, 6, 6);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

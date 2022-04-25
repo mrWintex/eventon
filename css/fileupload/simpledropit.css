@@ -1,0 +1,100 @@
+.sd-hide {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sd-box-dragndrop,
+.sd-box-uploading,
+.sd-box-success,
+.sd-box-error {
+  display: none;
+}
+
+.sd-box-dragndrop{
+  color: rgb(228, 228, 228);
+}
+
+.sd-box {
+  color: white;
+  background-color: #353535;
+  padding: 10px 20px;
+  height: 100px;
+  width: 90%;
+  text-align: center;
+  border: 1px solid grey;
+  border-radius: 2px;
+  line-height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.sd-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.sd-box input[type="file"] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  left: 0;
+}
+
+.sd-label {
+  font-family: inherit;
+  font-size: inherit;
+  color: rgb(63, 183, 219);
+  cursor: pointer;
+  transition: .5s;
+}
+
+.sd-label:hover{
+  color: rgb(45, 130, 156);
+}
+
+.sd-label label {
+  color: #10509A;
+  cursor: pointer;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.sd-label label:hover, .sd-label label:focus {
+  color: #9b0707 !important;
+}
+
+.sd-box.is-dragover {
+  outline: 2px dashed #c2c2c2;
+  outline-offset: -5px;
+}
+
+.sd-box.is-uploading .sd-box-wrapper {
+  visibility: none;
+}
+
+.sd-box.is-uploading .sd-box-uploading {
+  display: block;
+}
+
+.sd-box.sd-advanced-upload .sd-box-browse-file {
+  display: none;
+}
+
+.sd-box.sd-advanced-upload .sd-box-dragndrop {
+  display: inline;
+}
+
+.sd-box.sd-advanced-upload.is-dropped {
+  border-color: rgb(63, 183, 219);
+}
+
+.sd-box.sd-advanced-upload.is-dropped .sd-box-dragndrop {
+  display: none;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css?v=<?= time(); ?>" type="text/css">
+    <script src="https://kit.fontawesome.com/4489d876da.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/AdminFunctions.js" type="text/javascript" defer></script>
+    <title>Document</title>
+</head>
+<body class="admin-page">
+    <nav class="admin-nav">
+        <ul class="admin-nav-ul">
+            <li><a href="index.php" class="header"><i class="fa-solid fa-arrow-left-long" id="admin-nav-button"></i>ADMIN</a></li>
+            <li><a class="admin-nav-link active" onclick="ChangeTableData(0, this)"><i class="fa-solid fa-users"></i>Uživatelé</a></li>
+            <li><a class="admin-nav-link" onclick="ChangeTableData(1, this)"><i class="fa-solid fa-image"></i>Příspěvky</a></li>
+            <li><a class="admin-nav-link" onclick="ChangeTableData(2, this)"><i class="fa-solid fa-tags"></i>Tagy</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="content-container">
+            <div class="admin-inputs">
+                <input type="text" name="search" id="search" onchange="Search(this)">
+                <!--<select>
+                    <option value="0">id</option>
+                    <option value="1">username</option>
+                </select>-->
+            </div>
+            <div class="data-wrapper">
+                    <table class="data-table" id="0">
+                        <thead class="table-header">
+                        </thead>
+                        <tbody class="database-data">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+                        
+                    

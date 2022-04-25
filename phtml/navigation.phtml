@@ -1,0 +1,25 @@
+<nav>
+    <ul class="navigation">
+        <li class="logo">EVENTON</li>
+        <?php if (!isset($_SESSION["user"])) : ?>
+            <li><a class="basic-button" href="registration.php">Registrovat</a></li>
+            <li><a class="fancy-button" href="login.php">Přihlásit</a></li>
+        <?php endif ?>
+        
+        <?php if (isset($_SESSION["user"])) : ?>
+            <p><?=GetUserIconPath($_SESSION["user"]["folder_path"]);?></p>   
+            <li><a class="addpost-button" href="addpost.php"><i class="fa-solid fa-plus fa-lg plus"></i>Přidat</a></li>
+            <li class="border-left profile">
+                <span><img class="icon" src="<?=GetUserIconPath($_SESSION["user"]["folder_path"])?>" alt="icon.jpg"><?=$_SESSION["user"]["username"]?></span>
+                <ul class="user-options">
+                    <li class="user-options-item"><a href="profile.php" class="user-options-content"><i class="fa-solid fa-user options-icon"></i>Profil</a></li>
+                    <li class="user-options-item"><a href="settings.php" class="user-options-content"><i class="fa-solid fa-gear options-icon"></i>Nastavení</a></li>
+                    <?php if($_SESSION["user"]["admin"] == 1) : ?>
+                    <li class="user-options-item"><a class="user-options-content" href="admin.php"><i class="fa-solid fa-hammer options-icon"></i>Správa</a></li>
+                    <?php endif ?>
+                    <li class="user-options-item"><a class="user-options-content" href="index.php?logout=1"><i class="fa-solid fa-arrow-right-from-bracket options-icon"></i>Odhlásit se</a></li>
+                </ul>
+            </li>
+        <?php endif ?>
+    </ul>
+</nav>

@@ -1,0 +1,193 @@
+        body{
+            --post-normal-size: 700px;
+            --post-expanded-size: 800px;
+            --post-icon-size: 45px;
+            --post-padding-block: 200px;
+        }
+
+        /* ----------------------- */
+
+        .post-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 100%;
+            padding-block: var(--post-padding-block);
+
+            transition: all 500ms;
+        }
+        
+        .post-container.active-post{
+            padding-block: calc(var(--post-padding-block) - ((var(--post-expanded-size) - var(--post-normal-size)) / 2));
+        }
+        
+        .post-wrapper{
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ----------------------- */
+        
+        /* Info tabulka o obrázku */
+        .post-content{
+            position: relative;
+            right: 500px;
+
+            margin-right: -480px;
+            margin-left: 80px;
+            width: 400px;
+            z-index: 1;
+
+            font-weight: 100;
+
+            opacity: 0;
+            transition: all 500ms,opacity 100ms linear;
+        }
+
+        /* aktivní info tabulka */
+        .post-container.active-post .post-content{
+            right: 0;
+            margin-right: 50px;
+            opacity: 1;
+        }
+        
+        /* jméno uživatele */
+        .post-content .user-name{
+            padding-top: 4px;
+        }
+        
+        /* celý uživatelův profil */
+        .post-content .user-container{
+            display: inline-flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        /* ikona uživatele */
+        .post-content .user-icon{
+            width: var(--post-icon-size);
+            height: var(--post-icon-size);
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        
+        /* komentář */
+        .post-content .post-comment{
+            max-height: 70%;
+            padding-left: calc(var(--post-icon-size) + 15px);
+
+            text-align: left;
+            line-height: 20px;
+        }
+
+        /* datum */
+        .post-date{
+            margin-top: 50px;
+            font-size: .9rem;
+        }
+        
+        /* like button */
+        .post-like-button{
+            margin-top: 50px;
+            font-size: .9rem;
+            cursor: pointer;
+        }
+
+        .post-like-button i{
+            color: white;
+            transition: all 500ms;
+        }
+        .post-like-button.liked i{
+            color: rgb(136, 21, 21);
+        }
+
+        /* dodatečné ikony */
+        .post-content i{
+            font-size: 1.5rem;
+            width: var(--post-icon-size);
+            margin-right: 15px;
+            text-align: center;
+        }
+        
+
+        /* ----------------------- */
+        
+        /* Rámeček obrázku */
+        .image-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: var(--post-normal-size);
+            height: var(--post-normal-size);
+            background: #272727;
+            border: 1px solid #666666;
+            border-radius: 10px;
+            z-index: 2;
+
+            cursor: pointer;
+            
+            transition: all 500ms;
+        }
+        
+        .post-container.active-post .image-container{
+            width: var(--post-expanded-size);
+            height: var(--post-expanded-size);
+        }
+        /* ----------------------- */
+        
+        /* Obrázek */
+        .post-image{
+            max-width: var(--post-normal-size);
+            max-height: var(--post-normal-size);
+            padding: 10px;;
+
+            transition: all 500ms;
+        }
+        
+        .post-container.active-post .post-image{
+            max-width: var(--post-expanded-size);
+            max-height: var(--post-expanded-size);
+        }
+
+        /* ----------------------- */
+        
+        @media (max-width: 1500px){
+            body{
+                --post-normal-size: 600px !important;
+            }
+
+            .post-wrapper{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .post-content{
+                right: 0px;
+                margin-right: 0px;
+                margin-left: 0px;
+                margin-top: 0px;
+                
+                width: var(--post-normal-size);
+                padding: 20px;
+                font-size: .8rem;
+                opacity: 1;
+                transition: none;
+            }
+
+           
+        }
+
+        @media (max-width: 650px) {
+            body{
+                --post-normal-size: 350px !important;
+            }
+            .post-content{
+                width: 350px;
+            }
+        }
