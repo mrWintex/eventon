@@ -9,8 +9,8 @@
 </head>
 
 <body>
+    <?php $user_manager->PrintErrors(); ?>
     <form method="post" enctype="multipart/form-data">
-        <?php include("php/errors.php") ?>
         <div>
             <label for="image">Obrázek</label>
             <input type="file" name="image" id="image">

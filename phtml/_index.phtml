@@ -16,9 +16,6 @@
     <main>
         <?php require("./phtml/navigation.phtml"); ?>
         <div id="posts-container">
-            <?php
-                LoadPosts($database, $query, (isset($_SESSION["user"])? $_SESSION["user"]["id_u"] : 0));
-            ?>
         </div>
         <div id="loader-image" style="visibility:hidden;width:50px;margin:50px auto"><img src="images/LoadingGif.gif" style="width:50px;height:50px"alt=""></div>
     </main>

@@ -9,8 +9,8 @@
 </head>
 
 <body>
+    <?php $user_manager->PrintErrors(); ?>
     <form method="post">
-        <?php require("./php/errors.php") ?>
         <div>
             <label for="email">E-mail</label>
             <input type="email" name="email" id="email">

@@ -1,11 +1,11 @@
-<div class="post-container" id="<?=$post_data["id_p"]?>">
+<div class="post-container" id="<?=$this->id_p?>">
     <div class="post-wrapper">
-        <div class="image-container" onclick="OpenPost(this)" ondblclick="OpenImage(this)"><img class="post-image" src="<?=$post_data["src"]?>" alt="image<?=$post_data["id_p"]?>"></div>
+        <div class="image-container" onclick="OpenPost(this)" ondblclick="OpenImage(this)"><img class="post-image" src="<?=$this->src?>" alt="image<?=$this->id_p?>"></div>
         <div class="post-content">
-            <span class="user-container"><img class="user-icon" src="<?=$icon_path?>" alt="user-icon<?=$post_data["id_u"]?>"><h3 class="user-name"><?=$post_data["username"]?></h3></span>
-            <p class="post-comment"><?=$post_data["comment"]?></p>
+            <span class="user-container"><img class="user-icon" src="<?=$icon_path?>" alt="user-icon<?=$this->user_owner?>"><h3 class="user-name"><?=$this->user_owner_object->GetUserName()?></h3></span>
+            <p class="post-comment"><?=$this->comment?></p>
             <p class="post-date"><i class="fa-regular fa-calendar-days"></i><?=$date?></p>
-            <p class="post-like-button <?php if($user_liked) : ?>liked<?php endif ?>"><i class="fa-solid fa-heart fa-2xl" onclick="LikePost(this)"></i><span><?=$likes_count[0]["like_count"]?></span></p>
+            <p class="post-like-button <?php if($user_liked) : ?>liked<?php endif ?>"><i class="fa-solid fa-heart fa-2xl" <?php if(isset($_SESSION["user"])):?>onclick="LikePost(this)" <?php endif ?>></i><span><?=$likes_count["like_count"]?></span></p>
         </div>
     </div>
 </div>
