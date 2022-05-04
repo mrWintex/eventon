@@ -8,6 +8,11 @@ $(document).ready(function () {
     }
   });
 
+  $("#post-filter").on("change", function(){
+    $("#posts-container").empty();
+    LoadMorePosts();
+  });
+
   //První načtení příspěvků
   LoadMorePosts();
 
@@ -15,13 +20,13 @@ $(document).ready(function () {
     busy = true;
     $.ajax({
       type: "GET",
-      url: "./php/postmanager.php?filter=none",
+      url: "./php/postmanager.php?filter="+GetFilter(),
       beforeSend: function(){
         $("#loader-image").css("visibility", "visible");
       },
       success: function (response) {
         if(!response || response === " "){
-          $("#posts-container").append("<p>Nic dalšího tu není!</p>");
+          $("#posts-container").append("<div class='all-posts-alert'><span>Nic dalšího tu není!<button onclick='ScrollToTop()'><i class='fa-solid fa-arrow-up'></i></a></span></button></div>");
           all_posts = true;
         }
         
@@ -30,6 +35,10 @@ $(document).ready(function () {
         busy = false;
       }
     });
+  }
+
+  function GetFilter(){
+    return $("#post-filter").val();
   }
 });
 

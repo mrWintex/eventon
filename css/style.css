@@ -14,6 +14,46 @@ body {
   color: #ffffff;
 }
 
+.to-the-top {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.all-posts-alert span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.all-posts-alert button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.all-posts-alert button i {
+  font-size: 2rem;
+  color: white;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.all-posts-alert button i:hover {
+  color: #47a9ff;
+}
+
 .navigation {
   height: 60px;
   background: #1d1d1d;
@@ -164,10 +204,16 @@ body {
   color: #ffffff;
   padding-block: 21px;
   padding-left: 15px;
+  -webkit-transition: all .5s;
+  transition: all .5s;
 }
 
 .navigation > li .user-options .user-options-item .user-options-content .options-icon {
   margin-right: 15px;
+}
+
+.navigation > li .user-options .user-options-item .user-options-content:hover {
+  color: #43a3fd;
 }
 
 .navigation > li .user-options.user-options-show {
@@ -181,7 +227,8 @@ body {
 }
 
 .back-button {
-  margin-top: 80px;
+  position: absolute;
+  top: 80px;
 }
 
 .back-button a {
@@ -545,5 +592,178 @@ body {
 
 .admin-page main .content-container .data-wrapper .data-table tr .buttons button.delete-button {
   background: #8d0606;
+}
+
+.account-page .form-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+}
+
+.account-page .form-wrapper .account-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: none;
+      -ms-flex-align: none;
+          align-items: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid #474747;
+  border-radius: 5px;
+  height: 70%;
+  width: 100%;
+  max-width: 400px;
+  background: #282828;
+  padding: 30px 50px;
+  margin: 20px;
+}
+
+.account-page .form-wrapper .account-form p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.account-page .form-wrapper .account-form p.error {
+  font-size: .8rem;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.account-page .form-wrapper .account-form p i {
+  font-size: 20px;
+  color: red;
+  margin-right: 10px;
+}
+
+.account-page .form-wrapper .account-form h2 {
+  margin-bottom: 30px;
+}
+
+.account-page .form-wrapper .account-form div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.account-page .form-wrapper .account-form div label {
+  font-weight: 400;
+  font-size: .7rem;
+}
+
+.account-page .form-wrapper .account-form div input:not([type="submit"]) {
+  width: 100%;
+  padding: 10px;
+  background: #303030;
+  border: none;
+  margin-bottom: 40px;
+  color: white;
+}
+
+.account-page .form-wrapper .account-form div input:not([type="submit"]):focus {
+  outline: none;
+}
+
+.account-page .form-wrapper .account-form div input:not([type="submit"]):-webkit-autofill, .account-page .form-wrapper .account-form div input:not([type="submit"]):-webkit-autofill:focus {
+  -webkit-transition: background-color 600000s 0s, color 600000s 0s;
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+.account-page .form-wrapper .account-form div input:not([type="submit"])[data-autocompleted] {
+  background-color: transparent !important;
+}
+
+.account-page .form-wrapper .account-form div.submit-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.account-page .form-wrapper .account-form div.submit-container input[type="submit"] {
+  border: none;
+  border-radius: 0px;
+  background-color: #303030;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: 'Spartan', sans-serif;
+}
+
+.account-page .form-wrapper .account-form div.submit-container input[type="submit"]:hover {
+  background-color: #232323;
+}
+
+.account-page .form-wrapper .account-form div.links {
+  margin-top: 20px;
+  font-size: .7rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.account-page .form-wrapper .account-form div.links a {
+  text-decoration: none;
+  color: #22cafd;
+}
+
+.account-page .form-wrapper .account-form div.links a:hover {
+  text-decoration: underline;
 }
 /*# sourceMappingURL=style.css.map */

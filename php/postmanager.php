@@ -7,6 +7,7 @@
 
     //Načtení příspěvků
     if(isset($_GET["filter"])){
+        $postmanager->SetQueries($_GET["filter"]);
         $postmanager->LoadPosts((isset($_SESSION["user"])? $_SESSION["user"]->GetId() : 0));
     }
 

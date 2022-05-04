@@ -4,34 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css?v=<?= time(); ?>" type="text/css">
+    <script src="https://kit.fontawesome.com/4489d876da.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Document</title>
 </head>
-<body>
-    <?php $user_manager->PrintErrors(); ?>
-    <form method="post">
-        <div>
-            <label for="username">Jméno</label>
-            <input type="text" name="username" id="username">
-        </div>
+<body class="account-page">
+<div class="back-button" style="top: 20px"><a href="index.php"><i class="fa-solid fa-arrow-left"></i></a></div>
+    <div class="form-wrapper">
+        <div class="header"><h1>EVENTON</h1></div>
+        <form method="post" class="account-form">
+            <h2>Registrace</h2>
+            <div>
+                <label for="username">UŽIVATELSKÉ JMÉNO</label>
+                <input type="text" name="username" id="username">
+            </div>
 
-        <div>
-            <label for="email">E-mail</label>
-            <input type="email" name="email" id="email">
-        </div>
+            <div>
+                <label for="email">E-MAIL</label>
+                <input type="email" name="email" id="email">
+            </div>
 
-        <div>
-            <label for="password_1">Heslo</label>
-            <input type="password" name="password_1" id="password_1">
-        </div>
+            <div>
+                <label for="password_1">HESLO</label>
+                <input type="password" name="password_1" id="password_1">
+            </div>
 
-        <div>
-            <label for="password_2">Heslo opakovat</label>
-            <input type="password" name="password_2" id="password_2">
-        </div>
+            <div>
+                <label for="password_2">OPAKOVAT HESLO</label>
+                <input type="password" name="password_2" id="password_2">
+            </div>
 
-        <div>
-            <input type="submit" value="Registrovat" name="reg_user">
-        </div>
-    </form>
+            <?php if($user_manager->GetErrorCount()) : ?>
+            <p class="error">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <?php $user_manager->PrintErrors(); ?>
+            </p>
+            <?php endif ?>
+
+            <div class="submit-container">
+                <input type="submit" value="Registrovat" name="reg_user">
+            </div>
+            <div class="links"><span>Už máte účet? <a href="login.php">Přihlásit se</a></span></div>
+        </form>
+    </div>
 </body>
 </html>

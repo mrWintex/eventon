@@ -36,3 +36,9 @@ function LikePost(target){
         url: "./php/postmanager.php?postid="+post_id,
     });
 }
+
+function ScrollToTop(){
+    $('html, body').animate({
+        scrollTop: 0
+    }, 1000);
+}

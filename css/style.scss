@@ -11,6 +11,32 @@ body{
     color: $text-color;
 }
 
+.to-the-top{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.all-posts-alert{
+    span{
+        @include flex($justify-content: center, $align-items: center);
+    }
+    button{
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        margin-left: 20px;
+        i{
+            font-size: 2rem;
+            color: white;
+            transition: all .5s;
+            &:hover{
+                color: rgb(71, 169, 255);
+            }
+        }
+    }
+}
+
 .navigation{
     height: $navigation-height;
     background: $navigation-color;
@@ -100,9 +126,13 @@ body{
                     color: $navigation-link-color;
                     padding-block: $user-options-spacing;
                     padding-left: 15px;
+                    transition: all .5s;
     
                     .options-icon{
                         margin-right: 15px;
+                    }
+                    &:hover{
+                        color:rgb(67, 163, 253);
                     }
                 }
             }
@@ -123,7 +153,8 @@ body{
 
 //settings page
 .back-button{
-    margin-top: 80px;
+    position: absolute;
+    top: 80px;
     a{
         font-size: 2rem;
         margin-left: 40px;
@@ -357,6 +388,92 @@ body{
                                     background: rgb(141, 6, 6);
                                 }
                             }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.account-page{
+    .form-wrapper{
+        @include flex($justify-content: center, $align-items: center, $flex-direction: column);
+        height: 100vh;
+
+        .account-form{
+            @include flex($justify-content: center, $flex-direction: column);
+            @include border(1px solid rgb(71, 71, 71), $radius: 5px);
+            height: 70%;
+            width: 100%;
+            max-width: 400px;
+            background: darken($color: $background-color, $amount: 3);
+            padding: 30px 50px;
+            margin: 20px;
+            p{
+                @include flex($align-items: center, $justify-content: center);
+                &.error{
+                    font-size: .8rem;
+                    margin-bottom: 20px;
+                    padding: 10px;
+                }
+                i{
+                    font-size: 20px;
+                    color: red;
+                    margin-right: 10px;
+                }
+            }
+            h2{
+                margin-bottom: 30px;
+                //font-size: ;
+            }
+            div{
+                @include flex($justify-content: center, $align-items: flex-start, $flex-direction: column);
+                label{
+                    font-weight: 400;
+                    font-size: .7rem;
+                }
+                input:not([type="submit"]){
+                    width: 100%;
+                    padding: 10px;
+                    background: $background-color;
+                    border: none;
+                    margin-bottom: 40px;
+                    color: white;
+                    &:focus{
+                        outline: none;
+                    }
+                    &:-webkit-autofill,
+                    &:-webkit-autofill:focus {
+                        transition: background-color 600000s 0s, color 600000s 0s;
+                    }
+                    &[data-autocompleted] {
+                        background-color: transparent !important;
+                    }
+                }
+                &.submit-container{
+                    @include flex($justify-content: center, $align-items: center, $flex-direction: column);
+                    input[type="submit"]{
+                        @include border(none);
+                        background-color: $background-color;
+                        color: white;
+                        padding: 10px 20px;
+                        cursor: pointer;
+                        font-family: 'Spartan', sans-serif;
+                        &:hover{
+                            background-color: darken($color: $background-color, $amount: 5);
+                        }
+                    }
+                }
+                &.links{
+                    margin-top: 20px;
+                    font-size: .7rem;
+                    @include flex($justify-content: center, $align-items: center, $flex-direction: row);
+                    a{
+                        text-decoration: none;
+                        color: rgb(34, 202, 253);
+                        &:hover{
+                            text-decoration: underline;
                         }
                     }
                 }

@@ -5,26 +5,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css?v=<?= time(); ?>" type="text/css">
+    <script src="https://kit.fontawesome.com/4489d876da.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Document</title>
 </head>
 
-<body>
-    <?php $user_manager->PrintErrors(); ?>
-    <form method="post">
-        <div>
-            <label for="email">E-mail</label>
-            <input type="email" name="email" id="email">
-        </div>
-
-        <div>
-            <label for="password">Heslo</label>
-            <input type="password" name="password" id="password">
-        </div>
-
-        <div>
-            <input type="submit" value="Přihlásit" name="log_user">
-        </div>
-    </form>
+<body class="account-page">
+    <div class="back-button" style="top: 20px"><a href="index.php"><i class="fa-solid fa-arrow-left"></i></a></div>
+    <div class="form-wrapper">
+        <div class="header"><h1>EVENTON</h1></div>
+        <form method="post" class="account-form">
+            <h2>Přihlášení</h2>
+            <div>
+                <label for="email">E-MAIL</label>
+                <input type="email" name="email" id="email">
+            </div>
+            
+            <div>
+                <label for="password">HESLO</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <?php if($user_manager->GetErrorCount()) : ?>
+            <p class="error">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <?php $user_manager->PrintErrors(); ?>
+            </p>
+            <?php endif ?>
+            
+            <div class="submit-container">
+                <input type="submit" value="Přihlásit" name="log_user">
+            </div>
+            <div class="links"><span>Nemáte účet? <a href="registration.php">Registrovat se</a></span></div>
+        </form>
+    </div>
 </body>
 
 </html>

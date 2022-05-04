@@ -69,7 +69,7 @@
             if (empty($password_1)) array_push($this->errors, "Nebylo zadáno heslo!");
             if(mb_strlen($username) > self::MAX_USERNAME_LENGTH) array_push($this->errors, "Uživatelské jméno je příliš dlouhé! (max: ".self::MAX_USERNAME_LENGTH.")");
             if ($password_1 !== $password_2) array_push($this->errors, "Hesla se neshodují!");
-            if ($password_1 < self::MIN_PASSWORD_LENGTH) array_push($this->errors, "Heslo je příliš krátké! (min: ".SELF::MIN_PASSWORD_LENGTH.")");
+            if (mb_strlen($password_1) < self::MIN_PASSWORD_LENGTH) array_push($this->errors, "Heslo je příliš krátké! (min: ".SELF::MIN_PASSWORD_LENGTH.")");
     
             //Kontrola zda takový uživatel již není v databázi
             if (Db::Exists("users","username", $username)) array_push($this->errors, "Uživatelské jméno už existuje!");
@@ -98,8 +98,9 @@
 
         function PrintErrors(){
             if(count($this->errors) > 0){
-                echo("<p>".$this->errors[0]."</p>");
+                echo($this->errors[0]);
             }
         }
+        function GetErrorCount() { return count($this->errors); }
     }
 ?>
