@@ -1,11 +1,15 @@
 // === COLORS ===
 $background-color: #303030;
-$navigation-color: #1d1d1d;
 $navigation-link-color: #ffffff;
-$text-color: #ffffff;
+$navigation-darken-amount: 6;
+$primary-color: #ffffff;
+$secondary-color: rgb(34, 202, 253);
 
 $navigation-border: 2px solid #494949;
-$settings-border: 1px solid rgb(71, 71, 71);
+$form-border: 1px solid rgb(71, 71, 71);
+$admin-border: 1px solid grey;
+
+$form-label-color: rgb(228, 228, 228);
 
 // === SIZES ===
 $navigation-height: 60px;
@@ -20,7 +24,6 @@ $settings-container-width: 70%;
 
 $admin-navigation-width: 200px;
 $admin-content-padding: 50px;
-$admin-border: 1px solid grey;
 
 // === FONTS ===
 $navigation-font-size: 1rem;

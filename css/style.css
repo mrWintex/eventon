@@ -7,6 +7,12 @@
           box-sizing: border-box;
 }
 
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
 body {
   font-family: "Spartan", sans-serif;
   font-weight: 600;
@@ -14,13 +20,7 @@ body {
   color: #ffffff;
 }
 
-.to-the-top {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-}
-
-.all-posts-alert span {
+.all-posts-alert .alert-text {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -36,33 +36,41 @@ body {
           flex-direction: row;
 }
 
-.all-posts-alert button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  margin-left: 20px;
+.all-posts-alert .alert-button {
+  margin: 0 0 0 20px;
 }
 
-.all-posts-alert button i {
+.all-posts-alert .alert-button i {
+  color: #ffffff;
   font-size: 2rem;
-  color: white;
   -webkit-transition: all .5s;
   transition: all .5s;
 }
 
-.all-posts-alert button i:hover {
-  color: #47a9ff;
+.all-posts-alert .alert-button i:hover {
+  color: #22cafd;
+}
+
+.back-button {
+  position: absolute;
+  top: 80px;
+}
+
+.back-button a {
+  font-size: 2rem;
+  margin-left: 40px;
+  color: #ffffff;
 }
 
 .navigation {
   height: 60px;
-  background: #1d1d1d;
+  background: #212121;
   position: fixed;
   top: 0;
-  width: 100%;
   min-width: 350px;
-  font-size: 0;
+  width: 100%;
   z-index: 10;
+  font-size: 0;
   text-align: right;
 }
 
@@ -109,11 +117,11 @@ body {
 }
 
 .navigation > li.logo {
+  color: #22cafd;
   float: left;
 }
 
 .navigation > li.profile {
-  position: relative;
   font-size: .8rem !important;
   cursor: pointer;
 }
@@ -155,8 +163,8 @@ body {
   padding-right: 15px;
   white-space: nowrap;
   overflow: hidden;
-  -webkit-transition: width 500ms;
-  transition: width 500ms;
+  -webkit-transition: width .5s;
+  transition: width .5s;
 }
 
 .navigation > li .addpost-button .plus {
@@ -173,13 +181,18 @@ body {
   position: absolute;
   top: 100%;
   right: -170px;
-  background: #1d1d1d;
+  background: #212121;
   width: 170px;
   margin-top: 2px;
   text-align: left;
   opacity: 0;
   -webkit-transition: all 500ms;
   transition: all 500ms;
+}
+
+.navigation > li .user-options.user-options-show {
+  right: 0;
+  opacity: 1;
 }
 
 .navigation > li .user-options .user-options-item {
@@ -213,28 +226,12 @@ body {
 }
 
 .navigation > li .user-options .user-options-item .user-options-content:hover {
-  color: #43a3fd;
-}
-
-.navigation > li .user-options.user-options-show {
-  right: 0;
-  opacity: 1;
+  color: #22cafd;
 }
 
 .border-left {
   border-left: 2px solid #494949;
   border-radius: 0px;
-}
-
-.back-button {
-  position: absolute;
-  top: 80px;
-}
-
-.back-button a {
-  font-size: 2rem;
-  margin-left: 40px;
-  color: #ffffff;
 }
 
 .settings-container {
@@ -280,7 +277,6 @@ body {
 
 .settings-container section > div.section-headline {
   width: 400px;
-  height: 100%;
   margin-right: 50px;
 }
 
@@ -294,7 +290,7 @@ body {
   font-weight: 400;
 }
 
-.settings-container section > div:not(.section-headline) {
+.settings-container section > div.section-content {
   padding: 50px 40px;
   background: #282828;
   border: 1px solid #474747;
@@ -304,28 +300,37 @@ body {
 .settings-container section > div .form-item .form-item-label {
   color: #e4e4e4;
   font-weight: 400;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
-.settings-container section > div .form-item input[type="text"], .settings-container section > div .form-item input[type="email"], .settings-container section > div .form-item input[type="password"] {
+.settings-container section > div .form-item input[type="text"],
+.settings-container section > div .form-item input[type="email"],
+.settings-container section > div .form-item input[type="password"] {
   border: none;
-  border-radius: 0px;
   width: 100%;
   padding: 10px;
-  background: #353535;
+  background: #303030;
   color: white;
 }
 
-.settings-container section > div .form-item input[type="text"]:focus, .settings-container section > div .form-item input[type="email"]:focus, .settings-container section > div .form-item input[type="password"]:focus {
+.settings-container section > div .form-item input[type="text"]:focus,
+.settings-container section > div .form-item input[type="email"]:focus,
+.settings-container section > div .form-item input[type="password"]:focus {
   outline: none;
 }
 
-.settings-container section > div .form-item input[type="text"]:-webkit-autofill, .settings-container section > div .form-item input[type="text"]:-webkit-autofill:focus, .settings-container section > div .form-item input[type="email"]:-webkit-autofill, .settings-container section > div .form-item input[type="email"]:-webkit-autofill:focus, .settings-container section > div .form-item input[type="password"]:-webkit-autofill, .settings-container section > div .form-item input[type="password"]:-webkit-autofill:focus {
+.settings-container section > div .form-item input[type="text"]:-webkit-autofill, .settings-container section > div .form-item input[type="text"]:-webkit-autofill:focus,
+.settings-container section > div .form-item input[type="email"]:-webkit-autofill,
+.settings-container section > div .form-item input[type="email"]:-webkit-autofill:focus,
+.settings-container section > div .form-item input[type="password"]:-webkit-autofill,
+.settings-container section > div .form-item input[type="password"]:-webkit-autofill:focus {
   -webkit-transition: background-color 600000s 0s, color 600000s 0s;
   transition: background-color 600000s 0s, color 600000s 0s;
 }
 
-.settings-container section > div .form-item input[type="text"][data-autocompleted], .settings-container section > div .form-item input[type="email"][data-autocompleted], .settings-container section > div .form-item input[type="password"][data-autocompleted] {
+.settings-container section > div .form-item input[type="text"][data-autocompleted],
+.settings-container section > div .form-item input[type="email"][data-autocompleted],
+.settings-container section > div .form-item input[type="password"][data-autocompleted] {
   background-color: transparent !important;
 }
 
@@ -371,13 +376,16 @@ body {
 }
 
 .settings-container section > div .form-item.submit input[type="submit"] {
-  padding: 10px 40px;
-  border: 1px solid #474747;
-  border-radius: 50px;
-  background-color: #353535;
-  color: white;
+  border: none;
+  padding: 10px 30px;
+  background-color: #303030;
+  color: #ffffff;
   font-family: 'Spartan', sans-serif;
   cursor: pointer;
+}
+
+.settings-container section > div .form-item.submit input[type="submit"]:hover {
+  background-color: #232323;
 }
 
 .settings-container section > div .form-item.icon_upload {
@@ -466,7 +474,7 @@ body {
 .admin-page .admin-nav .admin-nav-ul {
   width: 100%;
   height: 100%;
-  background: #1d1d1d;
+  background: #212121;
 }
 
 .admin-page .admin-nav .admin-nav-ul li {
@@ -518,7 +526,7 @@ body {
 }
 
 .admin-page .admin-nav .admin-nav-ul li a.active {
-  background-color: #272727;
+  background-color: #3a3a3a;
 }
 
 .admin-page main .content-container {
@@ -640,10 +648,10 @@ body {
           flex-direction: column;
   border: 1px solid #474747;
   border-radius: 5px;
+  background: #282828;
   height: 70%;
   width: 100%;
   max-width: 400px;
-  background: #282828;
   padding: 30px 50px;
   margin: 20px;
 }
@@ -697,17 +705,18 @@ body {
 }
 
 .account-page .form-wrapper .account-form div label {
+  color: #e4e4e4;
   font-weight: 400;
-  font-size: .7rem;
+  font-size: 0.7rem;
 }
 
 .account-page .form-wrapper .account-form div input:not([type="submit"]) {
+  border: none;
   width: 100%;
   padding: 10px;
   background: #303030;
-  border: none;
-  margin-bottom: 40px;
   color: white;
+  margin-bottom: 40px;
 }
 
 .account-page .form-wrapper .account-form div input:not([type="submit"]):focus {
@@ -741,12 +750,11 @@ body {
 
 .account-page .form-wrapper .account-form div.submit-container input[type="submit"] {
   border: none;
-  border-radius: 0px;
-  background-color: #303030;
-  color: white;
   padding: 10px 20px;
-  cursor: pointer;
+  background-color: #303030;
+  color: #ffffff;
   font-family: 'Spartan', sans-serif;
+  cursor: pointer;
 }
 
 .account-page .form-wrapper .account-form div.submit-container input[type="submit"]:hover {

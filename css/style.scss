@@ -6,61 +6,63 @@
 @include default_settings;
 
 body{
-    @include font_settings;
+    @include default_font_settings;
     background: $background-color;
-    color: $text-color;
+    color: $primary-color;
 }
 
-.to-the-top{
-    position: fixed;
-    bottom: 0;
-    right: 0;
-}
+//====================================================
+//=======================OTHER========================
+//====================================================
 
 .all-posts-alert{
-    span{
+    .alert-text{
         @include flex($justify-content: center, $align-items: center);
     }
-    button{
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        margin-left: 20px;
+    .alert-button{
+        margin: 0 0 0 20px;
         i{
+            color: $primary-color;
             font-size: 2rem;
-            color: white;
             transition: all .5s;
             &:hover{
-                color: rgb(71, 169, 255);
+                color: $secondary-color;
             }
         }
     }
 }
+.back-button{
+    @include back-button;
+}
 
+//====================================================
+//====================NAVIGATION======================
+//====================================================
 .navigation{
     height: $navigation-height;
-    background: $navigation-color;
+    background: darken($color: $background-color, $amount: $navigation-darken-amount);
+
     position: fixed;
     top: 0;
-    width: 100%;
     min-width: 350px;
-    font-size: 0;
+    width: 100%;
     z-index: 10;
+    font-size: 0;
     text-align: right;
-
+    
     > li{
         @include flex(inline-flex, center, center);
         font-size: $navigation-font-size;
         padding-inline: $navigation-link-inline-padding;
         height: $navigation-height;
         vertical-align: top;
-
+        
         a{
             @include navigation_links;
             &.basic-button{
                 padding: 10px;
             }
-
+            
             &.fancy-button{
                 @include fancy-button;
             }
@@ -71,19 +73,19 @@ body{
         }
 
         &.logo{
+            color: $secondary-color;
             float: left;
         }
 
         &.profile{
-            position: relative;
             font-size: .8rem !important;
             cursor: pointer;
-
+            
             span{
                 @include flex(flex, center, center);
             }
         }
-
+        
         .addpost-button{
             @include border(2px solid, 50px);
             @include flex(flex, center, left);
@@ -92,13 +94,13 @@ body{
             padding-right: 15px;
             white-space: nowrap;
             overflow: hidden;
-            transition: width 500ms;
+            transition: width .5s;
 
             .plus{
                 padding-inline: 9.5px;
                 padding-bottom: 1px;
             }
-
+            
             &:hover{
                 width: 110px;
             }
@@ -106,17 +108,22 @@ body{
 
         .user-options{
             display: block;
-
+            
             position: absolute;
             top: 100%;
             right: -$user-options-width;
-
-            background: $navigation-color;
+            
+            background: darken($color: $background-color, $amount: $navigation-darken-amount);
             width: $user-options-width;
             margin-top: 2px;
             text-align: left;
             opacity: 0;
             transition: all 500ms;
+            
+            &.user-options-show{
+                right: 0;
+                opacity: 1;
+            }
 
             .user-options-item{
                 @include flex($flex-direction:column);
@@ -127,59 +134,44 @@ body{
                     padding-block: $user-options-spacing;
                     padding-left: 15px;
                     transition: all .5s;
-    
+                    
                     .options-icon{
                         margin-right: 15px;
                     }
                     &:hover{
-                        color:rgb(67, 163, 253);
+                        color: $secondary-color;
                     }
                 }
-            }
-
-            
-
-            &.user-options-show{
-                right: 0;
-                opacity: 1;
             }
         }
     }
 }
-
 .border-left{
     @include border($navigation-border, $side: left);
 }
 
-//settings page
-.back-button{
-    position: absolute;
-    top: 80px;
-    a{
-        font-size: 2rem;
-        margin-left: 40px;
-        color: $navigation-link-color;
-    }
-}
+//====================================================
+//===================SETTINGS PAGE====================
+//====================================================
 
 .settings-container{
-    @include margin-auto;
+    margin: 0 auto;
     width: $settings-container-width;
     
     section{
         @include flex($align-items: none, $justify-content: left, $flex-direction: row);
-        @include border($settings-border, $side: bottom);
+        @include border($form-border, $side: bottom);
         padding-block: $settings-form-spacing;
         width: 100%;
-
+        
         &:first-of-type{
             margin-top: $settings-form-margin
         }
-
+        
         &:last-child{
             margin-bottom: $settings-form-margin
         }
-
+        
         > div{
             max-width: 700px;
             min-width: 360px;
@@ -187,10 +179,8 @@ body{
             height: 100%;
             padding-inline: 20px;
             
-            
             &.section-headline{
                 width: 400px;
-                height: 100%;
                 margin-right: 50px;
                 h3{
                     color: white;
@@ -202,35 +192,21 @@ body{
                 }
             }
             
-            &:not(.section-headline){
+            &.section-content{
                 padding: 50px 40px;
                 background: darken($color: $background-color, $amount: 3);
-                @include border($settings-border, 0px, all);
+                @include border($form-border, 0px, all);
             }
-
+            
             .form-item{
                 .form-item-label{
-                    color: rgb(228, 228, 228);
-                    font-weight: 400;
-                    font-size: .8rem;
+                    @include form-label-preset(.8rem);
                 }
-
-                input[type="text"],input[type="email"],input[type="password"]{
-                    @include border(none);
-                    width: 100%;
-                    padding: 10px;
-                    background: lighten($color: $background-color, $amount: 2);
-                    color: white;
-                    &:focus{
-                        outline: none;
-                    }
-                    &:-webkit-autofill,
-                    &:-webkit-autofill:focus {
-                        transition: background-color 600000s 0s, color 600000s 0s;
-                    }
-                    &[data-autocompleted] {
-                        background-color: transparent !important;
-                    }
+                
+                input[type="text"],
+                input[type="email"],
+                input[type="password"]{
+                    @include form-input-preset;
                 }
                 
                 .error-container{
@@ -246,13 +222,9 @@ body{
 
                 &.submit{
                     @include flex($align-items: center, $justify-content: right);
-
+                    
                     input[type="submit"]{
-                        @include fancy-button(10px 40px, $settings-border);
-                        background-color: lighten($color: $background-color, $amount: 2);
-                        color: white;
-                        font-family: 'Spartan', sans-serif;
-                        cursor: pointer;
+                        @include form-button-preset(10px 30px);
                     }
                 }
                  
@@ -273,7 +245,7 @@ body{
 }
 @media (max-width: 1200px) {
     .settings-container{
-        @include margin-auto;
+        margin: 0 auto;
         @include flex($align-items: center, $justify-content: center, $flex-direction: column);
         width: 90%;
         h1{
@@ -281,11 +253,11 @@ body{
         }
         section{
             @include flex($align-items: center, $justify-content: center, $flex-direction: column);
-
+            
             &:first-of-type{
                 margin-top: 0;
             }
-
+            
             > div{
                 margin-top: $settings-form-margin;
                 &.section-headline{
@@ -297,8 +269,9 @@ body{
         }
     }
 }
-
-//admin-page
+//====================================================
+//====================ADMIN PAGE======================
+//====================================================
 .admin-page{
     .admin-nav{
         height: 100vh;
@@ -308,7 +281,7 @@ body{
         .admin-nav-ul{
             width: 100%;
             height: 100%;
-            background: $navigation-color;
+            background: darken($color: $background-color, $amount: $navigation-darken-amount);
             li{
                 @include flex($flex-direction:column);
                 height: 50px;
@@ -323,14 +296,14 @@ body{
                         font-size: 1.2rem;
                         padding-right: 20px;
                     }
-
+                    
                     &.header{
                         i{
                             padding-left: 5px;
                         }
                     }
                     &.active{
-                        background-color: lighten($color: $navigation-color, $amount: 4);
+                        background-color: lighten($color: $background-color, $amount: 4);
                     }
                 }
             }
@@ -354,7 +327,7 @@ body{
                     height: 40px;
                 }
             }
-
+            
             .data-wrapper{
                 height: 800px;
                 overflow: auto;
@@ -406,18 +379,21 @@ body{
     }
 }
 
+//====================================================
+//===============LOGIN - REGISTRATION=================
+//====================================================
 .account-page{
     .form-wrapper{
         @include flex($justify-content: center, $align-items: center, $flex-direction: column);
         height: 100vh;
-
+        
         .account-form{
             @include flex($justify-content: center, $flex-direction: column);
-            @include border(1px solid rgb(71, 71, 71), $radius: 5px);
+            @include border($form-border, $radius: 5px);
+            background: darken($color: $background-color, $amount: 3);
             height: 70%;
             width: 100%;
             max-width: 400px;
-            background: darken($color: $background-color, $amount: 3);
             padding: 30px 50px;
             margin: 20px;
             p{
@@ -435,44 +411,20 @@ body{
             }
             h2{
                 margin-bottom: 30px;
-                //font-size: ;
             }
             div{
                 @include flex($justify-content: center, $align-items: flex-start, $flex-direction: column);
                 label{
-                    font-weight: 400;
-                    font-size: .7rem;
+                    @include form-label-preset(.7rem);
                 }
                 input:not([type="submit"]){
-                    width: 100%;
-                    padding: 10px;
-                    background: $background-color;
-                    border: none;
+                    @include form-input-preset();
                     margin-bottom: 40px;
-                    color: white;
-                    &:focus{
-                        outline: none;
-                    }
-                    &:-webkit-autofill,
-                    &:-webkit-autofill:focus {
-                        transition: background-color 600000s 0s, color 600000s 0s;
-                    }
-                    &[data-autocompleted] {
-                        background-color: transparent !important;
-                    }
                 }
                 &.submit-container{
                     @include flex($justify-content: center, $align-items: center, $flex-direction: column);
                     input[type="submit"]{
-                        @include border(none);
-                        background-color: $background-color;
-                        color: white;
-                        padding: 10px 20px;
-                        cursor: pointer;
-                        font-family: 'Spartan', sans-serif;
-                        &:hover{
-                            background-color: darken($color: $background-color, $amount: 5);
-                        }
+                        @include form-button-preset(10px 20px);
                     }
                 }
                 &.links{
@@ -481,7 +433,7 @@ body{
                     @include flex($justify-content: center, $align-items: center, $flex-direction: row);
                     a{
                         text-decoration: none;
-                        color: rgb(34, 202, 253);
+                        color: $secondary-color;
                         &:hover{
                             text-decoration: underline;
                         }
@@ -491,4 +443,3 @@ body{
         }
     }
 }
-

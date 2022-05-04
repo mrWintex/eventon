@@ -36,7 +36,7 @@ $(document).ready(function () {
       },
       success: function (response) {
         if(!response || response === " "){
-          $("#posts-container").append("<div class='all-posts-alert'><span>Nic dalšího tu není!<button onclick='ScrollToTop()'><i class='fa-solid fa-arrow-up'></i></a></span></button></div>");
+          $("#posts-container").append("<div class='all-posts-alert'><span class='alert-text'>Nic dalšího tu není!<button class='alert-button' onclick='ScrollToTop()'><i class='fa-solid fa-arrow-up'></i></a></span></button></div>");
           all_posts = true;
         }
         

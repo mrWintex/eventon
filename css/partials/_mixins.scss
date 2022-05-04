@@ -4,9 +4,14 @@
         margin: 0;
         box-sizing: border-box;
     }
+    button{
+        border: none;
+        background: transparent;
+        cursor: pointer;
+    }
 }
 
-@mixin font_settings {
+@mixin default_font_settings {
     font: {
         family: "Spartan", sans-serif;
         weight: 600;
@@ -23,6 +28,16 @@
     @include border($border, 50px);
 }
 
+@mixin back-button{
+    position: absolute;
+    top: 80px;
+    a{
+        font-size: 2rem;
+        margin-left: 40px;
+        color: $navigation-link-color;
+    }   
+}
+
 @mixin icon-preset($size: $navigation-icon-size){
     @include rounded(50%);
     width: $size;
@@ -35,9 +50,6 @@
     justify-content: $justify-content;
     align-items: $align-items;
     flex-direction: $flex-direction;
-}
-@mixin margin-auto{
-    margin: 0 auto;
 }
 
 @mixin rounded($radius: 15px){
@@ -61,4 +73,40 @@
         border-top: $border;
     }
     @include rounded($radius);
+}
+
+@mixin form-label-preset($size){
+    color: $form-label-color;
+    font-weight: 400;
+    font-size: $size;
+}
+
+@mixin form-input-preset {
+    border: none;
+    width: 100%;
+    padding: 10px;
+    background: $background-color;
+    color: white;
+    &:focus{
+        outline: none;
+    }
+    &:-webkit-autofill,
+    &:-webkit-autofill:focus {
+        transition: background-color 600000s 0s, color 600000s 0s;
+    }
+    &[data-autocompleted] {
+        background-color: transparent !important;
+    }
+}
+
+@mixin form-button-preset($padding){
+    border: none;
+    padding: $padding;
+    background-color: $background-color;
+    color: $primary-color;
+    font-family: 'Spartan', sans-serif;
+    cursor: pointer;
+    &:hover{
+        background-color: darken($color: $background-color, $amount: 5);
+    }
 }
