@@ -3,11 +3,9 @@
     function GetTableData($data){
         ?>
         <tr id="<?=$data[array_key_first($data)]?>">
-            <?php
-            foreach($data as $key=>$value){
-                ?><td title="<?=$value?>"><input class="datachange-input" type="text" name="<?=$key?>" value="<?=$value?>"></td>
-            <?php
-            }?>
+            <?php foreach($data as $key=>$value) : ?>
+                <td title="<?=$value?>"><input class="datachange-input" type="text" name="<?=$key?>" value="<?=$value?>"></td>
+            <?php endforeach ?>
             <td class="buttons"><button class="delete-button" type="button" onclick="Delete(this)">DELETE</button></td>
         </tr>
         <?php
@@ -16,11 +14,9 @@
     function GetTableHeader($data){
         ?>
         <tr>
-            <?php
-                foreach($data as $key=>$value){
-                        ?> <th><?=$key?></th> <?php
-                }
-            ?>
+            <?php foreach($data as $key=>$value) : ?>
+            <th><?=$key?></th>
+            <?php endforeach ?>
         </tr>
         <?php
     }
