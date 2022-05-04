@@ -2,6 +2,7 @@
     session_start();
     require("./php/class_autoloader.php");
     //----
+    //jhjhjjjjhkk
     $user_manager = new UserManager();
 
     if (isset($_POST["log_user"])) {
