@@ -256,7 +256,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #474747;
   border-radius: 0px;
   padding-block: 80px;
   width: 100%;
@@ -295,25 +295,38 @@ body {
 }
 
 .settings-container section > div:not(.section-headline) {
-  padding-block: 40px;
-  background-color: #2f2f2f;
-  border: 1px solid grey;
-  border-radius: 5px;
+  padding: 50px 40px;
+  background: #282828;
+  border: 1px solid #474747;
+  border-radius: 0px;
 }
 
 .settings-container section > div .form-item .form-item-label {
-  font-weight: 300;
   color: #e4e4e4;
+  font-weight: 400;
+  font-size: .8rem;
 }
 
 .settings-container section > div .form-item input[type="text"], .settings-container section > div .form-item input[type="email"], .settings-container section > div .form-item input[type="password"] {
-  border: 1px solid grey;
-  border-radius: 7px;
+  border: none;
+  border-radius: 0px;
   width: 100%;
   padding: 10px;
-  margin-top: 10px;
   background: #353535;
   color: white;
+}
+
+.settings-container section > div .form-item input[type="text"]:focus, .settings-container section > div .form-item input[type="email"]:focus, .settings-container section > div .form-item input[type="password"]:focus {
+  outline: none;
+}
+
+.settings-container section > div .form-item input[type="text"]:-webkit-autofill, .settings-container section > div .form-item input[type="text"]:-webkit-autofill:focus, .settings-container section > div .form-item input[type="email"]:-webkit-autofill, .settings-container section > div .form-item input[type="email"]:-webkit-autofill:focus, .settings-container section > div .form-item input[type="password"]:-webkit-autofill, .settings-container section > div .form-item input[type="password"]:-webkit-autofill:focus {
+  -webkit-transition: background-color 600000s 0s, color 600000s 0s;
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+.settings-container section > div .form-item input[type="text"][data-autocompleted], .settings-container section > div .form-item input[type="email"][data-autocompleted], .settings-container section > div .form-item input[type="password"][data-autocompleted] {
+  background-color: transparent !important;
 }
 
 .settings-container section > div .form-item .error-container {
@@ -359,7 +372,7 @@ body {
 
 .settings-container section > div .form-item.submit input[type="submit"] {
   padding: 10px 40px;
-  border: 1px solid grey;
+  border: 1px solid #474747;
   border-radius: 50px;
   background-color: #353535;
   color: white;

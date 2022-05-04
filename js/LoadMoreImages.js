@@ -1,13 +1,22 @@
 $(document).ready(function () {
+  //===PROMĚNNÉ===
+  //bool zda se již ajax request zpracovává
   busy = false;
+  //bool zda již všechny příspěvky byly zobrazeny
   all_posts = false;
+  //odsazení prahu zobrazování příspěvků
   offset = 50;
+  //==============
+
+
   $(window).scroll(function() {
+    //pokud je stránka úplně dole načtou se další příspěvky
     if($(window).scrollTop() + $(window).height() >= $(document).height() - offset && !busy && !all_posts){
       LoadMorePosts();
     }
   });
 
+  //Pokud byl změněn filtr, obnoví se příspěvky
   $("#post-filter").on("change", function(){
     $("#posts-container").empty();
     LoadMorePosts();
@@ -16,6 +25,7 @@ $(document).ready(function () {
   //První načtení příspěvků
   LoadMorePosts();
 
+  //Funkce pro načtení příspěvků pomocí AJAX
   function LoadMorePosts(){
     busy = true;
     $.ajax({
@@ -37,6 +47,7 @@ $(document).ready(function () {
     });
   }
 
+  //Získání id filtru pro SQL dotaz
   function GetFilter(){
     return $("#post-filter").val();
   }

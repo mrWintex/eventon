@@ -203,24 +203,34 @@ body{
             }
             
             &:not(.section-headline){
-                padding-block: 40px;
-                background-color: darken($background-color, .5);
-                @include border($settings-border, 5px, all);
+                padding: 50px 40px;
+                background: darken($color: $background-color, $amount: 3);
+                @include border($settings-border, 0px, all);
             }
 
             .form-item{
                 .form-item-label{
-                    font-weight: 300;
                     color: rgb(228, 228, 228);
+                    font-weight: 400;
+                    font-size: .8rem;
                 }
 
                 input[type="text"],input[type="email"],input[type="password"]{
-                    @include border($settings-border, 7px, all);
+                    @include border(none);
                     width: 100%;
                     padding: 10px;
-                    margin-top: 10px;
                     background: lighten($color: $background-color, $amount: 2);
                     color: white;
+                    &:focus{
+                        outline: none;
+                    }
+                    &:-webkit-autofill,
+                    &:-webkit-autofill:focus {
+                        transition: background-color 600000s 0s, color 600000s 0s;
+                    }
+                    &[data-autocompleted] {
+                        background-color: transparent !important;
+                    }
                 }
                 
                 .error-container{

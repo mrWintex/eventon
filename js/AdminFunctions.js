@@ -2,7 +2,7 @@ $(function(){
     ReloadTable();
 });
 
-//table values for queries
+//Data pro dotazy
 var tables = [
     [ "users", "id_u", "username"], //USERS table
     [ "posts", "id_p", "src" ],     //POSTS table
@@ -15,7 +15,7 @@ var table_items = [
     ["id_t", "name"],                                       //TAGS table
 ];
 
-//Searching function
+//Vyhledávací funkce
 function Search(target){
     var table = GetCurrentTable();
     var search_query = "SELECT "+ GetTableItems() +" FROM "+ table[0] +" WHERE "+ table[1] +" like '"+$(target).val()+"'";
@@ -27,7 +27,7 @@ function Search(target){
     });
 }
 
-//Delete function
+//Odstraňovací funkce
 function Delete(target){
     var wantsToDelete = confirm("Opravdu chcete vymazat data?");
     if(!wantsToDelete) return;
@@ -43,7 +43,7 @@ function Delete(target){
     SendToServer(url, function(response){ReloadTableBody();console.log(response);});
 }
 
-//Change data function
+//Funkce pro změnu dat
 function InitializeDataInputs(){
     $(".datachange-input").on("focusin", function(){
         $(this).data("val", $(this).val());
@@ -58,7 +58,7 @@ function InitializeDataInputs(){
     });
 }
 
-//Changing table datas
+//Přechod mezi tabulky
 function ChangeTableData(index, target){
     $(".data-table").attr("id", index);
     $(".admin-nav-link").removeClass("active");
@@ -66,16 +66,17 @@ function ChangeTableData(index, target){
     ReloadTable();
 }
 
-//Get table
+//Získání dat aktuálně zobrazené tabulky
 function GetCurrentTable(){
     return tables[GetTableDataIndex()];
 }
 
-//Get index of current table
+//Získání indexu právě zobrazené tabulky
 function GetTableDataIndex(){
     return $(".data-table").attr("id");
 }
 
+//Získání potřebných sloupců pro vygenerivání dotazu
 function GetTableItems(){
     var items_string = "";
     table_items[GetTableDataIndex()].forEach(item => {
@@ -84,11 +85,13 @@ function GetTableItems(){
     return items_string.substring(0, items_string.length - 2);
 }
 
+//Obnovení celé tabulky
 function ReloadTable(){
    ReloadTableHeader();
    ReloadTableBody();
 }
 
+//Obnovení hlavičky tabulky
 function ReloadTableHeader(){
     var table = GetCurrentTable();
     var query = "SELECT "+ GetTableItems() +" FROM "+ table[0] + ";";
@@ -98,6 +101,7 @@ function ReloadTableHeader(){
     });
 }
 
+//Obnovení těla tabulky
 function ReloadTableBody(){
     var table = GetCurrentTable();
     var query = "SELECT "+ GetTableItems() +" FROM "+ table[0] + ";";
@@ -108,7 +112,7 @@ function ReloadTableBody(){
     });
 }
 
-//Ajax function
+//funkce AJAX s callback funkcí
 function SendToServer(url, success){
     $.ajax({
         type: "GET",
