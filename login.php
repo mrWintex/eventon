@@ -6,6 +6,7 @@
 
     if (isset($_POST["log_user"])) {
         $user_manager->Login($_POST["email"], $_POST["password"]);
+        //hello
     }
     require("./phtml/_login.phtml"); 
 ?>
