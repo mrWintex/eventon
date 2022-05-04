@@ -1,4 +1,4 @@
-        body{
+        :root{
             --post-normal-size: 700px;
             --post-expanded-size: 800px;
             --post-icon-size: 45px;
@@ -156,7 +156,7 @@
         /* ----------------------- */
         
         @media (max-width: 1500px){
-            body{
+            :root{
                 --post-normal-size: 600px !important;
             }
 
@@ -184,7 +184,7 @@
         }
 
         @media (max-width: 650px) {
-            body{
+            :root{
                 --post-normal-size: 350px !important;
             }
             .post-content{
