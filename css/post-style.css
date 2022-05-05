@@ -1,6 +1,6 @@
         :root{
-            --post-normal-size: 700px;
-            --post-expanded-size: 800px;
+            --post-normal-size: 70vh;
+            --post-expanded-size: 80vh;
             --post-icon-size: 45px;
             --post-padding-block: 200px;
         }
