@@ -7,8 +7,8 @@
 
     //Načtení příspěvků
     if(isset($_GET["filter"])){
-        $postmanager->SetQueries($_GET["filter"]);
-        $postmanager->LoadPosts((isset($_SESSION["user"])? $_SESSION["user"]->GetId() : 0));
+        $logged_user_id = (isset($_SESSION["user"]))? $_SESSION["user"]->GetId() : 0;
+        $postmanager->LoadPosts($logged_user_id, $_GET["filter"]);
     }
 
     //Like příspěvků

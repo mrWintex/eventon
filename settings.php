@@ -33,7 +33,7 @@
         else if($_POST["new_passwd"] !== $_POST["confirm_new_passwd"]) array_push($errors_form_2, "Hesla se neshodují!");
         
         if(count($errors_form_2) == 0){
-            $_SESSION["user"]->ChangePassword($_POST["new_password"]);
+            $_SESSION["user"]->ChangePassword($_POST["new_passwd"]);
         }
     }
     

@@ -76,7 +76,7 @@
         }
         public function ChangePassword($new){ 
             Db::ChangeData("users", "password", hash("sha256", $new), "id_u", $this->id_u);
-            $this->password = $new; 
+            $this->password = hash("sha256", $new); 
         }
     }
 ?>

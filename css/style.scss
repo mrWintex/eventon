@@ -6,6 +6,7 @@
 @include default_settings;
 
 body{
+    scroll-behavior: smooth;
     @include default_font_settings;
     background: $background-color;
     color: $primary-color;

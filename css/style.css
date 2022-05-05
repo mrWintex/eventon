@@ -14,6 +14,7 @@ button {
 }
 
 body {
+  scroll-behavior: smooth;
   font-family: "Spartan", sans-serif;
   font-weight: 600;
   background: #303030;
@@ -252,7 +253,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  border-bottom: 1px solid #474747;
+  border-bottom: 1px solid #4a4a4a;
   border-radius: 0px;
   padding-block: 80px;
   width: 100%;
@@ -292,7 +293,7 @@ body {
 .settings-container section > div.section-content {
   padding: 50px 40px;
   background: #282828;
-  border: 1px solid #474747;
+  border: 1px solid #4a4a4a;
   border-radius: 0px;
 }
 
@@ -645,7 +646,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: 1px solid #474747;
+  border: 1px solid #4a4a4a;
   border-radius: 5px;
   background: #282828;
   height: 70%;

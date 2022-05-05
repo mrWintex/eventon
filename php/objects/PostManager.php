@@ -2,15 +2,9 @@
     class PostManager{
         private $post_num = 2;
         public $posts_queries;
-        
-        function __construct()
-        {
-            if(!isset($_SESSION["loaded_posts"])){
-                $_SESSION["loaded_posts"] = 0;
-            }
-        }
 
-        public function LoadPosts($logged_user_id){
+        public function LoadPosts($logged_user_id, $filter_id){
+            $this->SetQueries($filter_id);
             $posts = Db::GetAllRows($this->posts_queries[$_SESSION["filter_id"]]);
             foreach($posts as $post){
                 $post_obj = new Post($post);
@@ -26,14 +20,24 @@
             $post_object->LikePost($logged_user_id);
         }
 
-        public function SetQueries($filter_id){
+        private function SetQueries($filter_id){
+            //uložení počtu načtených příspěvků
+            if(!isset($_SESSION["loaded_posts"])){
+                $_SESSION["loaded_posts"] = 0;
+            }
+            //uložení právě používaného filtru
             if(!isset($_SESSION["filter_id"])){
                 $_SESSION["filter_id"] = (int)$filter_id;
             }
+            //Vynulování počtu načtených příspěvků pokud byl filter změněn
             else if($_SESSION["filter_id"] != $filter_id){
                 $_SESSION["loaded_posts"] = 0;
                 $_SESSION["filter_id"] = (int)$filter_id;
             }
+            $this->GenerateQueries();
+        }
+
+        private function GenerateQueries(){
             $this->posts_queries = [
                 "SELECT * FROM posts ORDER BY add_date desc LIMIT {$_SESSION["loaded_posts"]}, $this->post_num",
                 "SELECT * FROM posts ORDER BY add_date asc LIMIT {$_SESSION["loaded_posts"]}, $this->post_num",
