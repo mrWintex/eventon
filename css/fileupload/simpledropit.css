@@ -20,7 +20,7 @@
   background-color: #353535;
   padding: 10px 20px;
   height: 100px;
-  width: 90%;
+  width: 100%;
   text-align: center;
   border-radius: 2px;
   line-height: 18px;
@@ -28,6 +28,10 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  margin: 0;
+}
+.sd-box.addpost {
+  height: unset;
 }
 
 .sd-icon{
