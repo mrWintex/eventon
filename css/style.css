@@ -615,7 +615,7 @@ body {
   background: #8d0606;
 }
 
-.account-page .form-wrapper {
+.form-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -632,7 +632,11 @@ body {
   height: 100vh;
 }
 
-.account-page .form-wrapper .account-form {
+.form-wrapper .addpost-header {
+  margin-top: 60px;
+}
+
+.form-wrapper .account-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -656,7 +660,88 @@ body {
   margin: 20px;
 }
 
-.account-page .form-wrapper .account-form p {
+.form-wrapper .account-form.addpost {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: unset;
+  width: auto;
+}
+
+.form-wrapper .account-form.addpost .post-image, .form-wrapper .account-form.addpost .post-info {
+  padding: 10px;
+}
+
+.form-wrapper .account-form.addpost .form-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: none;
+      -ms-flex-pack: none;
+          justify-content: none;
+  -webkit-box-align: none;
+      -ms-flex-align: none;
+          align-items: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.form-wrapper .account-form.addpost .form-content .post-image {
+  width: 600px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.form-wrapper .account-form.addpost .form-content .post-info {
+  width: 500px;
+  margin-top: 20px;
+}
+
+.form-wrapper .account-form.addpost .form-content .post-info #comment {
+  width: 100%;
+  max-width: 100%;
+  height: 100px;
+  max-height: 100px;
+  resize: none;
+  margin: 0;
+}
+
+.form-wrapper .account-form.addpost .form-content .post-info .char-counter {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: none;
+      -ms-flex-align: none;
+          align-items: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: .7rem;
+  width: 100%;
+}
+
+.form-wrapper .account-form.addpost .submit-container input[type="submit"] {
+  margin-left: 10px !important;
+}
+
+.form-wrapper .account-form p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -672,23 +757,23 @@ body {
           flex-direction: row;
 }
 
-.account-page .form-wrapper .account-form p.error {
+.form-wrapper .account-form p.error {
   font-size: .8rem;
   margin-bottom: 20px;
   padding: 10px;
 }
 
-.account-page .form-wrapper .account-form p i {
+.form-wrapper .account-form p i {
   font-size: 20px;
   color: red;
   margin-right: 10px;
 }
 
-.account-page .form-wrapper .account-form h2 {
+.form-wrapper .account-form h2 {
   margin-bottom: 30px;
 }
 
-.account-page .form-wrapper .account-form div {
+.form-wrapper .account-form .form-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -704,13 +789,17 @@ body {
           flex-direction: column;
 }
 
-.account-page .form-wrapper .account-form div label {
+.form-wrapper .account-form .form-item label {
   color: #e4e4e4;
   font-weight: 400;
   font-size: 0.7rem;
 }
 
-.account-page .form-wrapper .account-form div input:not([type="submit"]) {
+.form-wrapper .account-form .form-item input[type="text"],
+.form-wrapper .account-form .form-item input[type="email"],
+.form-wrapper .account-form .form-item input[type="password"],
+.form-wrapper .account-form .form-item textarea {
+  font-family: 'Spartan', sans-serif;
   border: none;
   width: 100%;
   padding: 10px;
@@ -719,20 +808,32 @@ body {
   margin-bottom: 40px;
 }
 
-.account-page .form-wrapper .account-form div input:not([type="submit"]):focus {
+.form-wrapper .account-form .form-item input[type="text"]:focus,
+.form-wrapper .account-form .form-item input[type="email"]:focus,
+.form-wrapper .account-form .form-item input[type="password"]:focus,
+.form-wrapper .account-form .form-item textarea:focus {
   outline: none;
 }
 
-.account-page .form-wrapper .account-form div input:not([type="submit"]):-webkit-autofill, .account-page .form-wrapper .account-form div input:not([type="submit"]):-webkit-autofill:focus {
+.form-wrapper .account-form .form-item input[type="text"]:-webkit-autofill, .form-wrapper .account-form .form-item input[type="text"]:-webkit-autofill:focus,
+.form-wrapper .account-form .form-item input[type="email"]:-webkit-autofill,
+.form-wrapper .account-form .form-item input[type="email"]:-webkit-autofill:focus,
+.form-wrapper .account-form .form-item input[type="password"]:-webkit-autofill,
+.form-wrapper .account-form .form-item input[type="password"]:-webkit-autofill:focus,
+.form-wrapper .account-form .form-item textarea:-webkit-autofill,
+.form-wrapper .account-form .form-item textarea:-webkit-autofill:focus {
   -webkit-transition: background-color 600000s 0s, color 600000s 0s;
   transition: background-color 600000s 0s, color 600000s 0s;
 }
 
-.account-page .form-wrapper .account-form div input:not([type="submit"])[data-autocompleted] {
+.form-wrapper .account-form .form-item input[type="text"][data-autocompleted],
+.form-wrapper .account-form .form-item input[type="email"][data-autocompleted],
+.form-wrapper .account-form .form-item input[type="password"][data-autocompleted],
+.form-wrapper .account-form .form-item textarea[data-autocompleted] {
   background-color: transparent !important;
 }
 
-.account-page .form-wrapper .account-form div.submit-container {
+.form-wrapper .account-form .form-item.submit-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -748,7 +849,7 @@ body {
           flex-direction: column;
 }
 
-.account-page .form-wrapper .account-form div.submit-container input[type="submit"] {
+.form-wrapper .account-form .form-item.submit-container input[type="submit"] {
   border: none;
   padding: 10px 20px;
   background-color: #303030;
@@ -757,11 +858,11 @@ body {
   cursor: pointer;
 }
 
-.account-page .form-wrapper .account-form div.submit-container input[type="submit"]:hover {
+.form-wrapper .account-form .form-item.submit-container input[type="submit"]:hover {
   background-color: #232323;
 }
 
-.account-page .form-wrapper .account-form div.links {
+.form-wrapper .account-form .form-item.links {
   margin-top: 20px;
   font-size: .7rem;
   display: -webkit-box;
@@ -779,12 +880,114 @@ body {
           flex-direction: row;
 }
 
-.account-page .form-wrapper .account-form div.links a {
+.form-wrapper .account-form .form-item.links a {
   text-decoration: none;
   color: #22cafd;
 }
 
-.account-page .form-wrapper .account-form div.links a:hover {
+.form-wrapper .account-form .form-item.links a:hover {
   text-decoration: underline;
+}
+
+.form-wrapper .account-form #imagePreview {
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  height: 300px;
+}
+
+.form-wrapper .account-form #imagePreview .image-preview {
+  max-height: 100%;
+}
+
+.form-wrapper .account-form .image-upload-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: none;
+      -ms-flex-pack: none;
+          justify-content: none;
+  -webkit-box-align: none;
+      -ms-flex-align: none;
+          align-items: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form-wrapper .account-form .image-upload-box i {
+  font-size: 30px;
+}
+
+.form-wrapper .account-form .image-upload-box span {
+  margin-top: 10px;
+}
+
+@media (max-width: 1230px) {
+  .form-wrapper .account-form {
+    height: unset;
+    max-height: unset;
+  }
+  .form-wrapper .account-form.addpost .form-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: none;
+        -ms-flex-pack: none;
+            justify-content: none;
+    -webkit-box-align: none;
+        -ms-flex-align: none;
+            align-items: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .form-wrapper .account-form.addpost .form-content .post-info {
+    width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .form-wrapper .account-form {
+    width: 100%;
+    max-width: 90vw;
+  }
+  .form-wrapper .account-form.addpost .form-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: none;
+        -ms-flex-pack: none;
+            justify-content: none;
+    -webkit-box-align: none;
+        -ms-flex-align: none;
+            align-items: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .form-wrapper .account-form.addpost .form-content .post-info {
+    width: 100%;
+  }
+  .form-wrapper .account-form.addpost .form-content .post-image {
+    width: 100%;
+    -ms-flex-negative: 1;
+        flex-shrink: 1;
+  }
 }
 /*# sourceMappingURL=style.css.map */
