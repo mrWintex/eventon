@@ -676,6 +676,7 @@ body {
           flex-direction: column;
   max-width: unset;
   width: auto;
+  height: auto;
 }
 
 .form-wrapper .account-form.addpost .post-image, .form-wrapper .account-form.addpost .post-info {

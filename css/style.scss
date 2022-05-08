@@ -404,6 +404,7 @@ body{
             @include flex($justify-content: flex-start, $flex-direction: column, $align-items: flex-start);
             max-width: unset;
             width: auto;
+            height: auto;
             .post-image, .post-info{
                 padding: 10px;
             }
