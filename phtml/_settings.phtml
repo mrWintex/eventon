@@ -25,7 +25,7 @@
                 <p>Zde je možnost změny ikony, jména nebo e-mailu</p>
             </div>
             <div class="section-content">
-                <form method="post" enctype="multipart/form-data">
+                <form method="post" action="settings.php" enctype="multipart/form-data">
                     <div class="form-item">
                         <label for="new_username" class="form-item-label">UŽIVATELSKÉ JMÉNO</label>
                         <input type="text" id="new_username" name="new_username" value="<?= $_SESSION["user"]->GetUserName() ?>">
