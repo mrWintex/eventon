@@ -54,7 +54,7 @@
             if(!$this->ValidateFile($file)) return;
             
             $directory = $user->GetUserFolderPath() . "/" . $file["name"];
-            if (Db::ExecuteQuery("INSERT INTO posts (src, comment, user_owner) VALUES (?, ?, ?)", [$directory, $post_data["comment"], $user->GetId()])) {
+            if (Db::ExecuteQuery("INSERT INTO posts (src, comment, user_owner) VALUES (?, ?, ?)", [$directory, htmlspecialchars($post_data["comment"]), $user->GetId()])) {
                 move_uploaded_file($file["tmp_name"], $directory);
                 header("location: index.php");
                 exit;

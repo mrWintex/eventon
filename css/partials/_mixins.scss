@@ -110,3 +110,13 @@
         background-color: darken($color: $background-color, $amount: 5);
     }
 }
+
+@mixin post-selector-item{
+    padding: 8px;
+    color: $primary-color;
+    background: darken($color: $background-color, $amount: 3);
+    height: 40px;
+    &:focus{
+        outline: none;
+    }
+}

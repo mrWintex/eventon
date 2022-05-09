@@ -20,7 +20,6 @@
 <body>
     <?php require("./phtml/navigation.phtml"); ?>
     <div class="back-button"><a href="index.php"><i class="fa-solid fa-arrow-left"></i></a></div>
-    <?php $user_manager->PrintErrors(); ?>
     <div class="form-wrapper">
     <div class="addpost-header"><h1>EVENTON</h1></div>
         <form method="post" class="account-form addpost" enctype="multipart/form-data">
@@ -44,7 +43,6 @@
                                     </label>
                                     <input type="file" name="image" id="image">
                                 </div>
-                                <!--<div id="imagePreview"></div>-->
                             </div>
                         </div>
                     </div>
@@ -62,6 +60,8 @@
                 </div>
             </div>
             <div class="submit-container form-item">
+
+                <div><?php $user_manager->PrintErrors()?></div>
                 <input type="submit" value="Potvrdit" name="addpost">
             </div>
         </form>

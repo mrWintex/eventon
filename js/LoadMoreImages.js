@@ -17,7 +17,8 @@ $(document).ready(function () {
   });
 
   //Pokud byl změněn filtr, obnoví se příspěvky
-  $("#post-filter").on("change", function(){
+  $("#posts-selector-filter-input").on("change", function(){
+    console.log(GetFilter());
     $("#posts-container").empty();
     LoadMorePosts();
   });
@@ -49,7 +50,7 @@ $(document).ready(function () {
 
   //Získání id filtru pro SQL dotaz
   function GetFilter(){
-    return $("#post-filter").val();
+    return $("#posts-selector-filter-input").val();
   }
 });
 
