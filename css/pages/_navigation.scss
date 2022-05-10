@@ -1,0 +1,110 @@
+.main-navigation{
+    height: $navigation-height;
+    background: darken($color: $background-color, $amount: $navigation-darken-amount);
+
+    position: fixed;
+    top: 0;
+    min-width: 350px;
+    width: 100%;
+    z-index: 10;
+    font-size: 0;
+    text-align: right;
+    color: $primary-color;
+    
+    &-item{
+        @include flex(inline-flex, center, center);
+        font-size: $navigation-font-size;
+        padding-inline: $navigation-link-inline-padding;
+        height: $navigation-height;
+        vertical-align: top;
+        
+        &-link{
+            @include navigation_links;
+            &.basic-button{
+                padding: 10px;
+            }
+            
+            &.fancy-button{
+                @include fancy-button;
+            }
+        }
+
+        .icon{
+            @include icon-preset;
+        }
+
+        &.logo{
+            float: left;
+        }
+
+        &.profile{
+            @include border($navigation-border, $side: left);
+            font-size: .8rem !important;
+            cursor: pointer;
+            
+            span{
+                @include flex(flex, center, center);
+            }
+        }
+        
+        .addpost-button{
+            @include border(2px solid, 50px);
+            @include flex(flex, center, left);
+            width: 40px;
+            height: 40px;
+            padding-right: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            transition: width .5s;
+
+            .plus{
+                padding-inline: 9.5px;
+                padding-bottom: 1px;
+            }
+            
+            &:hover{
+                width: 110px;
+            }
+        }
+
+        .user-options{
+            display: block;
+            
+            position: absolute;
+            top: 100%;
+            right: -$user-options-width;
+            
+            background: darken($color: $background-color, $amount: $navigation-darken-amount);
+            width: $user-options-width;
+            margin-top: 2px;
+            text-align: left;
+            opacity: 0;
+            transition: all 500ms;
+            
+            &-show {
+                right: 0;
+                opacity: 1;
+            }
+
+            &-item{
+                @include flex($flex-direction:column);
+                font-size: .8rem;
+                &-link{
+                    @include navigation_links;
+                    width: 100%;
+                    color: $navigation-link-color;
+                    padding-block: $user-options-spacing;
+                    padding-left: 15px;
+                    transition: all .5s;
+                    
+                    .options-icon{
+                        margin-right: 15px;
+                    }
+                    &:hover{
+                        color: $secondary-color;
+                    }
+                }
+            }
+        }
+    }
+}

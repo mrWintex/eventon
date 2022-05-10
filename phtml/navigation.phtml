@@ -1,24 +1,27 @@
 <nav>
-    <ul class="navigation">
-        <li class="logo">EVENTON</li>
+    <ul class="main-navigation">
+        <li class="main-navigation-item logo">EVENTON</li>
+        <!-- NEPŘIHLÁŠENÝ UŽIVATEL -->
         <?php if (!isset($_SESSION["user"])) : ?>
-            <li><a class="basic-button" href="registration.php">Registrovat</a></li>
-            <li><a class="fancy-button" href="login.php">Přihlásit</a></li>
-            <?php endif ?>
+            <li class="main-navigation-item"><a class="basic-button main-navigation-item-link" href="registration.php">Registrovat</a></li>
+            <li class="main-navigation-item"><a class="fancy-button main-navigation-item-link" href="login.php">Přihlásit</a></li>
+        <?php endif ?>
             
-            <?php if (isset($_SESSION["user"])) : ?>  
-                <li><a class="addpost-button" href="addpost.php"><i class="fa-solid fa-plus fa-lg plus"></i>Přidat</a></li>
-                <li class="border-left profile">
-                    <span><img class="icon" src="<?=$_SESSION["user"]->GetUserIcon()?>" alt="icon.jpg"><?=$_SESSION["user"]->GetUserName()?></span>
-                    <ul class="user-options">
-                        <li class="user-options-item"><a href="profile.php" class="user-options-content"><i class="fa-solid fa-user options-icon"></i>Profil</a></li>
-                        <li class="user-options-item"><a href="settings.php" class="user-options-content"><i class="fa-solid fa-gear options-icon"></i>Nastavení</a></li>
-                        <?php if($_SESSION["user"]->IsAdmin()) : ?>
-                            <li class="user-options-item"><a class="user-options-content" href="admin.php"><i class="fa-solid fa-hammer options-icon"></i>Správa</a></li>
-                            <?php endif ?>
-                            <li class="user-options-item"><a class="user-options-content" href="./loggout.php"><i class="fa-solid fa-arrow-right-from-bracket options-icon"></i>Odhlásit se</a></li>
-                        </ul>
-                    </li>
+        <!-- PŘIHLÁŠENÝ UŽIVATEL -->
+        <?php if (isset($_SESSION["user"])) : ?>  
+            <li class="main-navigation-item"><a class="addpost-button main-navigation-item-link" href="addpost.php"><i class="fa-solid fa-plus fa-lg plus"></i>Přidat</a></li>
+            <li class="profile main-navigation-item">
+                <span><img class="icon" src="<?=$_SESSION["user"]->GetUserIcon()?>" alt="icon.jpg"><?=$_SESSION["user"]->GetUserName()?></span>
+                <ul class="user-options">
+                    <li class="user-options-item"><a href="profile.php" class="user-options-item-link"><i class="fa-solid fa-user options-icon"></i>Profil</a></li>
+                    <li class="user-options-item"><a href="settings.php" class="user-options-item-link"><i class="fa-solid fa-gear options-icon"></i>Nastavení</a></li>
+                    <!-- ADMIN -->
+                    <?php if($_SESSION["user"]->IsAdmin()) : ?>
+                        <li class="user-options-item"><a class="user-options-item-link" href="admin.php"><i class="fa-solid fa-hammer options-icon"></i>Správa</a></li>
                     <?php endif ?>
+                    <li class="user-options-item"><a class="user-options-item-link" href="./loggout.php"><i class="fa-solid fa-arrow-right-from-bracket options-icon"></i>Odhlásit se</a></li>
                 </ul>
-            </nav>
+            </li>
+        <?php endif ?>
+    </ul>
+</nav>
