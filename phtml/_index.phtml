@@ -9,7 +9,6 @@
     <script src="./js/PostScriptFunctions.js?v=<?= time(); ?>" type="text/javascript" defer></script>
     <script src="./js/NavigationMenu.js?v=<?=time(); ?>" type="text/javascript" defer></script>
     <link rel="stylesheet" href="css/style.css?v=<?= time(); ?>" type="text/css">
-    <link rel="stylesheet" href="css/post-style.css?v=<?=time(); ?>" type="text/css">
     <title>Document</title>    
 </head>
 <body>
@@ -23,18 +22,13 @@
     </div>
     <div class="posts-selector-search">
         <div class="posts-selector-search-container">
-            <input type="text" id="post-search" class="posts-selector-search-input">
+            <input type="text" id="post-search" class="posts-selector-search-input" data-id="-1">
             <div class="posts-selector-search-results">
                 <ul class="posts-selector-search-results-list">
-                    <li class="posts-selector-search-results-list-item">item1</li>
-                    <li class="posts-selector-search-results-list-item">item2</li>
-                    <li class="posts-selector-search-results-list-item">item3</li>
-                    <li class="posts-selector-search-results-list-item">item3</li>
-                    <li class="posts-selector-search-results-list-item">item3</li>
                 </ul>
             </div>
         </div>
-        <select class="posts-selector-search-select">
+        <select class="posts-selector-search-select" id="posts-selector-search-select">
             <option value="0">Uživatel</option>
             <option value="1">Tag</option>
         </select>

@@ -1,0 +1,115 @@
+.settings-container{
+    margin: 0 auto;
+    width: $settings-container-width;
+    
+    section{
+        @include flex($align-items: none, $justify-content: left, $flex-direction: row);
+        @include border($form-border, $side: bottom);
+        padding-block: $settings-form-spacing;
+        width: 100%;
+        
+        &:first-of-type{
+            margin-top: $settings-form-margin
+        }
+        
+        &:last-child{
+            margin-bottom: $settings-form-margin
+        }
+        
+        > div{
+            max-width: 700px;
+            min-width: 360px;
+            width: 100%;
+            height: 100%;
+            padding-inline: 20px;
+            
+            &.section-headline{
+                width: 400px;
+                margin-right: 50px;
+                h3{
+                    color: white;
+                    margin-bottom: 10px;
+                }
+                p{
+                    color: rgb(177, 177, 177);
+                    font-weight: 400;
+                }
+            }
+            
+            &.section-content{
+                padding: 50px 40px;
+                background: darken($color: $background-color, $amount: 3);
+                @include border($form-border, 0px, all);
+            }
+            
+            .form-item{
+                .form-item-label{
+                    @include form-label-preset(.8rem);
+                }
+                
+                input[type="text"],
+                input[type="email"],
+                input[type="password"]{
+                    @include form-input-preset;
+                }
+                
+                .error-container{
+                    @include flex($align-items: center);
+                    margin-right: 20px;
+                    .error{
+                        color: rgb(211, 84, 84);
+                    }
+                    .success{
+                        color: rgb(76, 177, 67);
+                    }
+                }
+
+                &.submit{
+                    @include flex($align-items: center, $justify-content: right);
+                    
+                    input[type="submit"]{
+                        @include form-button-preset(10px 30px);
+                    }
+                }
+                 
+                &.icon_upload{
+                    @include flex($justify-content: left, $align-items: top);
+                }
+                
+                &:not(:last-child){
+                    margin-bottom: 50px;
+                }
+                
+                .icon{
+                    @include icon-preset(60px);
+                }
+            }
+        }
+    }
+}
+@media (max-width: 1200px) {
+    .settings-container{
+        margin: 0 auto;
+        @include flex($align-items: center, $justify-content: center, $flex-direction: column);
+        width: 90%;
+        h1{
+            margin-top: $settings-form-margin;
+        }
+        section{
+            @include flex($align-items: center, $justify-content: center, $flex-direction: column);
+            
+            &:first-of-type{
+                margin-top: 0;
+            }
+            
+            > div{
+                margin-top: $settings-form-margin;
+                &.section-headline{
+                    width: 90%;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        }
+    }
+}

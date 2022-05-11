@@ -1,0 +1,149 @@
+:root{
+    --post-normal-size: #{$post-normal-size};
+    --post-expanded-size: #{$post-expanded-size};
+    --post-icon-size: #{$post-icon-size};
+    --post-padding-block: #{$post-padding-block};
+}
+
+.post-container{
+    $c: &;
+    @include flex($justify-content: center, $align-items: center);
+    width: 100%;
+    padding-block: var(--post-padding-block);
+    color: $primary-color;
+    transition: all 500ms;
+
+    &.active-post{
+        padding-block: calc(var(--post-padding-block) - ((var(--post-expanded-size) - var(--post-normal-size)) / 2));
+    }
+    
+    .post-wrapper{
+        @include flex($display: inline-flex, $justify-content: center, $align-items: center);
+        
+        .image-container{
+            @include flex($justify-content: center, $align-items: center);
+            @include border($default-border, 10px);
+            @include normal-post-sizes;
+            background: darken($color: $background-color, $amount: $post-darken-amount);
+            z-index: 2;
+            cursor: pointer;
+            transition: all 500ms;
+            
+            @at-root #{$c}.active-post .image-container{
+                @include expanded-post-sizes;
+            }
+
+            .post-image{
+                @include normal-post-max-sizes;
+                padding: 10px;
+                transition: all 500ms;
+                @at-root #{$c}.active-post .post-image{
+                    @include expanded-post-max-sizes;
+                }
+            }
+        }
+        
+        .post-content{
+            position: relative;
+            right: 500px;
+            
+            margin-right: -480px;
+            margin-left: 80px;
+            width: 400px;
+            z-index: 1;
+            font-weight: 100;
+            opacity: 0;
+            transition: all 500ms, opacity 100ms linear;
+            
+            @at-root #{$c}.active-post .post-content{
+                right: 0;
+                margin-right: 50px;
+                opacity: 1;
+            }
+            
+            .user-container{
+                @include flex($display: inline-flex, $align-items: center);
+                width: 100%;
+                margin-bottom: 15px;
+                
+                .user-name{
+                    padding-top: 4px;   
+                }
+                .user-icon{
+                    @include rounded(50%);
+                    width: $post-icon-size;
+                    height: $post-icon-size;
+                    margin-right: 15px;
+                }
+            }
+            
+            .post-comment{
+                max-height: 70%;
+                padding-left: calc(#{$post-icon-size} + 15px);
+            }
+            .post-date{
+                margin-top: 50px;
+                font-size: .9rem;
+            }
+            i{
+                font-size: 1.5rem;
+                width: $post-icon-size;
+                margin-right: 15px;
+                text-align: center;
+            }
+            .post-like-button{
+                margin-top: 40px;
+                font-size: .9rem;
+                cursor: pointer;
+                i{
+                    color: $primary-color;
+                    transition: all 500ms;
+                }
+
+                &.liked i {
+                    color: $secondary-color;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1500px){
+    :root{
+        --post-normal-size: 600px !important;
+    }
+
+    .post-container{
+        .post-wrapper{
+            @include flex($justify-content: center, $align-items: center, $flex-direction: column);
+            .post-content{
+                right: 0px;
+                margin-right: 0px;
+                margin-left: 0px;
+                margin-top: 0px;
+                
+                width: var(--post-normal-size);
+                padding: 20px;
+                font-size: .8rem;
+                opacity: 1;
+                transition: none;
+            }
+        }
+    }
+
+
+   
+}
+
+@media (max-width: 650px) {
+    :root{
+        --post-normal-size: 350px !important;
+    }
+    .post-container{
+        .post-wrapper{
+            .post-content{
+                width: 350px;
+            }
+        }
+    }
+}

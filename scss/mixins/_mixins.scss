@@ -1,23 +1,3 @@
-@mixin default_settings{
-    *{
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
-    button{
-        border: none;
-        background: transparent;
-        cursor: pointer;
-    }
-}
-
-@mixin default_font_settings {
-    font: {
-        family: "Spartan", sans-serif;
-        weight: 600;
-    }
-}
-
 @mixin navigation_links{
     color: $primary-color;
     text-decoration: none;
@@ -28,16 +8,6 @@
     @include border($border, 50px);
 }
 
-@mixin back-button{
-    position: absolute;
-    top: 80px;
-    a{
-        font-size: 2rem;
-        margin-left: 40px;
-        color: $navigation-link-color;
-    }   
-}
-
 @mixin icon-preset($size: $navigation-icon-size){
     @include rounded(50%);
     width: $size;
@@ -45,8 +15,8 @@
     margin-right: 10px;
 }
 
-@mixin flex($display-flex: flex, $align-items: none, $justify-content: none, $flex-direction: row){
-    display: $display-flex;
+@mixin flex($display: flex, $align-items: none, $justify-content: none, $flex-direction: row){
+    display: $display;
     justify-content: $justify-content;
     align-items: $align-items;
     flex-direction: $flex-direction;
@@ -119,4 +89,23 @@
     &:focus{
         outline: none;
     }
+}
+
+@mixin normal-post-sizes{
+    width: var(--post-normal-size);
+    height: var(--post-normal-size);
+}
+@mixin normal-post-max-sizes {
+    max-width: var(--post-normal-size);
+    max-height: var(--post-normal-size);
+}
+
+@mixin expanded-post-sizes {
+    width: var(--post-expanded-size) !important;
+    height: var(--post-expanded-size) !important;
+}
+
+@mixin expanded-post-max-sizes {
+    max-width: var(--post-expanded-size) !important;
+    max-height: var(--post-expanded-size) !important;
 }

@@ -13,7 +13,7 @@
     
     &-item{
         @include flex(inline-flex, center, center);
-        font-size: $navigation-font-size;
+        font-size: 1rem;
         padding-inline: $navigation-link-inline-padding;
         height: $navigation-height;
         vertical-align: top;
@@ -92,7 +92,7 @@
                 &-link{
                     @include navigation_links;
                     width: 100%;
-                    color: $navigation-link-color;
+                    color: $primary-color;
                     padding-block: $user-options-spacing;
                     padding-left: 15px;
                     transition: all .5s;

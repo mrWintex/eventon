@@ -1,0 +1,59 @@
+.posts-selector{
+    @include flex($justify-content: center);
+    padding: 20px;
+    width: 100%;
+    margin-top: $navigation-height;
+
+    &-filter{
+        margin-right: 10px;
+        &-select{
+            @include border($default-border);
+            @include post-selector-item;
+        }
+    }
+    &-search{
+        $c: &;
+        @include flex;
+        font-size: 0;
+        &-container{
+            position: relative;
+
+            #{$c}-input{
+                @include border($default-border);
+                @include post-selector-item;
+                width: 500px;
+            }
+            #{$c}-results{
+                width: 100%;
+                max-height: $item-height * $item-count;
+                background-color: darken($color: $background-color, $amount: 3);
+
+                position: absolute;
+                overflow: auto;
+                font-size: 1rem;
+                z-index: 5;
+
+                &-list{
+                    list-style: none;
+                    &-item{
+                        @include flex($align-items: center);
+                        height: $item-height;
+                        width: 100%;
+                        padding: 0 20px;
+                        cursor: pointer;
+                        .icon{
+                            @include icon-preset;
+                        }
+                        &:hover{
+                            background: darken($color: $background-color, $amount: 2);
+                        }
+                    }
+                }
+            }
+        }
+        &-select{
+            @include border($default-border);
+            @include post-selector-item;
+        }
+    }
+}

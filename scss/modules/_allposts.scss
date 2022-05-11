@@ -1,0 +1,17 @@
+.all-posts-alert{
+    .alert-text{
+        @include flex($justify-content: center, $align-items: center);
+    }
+    .alert-button{
+        margin: 0 0 0 20px;
+        i{
+            color: $primary-color;
+            font-size: 2rem;
+            transition: all .5s;
+            margin-bottom: 9px;
+            &:hover{
+                color: $secondary-color;
+            }
+        }
+    }
+}

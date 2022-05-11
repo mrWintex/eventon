@@ -8,7 +8,7 @@ function OpenPost(target) {
     $(container).toggleClass("active-post");
     if($(container).hasClass("active-post")){
         $('html, body').animate({
-            scrollTop: ($(wrapper).offset().top - (($(window).outerHeight() + $(".navigation").outerHeight(true)) - $(wrapper).outerHeight(true))/2)
+            scrollTop: ($(wrapper).offset().top - (($(window).outerHeight() + $(".main-navigation").outerHeight(true)) - $(wrapper).outerHeight(true))/2)
         }, 500);
     }
 };

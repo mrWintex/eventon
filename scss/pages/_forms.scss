@@ -1,0 +1,173 @@
+.form-wrapper{
+    @include flex($justify-content: center, $align-items: center, $flex-direction: column);
+    height: calc(100vh - #{$navigation-height});
+    margin-top: $navigation-height;
+    
+    .account-form{
+        @include flex($justify-content: center, $flex-direction: column);
+        @include border($form-border, $radius: 5px);
+        background: darken($color: $background-color, $amount: 3);
+        height: 70%;
+        width: 100%;
+        max-width: 400px;
+        padding: 30px 50px;
+        margin: 20px;
+
+
+        &.addpost{
+            @include flex($justify-content: flex-start, $flex-direction: column, $align-items: flex-start);
+            max-width: unset;
+            width: auto;
+            height: auto;
+            padding-block: 100px;
+            .post-image, .post-info{
+                padding: 10px;
+            }
+            .form-content{
+                @include flex($justify-content: flex-start, $align-items: flex-start);
+                .post-image{
+                    width: 600px;
+                    flex-shrink: 0;
+                }
+                .post-info{
+                    width: 500px;
+                    margin-top: 20px;
+                    #comment{
+                        width: 100%;
+                        max-width: 100%;
+                        height: 150px;
+                        max-height: 150px;
+                        resize: none;
+                        margin: 0;
+                    }
+                    .char-counter{
+                        margin-top: 10px;
+                        @include flex($justify-content: flex-end);
+                        font-size: .7rem;
+                        width: 100%;
+                    }
+                }
+            }
+            
+            
+            .submit-container{
+                input[type="submit"]{
+                   margin-left: 10px !important;
+                }
+            }
+        }
+        p{
+            @include flex($align-items: center, $justify-content: center);
+            &.error{
+                font-size: .8rem;
+                margin-bottom: 20px;
+                padding: 10px;
+            }
+            i{
+                font-size: 20px;
+                color: red;
+                margin-right: 10px;
+            }
+        }
+        h2{
+            margin-bottom: 30px;
+        }
+        .form-item{
+            @include flex($justify-content: center, $align-items: flex-start, $flex-direction: column);
+            label{
+                @include form-label-preset(.7rem);
+            }
+            input[type="text"],
+            input[type="email"],
+            input[type="password"],
+            textarea
+            {
+                font-family: 'Spartan', sans-serif;
+                @include form-input-preset();
+                margin-bottom: 40px;
+            }
+            &.submit-container{
+                @include flex($justify-content: center, $align-items: center, $flex-direction: column);
+                input[type="submit"]{
+                    @include form-button-preset(10px 20px);
+                }
+            }
+            &.links{
+                margin-top: 20px;
+                font-size: .7rem;
+                @include flex($justify-content: center, $align-items: center, $flex-direction: row);
+                a{
+                    text-decoration: none;
+                    color: $secondary-color;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        #imagePreview{
+            padding: 0;
+            @include flex($align-items: center, $justify-content: center);
+            width: 100%;
+            height: 300px;
+            .image-preview{
+                max-height: 100%;
+            }
+        }
+        .image-upload-box{
+            @include flex($flex-direction: column, $justify-content: center, $align-items: center);
+            @include border(1px dashed);
+            padding-inline: 50px;
+            i{
+                font-size: 30px;
+            }
+            span{
+                margin-top: 10px;
+            }
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 1230px) {
+    .form-wrapper{
+        .account-form{
+            height: unset;
+            max-height: unset;
+            &.addpost{
+                .form-content{
+                    @include flex($flex-direction: column);
+                    .post-info{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 720px){
+    .form-wrapper{
+        .account-form{
+            width: 90vw !important;
+            height: 100%;
+            h2{
+                padding-left: 10px;
+            }
+            &.addpost{
+                padding-inline: 10px;
+                .form-content{
+                    width: 100%;
+                    .post-info{
+                        width: 100%;
+                    }
+                    .post-image{
+                        width: 100%;
+                        flex-shrink: 0;
+                    }
+                }
+            }
+        }
+    }
+}
