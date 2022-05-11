@@ -1,25 +1,21 @@
 $(document).ready(function () {
   //===PROMĚNNÉ===
-  //bool zda se již ajax request zpracovává
   busy = false;
-  //bool zda již všechny příspěvky byly zobrazeny
   all_posts = false;
-  //odsazení prahu zobrazování příspěvků
   offset = 50;
-  //==============
   $post_container = $("#posts-container");
   $post_filter = $("#posts-selector-filter-input");
   $post_search = $("#post-search");
   $search_list = $(".posts-selector-search-results-list");
-  $search_list_item = $(".posts-selector-search-results-list-item");
   $load_image = $("#loader-image");
   $post_search_data = $("#posts-selector-search-select");
+  //==============
 
 
 
   $(window).scroll(function() {
     //pokud je stránka úplně dole načtou se další příspěvky
-    if($(window).scrollTop() + $(window).height() >= $(document).height() - offset && !busy && !all_posts){
+    if($(window).scrollTop() + $(window).height() >= $(document).height() - offset && !all_posts){
       LoadMorePosts();
     }
   });
@@ -51,6 +47,7 @@ $(document).ready(function () {
 
   //Funkce pro načtení příspěvků pomocí AJAX
   function LoadMorePosts(){
+    if(busy === true) return;
     busy = true;
     $.ajax({
       type: "GET",
@@ -71,14 +68,14 @@ $(document).ready(function () {
   }
 
   function ReloadSearchResults(search_value){
-    var search_data_index = $("#posts-selector-search-select").val();
     $.ajax({
       type: "GET",
-      url: "./php/post_search_manager.php?search_value="+ search_value + "&search_data="+search_data_index,
+      url: "./php/post_search_manager.php?search_value="+ search_value + "&search_data="+GetSearchData(),
       success: function (r) {  
         $search_list.html(r);
-        $search_list_item.on("click", function(){
+        $(".posts-selector-search-results-list-item").on("mousedown", function(){
           all_posts = false;
+          
           $post_search.val($(this).attr("data-usrnm"));
           $post_search.attr("data-id", $(this).attr("data-id"));
           $post_container.empty();

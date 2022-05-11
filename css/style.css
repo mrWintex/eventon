@@ -414,8 +414,8 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: calc(100vh - 60px);
-  margin-top: 60px;
+  margin-block: 50px;
+  height: 100%;
 }
 
 .form-wrapper .account-form {
@@ -435,7 +435,8 @@ button {
   border: 1px solid #4a4a4a;
   border-radius: 5px;
   background: #282828;
-  height: 70%;
+  height: 100% !important;
+  min-height: 600px;
   width: 100%;
   max-width: 400px;
   padding: 30px 50px;

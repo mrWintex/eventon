@@ -1,19 +1,19 @@
 .form-wrapper{
+    $margin: 50px;
     @include flex($justify-content: center, $align-items: center, $flex-direction: column);
-    height: calc(100vh - #{$navigation-height});
-    margin-top: $navigation-height;
-    
+    margin-block: $margin;
+    height: 100%;
+
     .account-form{
         @include flex($justify-content: center, $flex-direction: column);
         @include border($form-border, $radius: 5px);
         background: darken($color: $background-color, $amount: 3);
-        height: 70%;
+        height: 100% !important;
+        min-height: 600px;
         width: 100%;
         max-width: 400px;
         padding: 30px 50px;
         margin: 20px;
-
-
         &.addpost{
             @include flex($justify-content: flex-start, $flex-direction: column, $align-items: flex-start);
             max-width: unset;
