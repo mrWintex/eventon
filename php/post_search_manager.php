@@ -4,8 +4,9 @@
         ["users", "username"],
         ["tags", "name"]
     ];
+    $max_users_in_list = 5;
     if(isset($_GET["search_value"]) && $_GET["search_value"]){
-        $data = Db::GetAllRows("SELECT * FROM {$tables[$_GET["search_data"]][0]} WHERE {$tables[$_GET["search_data"]][1]} LIKE '".$_GET["search_value"]."%'");
+        $data = Db::GetAllRows("SELECT * FROM {$tables[$_GET["search_data"]][0]} WHERE {$tables[$_GET["search_data"]][1]} LIKE '".$_GET["search_value"]."%' LIMIT $max_users_in_list");
         if($_GET["search_data"] == 0 && $data){
             foreach($data as $item){
                 $user_obj = new User($item);

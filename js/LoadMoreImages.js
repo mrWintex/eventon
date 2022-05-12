@@ -28,11 +28,6 @@ $(document).ready(function () {
   });
 
   $post_search.on("keyup", function(){
-    if($(this).val() == ""){
-      $post_search.attr("data-id", -1);
-      $post_container.empty();
-      LoadMorePosts();
-    }
     ReloadSearchResults($(this).val());
   }).on("focusin", function(){
     $search_list.css("display", "block");
@@ -40,6 +35,15 @@ $(document).ready(function () {
     setTimeout(function(){
       $search_list.css("display", "none");
     }, 100);
+  });
+
+  $post_search.on("change", function(){
+    if($(this).val() == ""){
+      all_posts = false;
+      $post_search.attr("data-id", -1);
+      $post_container.empty();
+      LoadMorePosts();
+    }
   });
 
   //První načtení příspěvků

@@ -415,7 +415,8 @@ button {
       -ms-flex-direction: column;
           flex-direction: column;
   margin-block: 50px;
-  height: 100%;
+  height: auto;
+  min-height: calc(100vh - 50px * 2);
 }
 
 .form-wrapper .account-form {
@@ -773,6 +774,55 @@ button {
     -ms-flex-negative: 0;
         flex-shrink: 0;
   }
+}
+
+.profile-container {
+  margin-top: 72px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.profile-container .profile-data-select {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 50px;
+  background: #232323;
+  padding-inline: 15px;
+}
+
+.profile-container .profile-data-select-item {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-container .profile-data-select-item:not(:last-child) {
+  margin-right: 50px;
+}
+
+.profile-container .profile-data-select-item:hover {
+  text-decoration: underline;
 }
 
 .main-navigation {
