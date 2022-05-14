@@ -4,6 +4,13 @@
     box-sizing: border-box;
 }
 
+:root{
+    --post-normal-size: #{$post-normal-size};
+    --post-expanded-size: #{$post-expanded-size};
+    --post-icon-size: #{$post-icon-size};
+    --post-padding-block: #{$post-padding-block};
+}
+
 body{
     background: $background-color;
     color: $primary-color;

@@ -6,6 +6,13 @@
           box-sizing: border-box;
 }
 
+:root {
+  --post-normal-size: 70vh;
+  --post-expanded-size: 80vh;
+  --post-icon-size: 45px;
+  --post-padding-block: 200px;
+}
+
 body {
   background: #303030;
   color: white;
@@ -951,13 +958,6 @@ button {
   color: #22cafd;
 }
 
-:root {
-  --post-normal-size: 70vh;
-  --post-expanded-size: 80vh;
-  --post-icon-size: 45px;
-  --post-padding-block: 200px;
-}
-
 .post-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1091,8 +1091,14 @@ button {
 }
 
 .post-container .post-wrapper .post-content .post-comment {
-  max-height: 70%;
   padding-left: calc(45px + 15px);
+  height: 100%;
+  max-width: 500px;
+  overflow-wrap: break-word;
+  -webkit-hyphens: manual;
+      -ms-hyphens: manual;
+          hyphens: manual;
+  margin: 0;
 }
 
 .post-container .post-wrapper .post-content .post-date {
@@ -1121,6 +1127,19 @@ button {
 
 .post-container .post-wrapper .post-content .post-like-button.liked i {
   color: #22cafd;
+}
+
+.post-container .post-wrapper .post-content .post-tags {
+  margin-left: calc(45px + 15px);
+  margin-top: 20px;
+}
+
+.post-container .post-wrapper .post-content .post-tags-tag {
+  color: #22cafd;
+}
+
+.post-container .post-wrapper .post-content .post-tags-tag:not(:last-child) {
+  margin-right: 5px;
 }
 
 @media (max-width: 1500px) {

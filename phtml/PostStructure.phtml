@@ -4,6 +4,7 @@
         <div class="post-content">
             <span class="user-container"><img class="user-icon" src="<?=$icon_path?>" alt="user-icon<?=$this->user_owner?>"><h3 class="user-name"><?=$this->user_owner_object->GetUserName()?></h3></span>
             <p class="post-comment"><?=$this->comment?></p>
+            <p class="post-tags"><?php foreach($tags as $tag) echo("<span class='post-tags-tag'>#". $tag["name"] . "</span>"); ?></p>
             <p class="post-date"><i class="fa-regular fa-calendar-days"></i><?=$date?></p>
             <p class="post-like-button <?php if($user_liked) : ?>liked<?php endif ?>"><i class="fa-solid fa-heart fa-2xl" <?php if(isset($_SESSION["user"])):?>onclick="LikePost(this)" <?php else :?> onclick="window.location.href = 'login.php'" <?php endif ?> ></i><span><?=$likes_count["like_count"]?></span></p>
         </div>
