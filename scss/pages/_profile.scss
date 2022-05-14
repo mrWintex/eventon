@@ -1,20 +1,3 @@
 .profile-container{
-    margin-top: $navigation-height * 1.2;
-    @include flex($justify-content: center, $align-items: center);
-    .profile-data-select{
-        @include flex($justify-content: center, $align-items: center);
-        height: 50px;
-        background: darken($color: $background-color, $amount: 5);
-        padding-inline: 15px;
-        &-item{
-            position: relative;
-            cursor: pointer;
-            &:not(:last-child){
-                margin-right: 50px;
-            }
-            &:hover{
-                text-decoration: underline;
-            }
-        }
-    }
+    height: 100vh;
 }

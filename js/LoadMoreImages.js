@@ -3,12 +3,14 @@ $(document).ready(function () {
   busy = false;
   all_posts = false;
   offset = 50;
+
   $post_container = $("#posts-container");
   $post_filter = $("#posts-selector-filter-input");
   $post_search = $("#post-search");
   $search_list = $(".posts-selector-search-results-list");
   $load_image = $("#loader-image");
   $post_search_data = $("#posts-selector-search-select");
+  item_selected = false;
   //==============
 
 
@@ -38,8 +40,9 @@ $(document).ready(function () {
   });
 
   $post_search.on("change", function(){
-    if($(this).val() == ""){
+    if($(this).val() == "" && item_selected === true){
       all_posts = false;
+      item_selected = false;
       $post_search.attr("data-id", -1);
       $post_container.empty();
       LoadMorePosts();
@@ -79,6 +82,7 @@ $(document).ready(function () {
         $search_list.html(r);
         $(".posts-selector-search-results-list-item").on("mousedown", function(){
           all_posts = false;
+          item_selected = true;
           
           $post_search.val($(this).attr("data-usrnm"));
           $post_search.attr("data-id", $(this).attr("data-id"));
