@@ -15,7 +15,7 @@ function OpenPost(target) {
 
 //Otevření obrázku na celé obrazovce
 function OpenImage(target){
-    window.location.href = $(target).find("img").attr("src");
+    window.open($(target).find("img").attr("src"));
 }
 
 //Like příspěvku
