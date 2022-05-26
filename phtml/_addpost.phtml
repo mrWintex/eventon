@@ -23,12 +23,10 @@
     <div class="form-wrapper">
     <div class="addpost-header"><h1>EVENTON</h1></div>
         <form method="post" class="account-form addpost" enctype="multipart/form-data">
-            <h2>Nahrátí příspěvku</h2>
+            <h2>Nahrát příspěvek</h2>
             <div class="form-content">
                 <div class="post-image">
-                    
                     <div class="image">
-                        <label for="icon_upload">Obrázek</label>
                         <div class="sd-box sd-advanced-upload addpost">
                             <div class="sd-box-wrapper">
                                 <div class="sd-label-wrapper">
@@ -53,16 +51,23 @@
                         <textarea name="comment" id="comment"></textarea>
                         <div class="char-counter"><span id="char-counter-text">0/0</span></div>
                     </div>
+                    <div class="tag-selector">
+                        <input type="text" class="tag-selector-input" id="tag-selector-input">
+                        <div class="tag-selector-result">
+                            <ul class="tag-selector-result-item">
+                            </ul>
+                        </div>
+                    </div>
                     <div class="form-item" style="display: inline">
-                        <label for="private">Soukromý příspěvek</label>
                         <input type="checkbox" name="private" id="private">
+                        <label for="private">Soukromý příspěvek</label>
+                    </div>
+                    <div class="submit-container form-item">
+        
+                        <div><?php $user_manager->PrintErrors()?></div>
+                        <input type="submit" value="Potvrdit" name="addpost">
                     </div>
                 </div>
-            </div>
-            <div class="submit-container form-item">
-
-                <div><?php $user_manager->PrintErrors()?></div>
-                <input type="submit" value="Potvrdit" name="addpost">
             </div>
         </form>
     </div>
@@ -94,6 +99,16 @@
 
         function ChangeCounterText(amount){
             $("#char-counter-text").html(amount + "/" + max_length);
+        }
+
+        function ReloadSearchResults(search_value){
+            $.ajax({
+                type: "GET",
+                url: "./php/post_search_manager.php?search_value="+ search_value + "&search_data="+1,
+                success: function (r) {  
+                    
+                }        
+            });
         }
     </script>
 </body>

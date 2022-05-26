@@ -421,9 +421,9 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-block: 50px;
+  margin-block: 100px;
   height: auto;
-  min-height: calc(100vh - 50px * 2);
+  min-height: calc(100vh - 100px * 2);
 }
 
 .form-wrapper .account-form {
@@ -447,91 +447,10 @@ button {
   min-height: 600px;
   width: 100%;
   max-width: 400px;
+  min-width: 350px;
   padding: 30px 50px;
   margin: 20px;
-}
-
-.form-wrapper .account-form.addpost {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  max-width: unset;
-  width: auto;
-  height: auto;
-  padding-block: 100px;
-}
-
-.form-wrapper .account-form.addpost .post-image, .form-wrapper .account-form.addpost .post-info {
-  padding: 10px;
-}
-
-.form-wrapper .account-form.addpost .form-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-}
-
-.form-wrapper .account-form.addpost .form-content .post-image {
-  width: 600px;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-}
-
-.form-wrapper .account-form.addpost .form-content .post-info {
-  width: 500px;
-  margin-top: 20px;
-}
-
-.form-wrapper .account-form.addpost .form-content .post-info #comment {
   width: 100%;
-  max-width: 100%;
-  height: 150px;
-  max-height: 150px;
-  resize: none;
-  margin: 0;
-}
-
-.form-wrapper .account-form.addpost .form-content .post-info .char-counter {
-  margin-top: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: none;
-      -ms-flex-align: none;
-          align-items: none;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  font-size: .7rem;
-  width: 100%;
-}
-
-.form-wrapper .account-form.addpost .submit-container input[type="submit"] {
-  margin-left: 10px !important;
 }
 
 .form-wrapper .account-form p {
@@ -682,6 +601,14 @@ button {
   text-decoration: underline;
 }
 
+.form-wrapper .account-form .sd-box {
+  padding: 10px;
+}
+
+.form-wrapper .account-form .sd-box .sd-box-wrapper {
+  width: 100%;
+}
+
 .form-wrapper .account-form #imagePreview {
   padding: 0;
   display: -webkit-box;
@@ -703,9 +630,10 @@ button {
 
 .form-wrapper .account-form #imagePreview .image-preview {
   max-height: 100%;
+  max-width: 100%;
 }
 
-.form-wrapper .account-form .image-upload-box {
+.form-wrapper .account-form #imagePreview .image-upload-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -721,17 +649,134 @@ button {
           flex-direction: column;
   border: 1px dashed;
   border-radius: 0px;
-  padding-inline: 50px;
   height: 100%;
   width: 100%;
 }
 
-.form-wrapper .account-form .image-upload-box i {
+.form-wrapper .account-form #imagePreview .image-upload-box i {
   font-size: 30px;
 }
 
-.form-wrapper .account-form .image-upload-box span {
+.form-wrapper .account-form #imagePreview .image-upload-box span {
   margin-top: 10px;
+}
+
+.form-wrapper .account-form.addpost {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: unset;
+  width: auto;
+  height: auto;
+  padding-block: 100px;
+}
+
+.form-wrapper .account-form.addpost .post-image, .form-wrapper .account-form.addpost .post-info {
+  padding: 10px;
+}
+
+.form-wrapper .account-form.addpost .form-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.form-wrapper .account-form.addpost .form-content .post-image {
+  width: 400px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.form-wrapper .account-form.addpost .form-content .post-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 500px;
+}
+
+.form-wrapper .account-form.addpost .form-content .post-info > div {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+}
+
+.form-wrapper .account-form.addpost .form-content .post-info #comment {
+  width: 100%;
+  max-width: 100%;
+  height: 150px;
+  max-height: 150px;
+  resize: none;
+  margin: 0;
+}
+
+.form-wrapper .account-form.addpost .form-content .post-info .char-counter {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: none;
+      -ms-flex-align: none;
+          align-items: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: .7rem;
+  width: 100%;
+}
+
+.form-wrapper .account-form.addpost .submit-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  -webkit-box-align: none;
+      -ms-flex-align: none;
+          align-items: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.form-wrapper .account-form.addpost .submit-container input[type="submit"] {
+  margin-left: 10px !important;
 }
 
 @media (max-width: 1230px) {
@@ -1353,6 +1398,25 @@ button {
 }
 
 .posts-selector-search-select:focus {
+  outline: none;
+}
+
+.tag-selector {
+  margin-top: 20px;
+}
+
+.tag-selector-input {
+  margin-bottom: 20px;
+  border: 1px solid #4a4a4a;
+  border-radius: 0px;
+  padding: 8px;
+  color: white;
+  background: #282828;
+  height: 40px;
+  width: 100%;
+}
+
+.tag-selector-input:focus {
   outline: none;
 }
 /*# sourceMappingURL=style.css.map */

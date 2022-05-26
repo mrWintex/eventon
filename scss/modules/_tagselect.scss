@@ -1,0 +1,9 @@
+.tag-selector{
+    margin-top: 20px;
+    &-input{
+        margin-bottom: 20px;
+        @include border($default-border);
+        @include post-selector-item;
+        width: 100%;
+    }
+}
