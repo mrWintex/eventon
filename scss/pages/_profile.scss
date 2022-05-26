@@ -1,3 +1,38 @@
 .profile-container{
     height: 100vh;
+    @include flex();
+    .profile-data-select{
+        width: 250px;
+        margin-top:  $navigation-height;
+        @include border($default-border, $side: right);
+        
+        &-item{
+            width: 100%;
+            height: 50px;
+            @include flex($align-items: center, $justify-content: flex-end);
+            padding-right: 15px;
+            position: relative;
+            cursor: pointer;
+            &:first-child{
+                margin-top: 20px;
+            }
+            &.active{
+                @include border(2px solid lighten($background-color, 30), $side: right);
+            }
+            &::after{
+                content: '';
+                width: 0%;
+                height: 1px;
+                background-color: white;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                transition: width 250ms;
+            }
+            &:hover::after{
+                width: 50%;
+            }
+        }
+    }
 }

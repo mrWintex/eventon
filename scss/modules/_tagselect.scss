@@ -1,9 +1,50 @@
-.tag-selector{
-    margin-top: 20px;
-    &-input{
-        margin-bottom: 20px;
-        @include border($default-border);
-        @include post-selector-item;
+.tag-container{
+    width: 100%;
+    position: relative;
+    .tag-select{
+        @include flex();
+        flex-wrap: wrap;
         width: 100%;
+        background: $background-color;
+        height: auto;
+        .tag{
+            @include flex($flex-direction: row);
+            @include border(1px solid grey, 15px);
+            padding: 5px 10px;
+            font-size: .8rem;
+            margin: 4px 0 4px 5px;
+            .tag-delete-button{
+                i{
+                    margin-left: 10px;
+                    color: white;
+                }
+            }
+        }
+        .tag-input{
+            background: transparent !important;
+            margin: 0 !important;
+            border: none;   
+            color: white;
+            padding: 10px;
+            width: 25px;
+            max-width: 100%;
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+    .tag-autocomplete{
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        background: darken($color: $background-color, $amount: 5);
+        max-height: 50px * $item-count;
+        &-item{
+            @include border($default-border);
+            @include flex($align-items: center);
+            height: 50px;
+            padding-left: 15px;
+            cursor: pointer;
+        }
     }
 }
