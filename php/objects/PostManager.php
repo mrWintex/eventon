@@ -9,6 +9,7 @@
             $this->searched_value = $searched_value;
 
             $this->InitializeStorageData();
+            
             for($i = 0; $i < $this->post_num; $i++){
                 if(count($_SESSION["posts"]) === 0) return;
                 $post_obj = new Post($_SESSION["posts"][$i]);

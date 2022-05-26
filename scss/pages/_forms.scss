@@ -15,6 +15,56 @@
         max-width: 400px;
         padding: 30px 50px;
         margin: 20px;
+        p{
+            @include flex($align-items: center, $justify-content: center);
+            &.error{
+                font-size: .8rem;
+                margin-bottom: 20px;
+                padding: 10px;
+            }
+            i{
+                font-size: 20px;
+                color: red;
+                margin-right: 10px;
+            }
+        }
+        h2{
+            margin-bottom: 30px;
+        }
+        .form-item{
+            @include flex($justify-content: center, $align-items: flex-start, $flex-direction: column);
+            label{
+                @include form-label-preset(.7rem);
+            }
+            input[type="text"]:not(.tag-input),
+            input[type="email"],
+            input[type="password"],
+            textarea
+            {
+                font-family: 'Spartan', sans-serif;
+                @include form-input-preset();
+                margin-bottom: 40px;
+            }
+            &.submit-container{
+                @include flex($justify-content: center, $align-items: center, $flex-direction: column);
+                input[type="submit"]{
+                    @include form-button-preset(10px 20px);
+                }
+            }
+            &.links{
+                margin-top: 20px;
+                font-size: .7rem;
+                @include flex($justify-content: center, $align-items: center, $flex-direction: row);
+                a{
+                    text-decoration: none;
+                    color: $secondary-color;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
         &.addpost{
             @include flex($justify-content: flex-start, $flex-direction: column, $align-items: flex-start);
             max-width: unset;
@@ -52,58 +102,11 @@
             
             
             .submit-container{
+                @include flex($justify-content: flex-end);
                 input[type="submit"]{
                    margin-left: 10px !important;
                 }
-            }
-        }
-        p{
-            @include flex($align-items: center, $justify-content: center);
-            &.error{
-                font-size: .8rem;
-                margin-bottom: 20px;
-                padding: 10px;
-            }
-            i{
-                font-size: 20px;
-                color: red;
-                margin-right: 10px;
-            }
-        }
-        h2{
-            margin-bottom: 30px;
-        }
-        .form-item{
-            @include flex($justify-content: center, $align-items: flex-start, $flex-direction: column);
-            label{
-                @include form-label-preset(.7rem);
-            }
-            input[type="text"],
-            input[type="email"],
-            input[type="password"],
-            textarea
-            {
-                font-family: 'Spartan', sans-serif;
-                @include form-input-preset();
-                margin-bottom: 40px;
-            }
-            &.submit-container{
-                @include flex($justify-content: center, $align-items: center, $flex-direction: column);
-                input[type="submit"]{
-                    @include form-button-preset(10px 20px);
-                }
-            }
-            &.links{
                 margin-top: 20px;
-                font-size: .7rem;
-                @include flex($justify-content: center, $align-items: center, $flex-direction: row);
-                a{
-                    text-decoration: none;
-                    color: $secondary-color;
-                    &:hover{
-                        text-decoration: underline;
-                    }
-                }
             }
         }
         #imagePreview{
