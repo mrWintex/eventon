@@ -11,7 +11,7 @@
     <script src="./js/PostScriptFunctions.js?v=<?= time(); ?>" type="text/javascript" defer></script>
     <script src="./js/NavigationMenu.js?v=<?= time(); ?>" type="text/javascript" defer></script>
     <script src="./js/fileupload/simpledropit.min.js?v=<?= time(); ?>" type="text/javascript"></script>
-    <script src="./js/TagSelect.js" type="text/javascript" defer></script>
+    <script src="./js/TagSelect.js?v=<?=time()?>" type="text/javascript" defer></script>
     <link rel="stylesheet" href="css/style.css?v=<?= time(); ?>" type="text/css">
     
     <link rel="stylesheet" href="./css/fileupload/simpledropit.css?v=<?= time()?>">
@@ -52,17 +52,6 @@
                         <textarea name="comment" id="comment"></textarea>
                         <div class="char-counter"><span id="char-counter-text">0/0</span></div>
                     </div>
-                    <div class="tag-selector">
-                        <input type="text" class="tag-selector-input" id="tag-selector-input">
-                        <div class="tag-selector-result">
-                            <ul class="tag-selector-result-item">
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="form-item" style="display: inline">
-                        <input type="checkbox" name="private" id="private">
-                        <label for="private">Soukromý příspěvek</label>
-                    </div>
                     <div class="form-item tag-container">
                         <h3>Tags</h3>
                         <div class="tag-select">
@@ -70,7 +59,7 @@
                         </div>
                         <div class="tag-autocomplete">
                         </div>
-                    </div>
+                    </div>  
                     <div class="submit-container form-item">
                         <div><?php $user_manager->PrintErrors()?></div>
                         <input type="submit" value="Potvrdit" name="addpost">

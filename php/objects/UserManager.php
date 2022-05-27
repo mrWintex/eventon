@@ -52,12 +52,24 @@
         
         function AddPost($user, $file, $post_data){
             if(!$this->ValidateFile($file)) return;
-            
             $directory = $user->GetUserFolderPath() . "/" . $file["name"];
             if (Db::ExecuteQuery("INSERT INTO posts (src, comment, user_owner) VALUES (?, ?, ?)", [$directory, htmlspecialchars($post_data["comment"]), $user->GetId()])) {
+                $this->AddTags($post_data, $directory);
                 move_uploaded_file($file["tmp_name"], $directory);
                 header("location: index.php");
                 exit;
+            }
+        }
+
+        function AddTags($post_data, $directory){
+            if(!isset($post_data["selected-tag"])) return;
+
+            $post_query = "SELECT * FROM posts WHERE src = '$directory'";
+            echo($post_query);
+            $post = new Post(Db::GetOneRow($post_query));
+            foreach($post_data["selected-tag"] as $tag){
+                echo("INSERT INTO tag_post (post, tag) VALUES ({$post->GetId()},$tag)");
+                Db::ExecuteQuery("INSERT INTO tag_post (post, tag) VALUES (?,?)", [$post->GetId(), $tag]);
             }
         }
         
@@ -91,7 +103,6 @@
             if (!in_array($_FILES["image"]["type"], self::SUPPORTED_FILES)) array_push($this->errors, "Nepodporovaný typ souboru!");
             if (file_exists($_SESSION["user"]->GetUserFolderPath() . "/" . $_FILES["image"]["name"])) array_push($this->errors, "Tento soubor byl již nahrán!");
             if ($_FILES["image"]["error"]) array_push($this->errors, "Kód chyby: {$_FILES['image']['error']}");
-            
             return (count($this->errors) == 0)? true : false;
         }
         // ======

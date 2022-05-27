@@ -44,4 +44,7 @@
             }
         }
     }
+    function DeleteTag($delete_query){
+        Db::ExecuteQuery($delete_query);
+    }
 ?>

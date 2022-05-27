@@ -78,7 +78,9 @@ $(document).ready(function () {
     $.ajax({
       type: "GET",
       url: "./php/post_search_manager.php?search_value="+ search_value + "&search_data="+GetSearchData(),
-      success: function (r) {  
+      beforeSend: () => $("#loader-image-post-selector").css("display", "block"),
+      success: function (r) {
+        $("#loader-image-post-selector").css("display", "none");  
         $search_list.html(r);
         $(".posts-selector-search-results-list-item").on("mousedown", function(){
           all_posts = false;

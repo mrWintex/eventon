@@ -450,6 +450,7 @@ button {
   min-width: 350px;
   padding: 30px 50px;
   margin: 20px;
+  width: 100%;
 }
 
 .form-wrapper .account-form p {
@@ -638,10 +639,18 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
 .form-wrapper .account-form.addpost .form-content .post-image {
-  width: 600px;
+  width: 600px !important;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   -ms-flex-negative: 0;
       flex-shrink: 0;
 }
@@ -698,6 +707,15 @@ button {
 
 .form-wrapper .account-form.addpost .submit-container input[type="submit"] {
   margin-left: 10px !important;
+}
+
+.form-wrapper .account-form .sd-box {
+  width: 100%;
+  padding: 10px;
+}
+
+.form-wrapper .account-form .sd-box .sd-box-wrapper {
+  width: 100%;
 }
 
 .form-wrapper .account-form #imagePreview {
@@ -1339,6 +1357,7 @@ button {
 }
 
 .post-container .post-wrapper .post-content .post-tags-tag {
+  font-weight: 300;
   color: #22cafd;
 }
 
@@ -1563,6 +1582,7 @@ button {
 .tag-container {
   width: 100%;
   position: relative;
+  margin-bottom: 20px;
 }
 
 .tag-container .tag-select {
@@ -1584,6 +1604,7 @@ button {
   width: 100%;
   background: #303030;
   height: auto;
+  padding: 10px;
 }
 
 .tag-container .tag-select .tag {
@@ -1600,7 +1621,7 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  border: 1px solid grey;
+  border: 1px solid #4a4a4a;
   border-radius: 15px;
   padding: 5px 10px;
   font-size: .8rem;

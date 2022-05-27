@@ -23,17 +23,28 @@
             }
         }
     }
-
-    if(isset($_GET["tag_search"])){
-        $tags = Db::GetAllRows("SELECT * FROM tags WHERE name LIKE '{$_GET["tag_search"]}%' LIMIT $max_items_in_list");
+    if(isset($_POST["tag_search"])){
+        $used_tags = json_decode(stripcslashes($_POST["used_tags"]));
+        $tags = Db::GetAllRows("SELECT * FROM tags WHERE name LIKE '{$_POST["tag_search"]}%' ".FilterTags($used_tags)." LIMIT $max_items_in_list");
         if($tags){
             foreach($tags as $tag){
                 ?>
-                <div class="tag-autocomplete-item"><?=$tag["name"]?></div>
+                <div class="tag-autocomplete-item" id="<?=$tag["id_t"]?>"><?=$tag["name"]?></div>
                 <?php
             }
         }
         else
-            echo("<div class='tag-autocomplete-item'>vytvořit tag</div>");
+            echo("<div class='tag-autocomplete-item create-item'>vytvořit tag</div>");
+    }
+    function FilterTags($used_tags){
+        if(count($used_tags) === 0) return;
+        
+        $sql = "AND name NOT IN (";
+        for($i = 0; $i < count($used_tags); $i++){
+            $sql .= "'" . $used_tags[$i] . "'";
+            if(($i + 1) !== count($used_tags)) $sql .= ",";
+            else $sql .= ")";
+        }
+        return $sql;
     }
 ?>

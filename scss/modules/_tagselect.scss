@@ -1,15 +1,17 @@
 .tag-container{
     width: 100%;
     position: relative;
+    margin-bottom: 20px;
     .tag-select{
         @include flex();
         flex-wrap: wrap;
         width: 100%;
         background: $background-color;
         height: auto;
+        padding: 10px;
         .tag{
             @include flex($flex-direction: row);
-            @include border(1px solid grey, 15px);
+            @include border($default-border, 15px);
             padding: 5px 10px;
             font-size: .8rem;
             margin: 4px 0 4px 5px;
