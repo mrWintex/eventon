@@ -44,6 +44,11 @@
             
             span{
                 @include flex(flex, center, center);
+                .moderator{
+                    font-size: 10px;
+                    height: 12px;
+                    margin-left: 5px;
+                }
             }
         }
         

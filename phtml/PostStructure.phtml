@@ -2,7 +2,7 @@
     <div class="post-wrapper">
         <div class="image-container" onclick="OpenPost(this)" ondblclick="OpenImage(this)"><img class="post-image" src="<?=$this->src?>" alt="image<?=$this->id_p?>"></div>
         <div class="post-content">
-            <span class="user-container"><img class="user-icon" src="<?=$icon_path?>" alt="user-icon<?=$this->user_owner?>"><h3 class="user-name"><?=$this->user_owner_object->GetUserName()?></h3></span>
+            <span class="user-container"><img class="user-icon" src="<?=$icon_path?>" alt="user-icon<?=$this->user_owner?>"><h3 class="user-name"><?=$this->user_owner_object->GetUserName()?></h3><?php if($this->user_owner_object->IsAdmin()) :?><i class="fa-solid fa-check moderator"></i><?php endif ?></span>
             <p class="post-comment"><?=$this->comment?></p>
             <p class="post-tags"><?php foreach($tags as $tag) echo("<span class='post-tags-tag'>#". $tag["name"] . "</span>"); ?></p>
             <p class="post-date"><i class="fa-regular fa-calendar-days"></i><?=$date?></p>

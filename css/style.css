@@ -1091,6 +1091,12 @@ button {
           flex-direction: row;
 }
 
+.main-navigation-item.profile span .moderator {
+  font-size: 10px;
+  height: 12px;
+  margin-left: 5px;
+}
+
 .main-navigation-item .addpost-button {
   border: 2px solid;
   border-radius: 50px;
@@ -1312,6 +1318,11 @@ button {
   margin-right: 15px;
 }
 
+.post-container .post-wrapper .post-content .user-container .moderator {
+  font-size: 10px;
+  width: 25px;
+}
+
 .post-container .post-wrapper .post-content .post-comment {
   padding-left: calc(45px + 15px);
   height: 100%;
@@ -1352,6 +1363,11 @@ button {
 }
 
 .post-container .post-wrapper .post-content .post-tags {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin-left: calc(45px + 15px);
   margin-top: 20px;
 }

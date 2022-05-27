@@ -3,6 +3,7 @@ $(function () {
   $tag_input = $(".tag-input");
   $tag_autocomplete = $(".tag-autocomplete");
   $tag_container = $(".tag-container");
+  $number_of_tags = 0;
 
   //po kliknutí na vyhledávač a psaní do něj
   $tag_input.on("input", function () {
@@ -26,6 +27,7 @@ $(function () {
 
 function RemoveTag(target) {
   $(target).closest(".tag").remove();
+  $number_of_tags--;
   ReloadTagsList();
 }
 
@@ -41,12 +43,16 @@ function ReloadTagsList(tag_search) {
     success: function (r) {
       $(".tag-autocomplete").html(r);
       $(".tag-autocomplete-item:not(.create-item)").on("click", function () {
+        if($number_of_tags + 1 > 10) return;
+        $number_of_tags++;
         $('<input type="hidden" name="selected-tag['+$(this).attr("id")+']" value='+$(this).attr("id")+'>').insertBefore($tag_input);
         $('<div class="tag"><span class="text">' + $(this).text() + '</span><button onclick="RemoveTag(this)"class="tag-delete-button" type="button"><i class="fa-solid fa-xmark"></i></button></div>').insertBefore(".tag-input");
         $tag_input.val("");
         $tag_autocomplete.html("");
       });
       $(".create-item").on("click", function(){
+        if($number_of_tags + 1 > 10) return;
+        $number_of_tags++;
         $.ajax({
           type: "POST",
           url: "./php/tag_manager.php",

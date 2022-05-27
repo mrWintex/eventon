@@ -11,7 +11,7 @@
         <?php if (isset($_SESSION["user"])) : ?>  
             <li class="main-navigation-item"><a class="addpost-button main-navigation-item-link" href="addpost.php"><i class="fa-solid fa-plus fa-lg plus"></i>Přidat</a></li>
             <li class="profile main-navigation-item">
-                <span><img class="icon" src="<?=$_SESSION["user"]->GetUserIcon()?>" alt="icon.jpg"><?=$_SESSION["user"]->GetUserName()?></span>
+                <span><img class="icon" src="<?=$_SESSION["user"]->GetUserIcon()?>" alt="icon.jpg"><?=$_SESSION["user"]->GetUserName()?><?php if($_SESSION["user"]->IsAdmin()) :?><i class="fa-solid fa-check moderator"></i><?php endif ?></span>
                 <ul class="user-options">
                     <li class="user-options-item"><a href="profile.php" class="user-options-item-link"><i class="fa-solid fa-user options-icon"></i>Profil</a></li>
                     <li class="user-options-item"><a href="settings.php" class="user-options-item-link"><i class="fa-solid fa-gear options-icon"></i>Nastavení</a></li>
