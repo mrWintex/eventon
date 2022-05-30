@@ -80,13 +80,12 @@
                 flex-shrink: 0;
                 flex-grow: 1;
                 .post-image{
-                    width: 600px !important;
+                    width: 600px;
                     flex-grow: 1;
                     flex-shrink: 0;
                 }
                 .post-info{
                     width: 500px;
-                    margin-top: 20px;
                     #comment{
                         width: 100%;
                         max-width: 100%;
@@ -95,8 +94,25 @@
                         resize: none;
                         margin: 0;
                     }
+                    .addpost-label{
+                        font-size: 1rem;
+                        font-weight: 600;
+                        margin-bottom: 5px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        width: 100%;
+                        i{
+                            font-size: 1.2rem;
+                            margin-right: 10px;
+                        }
+                        .mutted{
+                            font-size: .8rem;
+                            color: grey;
+                        }
+                    }
                     .char-counter{
-                        margin-top: 10px;
+                        margin-block: 10px;
                         @include flex($justify-content: flex-end);
                         font-size: .7rem;
                         width: 100%;
@@ -112,7 +128,8 @@
                 }
                 margin-top: 20px;
             }
-        }.sd-box{
+        }
+        .sd-box{
             width: 100%;
             padding: 10px;
             .sd-box-wrapper{
@@ -139,54 +156,6 @@
                 }
                 span{
                     margin-top: 10px;
-                }
-            }
-        }
-        
-        &.addpost{
-            @include flex($justify-content: flex-start, $flex-direction: column, $align-items: flex-start);
-            max-width: unset;
-            width: auto;
-            height: auto;
-            padding-block: 100px;
-            .post-image, .post-info{
-                padding: 10px;
-            }
-            .form-content{
-                @include flex($justify-content: flex-start, $align-items: flex-start);
-                .post-image{
-                    width: 400px;
-                    flex-shrink: 0;
-                }
-                .post-info{
-                    @include flex($justify-content: center, $align-items: center, $flex-direction: column);
-                    width: 500px;
-                    & > div{
-                        flex-grow: 1;
-                        width: 100%;
-                    }
-                    #comment{
-                        width: 100%;
-                        max-width: 100%;
-                        height: 150px;
-                        max-height: 150px;
-                        resize: none;
-                        margin: 0;
-                    }
-                    .char-counter{
-                        margin-top: 10px;
-                        @include flex($justify-content: flex-end);
-                        font-size: .7rem;
-                        width: 100%;
-                    }
-                }
-            }
-            
-            
-            .submit-container{
-                @include flex($justify-content: right);
-                input[type="submit"]{
-                   margin-left: 10px !important;
                 }
             }
         }

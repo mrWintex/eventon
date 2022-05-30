@@ -20,11 +20,11 @@
             $this->user_owner_object = $this->GetUserOwnerObject();
         }
 
-        public function CreatePost($logged_user_id){
+        public function CreatePost($logged_user_id, $show_controls=false){
             //Získá počet liků na tomto příspěvku
             $likes_count = Db::GetResult("SELECT COUNT(user) AS like_count FROM posts_likes WHERE post = ?", [$this->id_p])->fetch();
             //Získá tagy k tomouto příspěvku
-            $tags = Db::GetAllRows("SELECT T.name FROM tag_post TP INNER JOIN tags T ON TP.tag = T.id_t WHERE post = " . $this->id_p);
+            $tags = Db::GetAllRows("SELECT * FROM tag_post TP INNER JOIN tags T ON TP.tag = T.id_t WHERE post = " . $this->id_p);
 
             //Získá datum k zobrazení na stránce
             $date = (date("j.m.Y") == date("j.m.Y", strtotime($this->add_date)))
@@ -36,7 +36,6 @@
 
             //Zjistí zda přihlášený uživatel dal like
             $user_liked = count(Db::GetAllRows("SELECT * FROM posts_likes WHERE post = ? AND user = ?", [$this->id_p, $logged_user_id]));
-
             require(dirname(__FILE__, 3) . "\phtml\PostStructure.phtml");
         }
 

@@ -114,9 +114,23 @@
                 &-tag{
                     font-weight: 300;
                     color: $secondary-color;
+                    cursor: pointer;
+
                     &:not(:last-child){
                         margin-right: 5px;
                     }
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                    &::before{
+                        content: '#';
+                    }
+                }
+            }
+            .edit-controls{
+                @include flex($justify-content: flex-end);
+                i{
+                    color: $primary-color;
                 }
             }
         }

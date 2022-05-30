@@ -40,9 +40,13 @@ function LikePost(target){
     });
 }
 
+function DeletePosts(target){
+
+}
+
 //Funkce pro přesunutí na vrch stránky
-function ScrollToTop(){
+function ScrollToTop(duration=1000){
     $('html, body').animate({
         scrollTop: 0
-    }, 1000);
+    }, duration);
 }

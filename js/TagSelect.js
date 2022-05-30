@@ -27,6 +27,7 @@ $(function () {
 
 function RemoveTag(target) {
   $(target).closest(".tag").remove();
+  $("input[value="+$(target).closest(".tag").attr("id")+"]").remove();
   $number_of_tags--;
   ReloadTagsList();
 }
@@ -46,7 +47,7 @@ function ReloadTagsList(tag_search) {
         if($number_of_tags + 1 > 10) return;
         $number_of_tags++;
         $('<input type="hidden" name="selected-tag['+$(this).attr("id")+']" value='+$(this).attr("id")+'>').insertBefore($tag_input);
-        $('<div class="tag"><span class="text">' + $(this).text() + '</span><button onclick="RemoveTag(this)"class="tag-delete-button" type="button"><i class="fa-solid fa-xmark"></i></button></div>').insertBefore(".tag-input");
+        $('<div class="tag" id='+$(this).attr("id")+'><span class="text">' + $(this).text() + '</span><button onclick="RemoveTag(this)"class="tag-delete-button" type="button"><i class="fa-solid fa-xmark"></i></button></div>').insertBefore(".tag-input");
         $tag_input.val("");
         $tag_autocomplete.html("");
       });

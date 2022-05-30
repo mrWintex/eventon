@@ -12,6 +12,8 @@
     <script src="./js/NavigationMenu.js?v=<?= time(); ?>" type="text/javascript" defer></script>
     <script src="./js/fileupload/simpledropit.min.js?v=<?= time(); ?>" type="text/javascript"></script>
     <script src="./js/TagSelect.js?v=<?=time()?>" type="text/javascript" defer></script>
+    <script src="./js/ImageShowOnUpload.js" type="text/javascript" defer></script>
+    <script src="./js/CharCounter.js" type="text/javascript" defer></script>
     <link rel="stylesheet" href="css/style.css?v=<?= time(); ?>" type="text/css">
     
     <link rel="stylesheet" href="./css/fileupload/simpledropit.css?v=<?= time()?>">
@@ -48,12 +50,12 @@
                 </div>
                 <div class="post-info">
                     <div class="form-item">
-                        <label for="comment">Komentář</label>
+                        <label for="comment" class="addpost-label"><span><i class="fa-solid fa-message"></i>Komentář</span></label>
                         <textarea name="comment" id="comment"></textarea>
                         <div class="char-counter"><span id="char-counter-text">0/0</span></div>
                     </div>
                     <div class="form-item tag-container">
-                        <h3>Tags, max. 10</h3>
+                        <label class="addpost-label"><span><i class="fa-solid fa-tags"></i>Tags</span><span class="mutted">max. 10</span></label>
                         <div class="tag-select">
                             <input type="text" class="tag-input">
                         </div>
@@ -69,44 +71,7 @@
         </form>
     </div>
     <script>
-        $(function() {
-            new SimpleDropit($('#image')[0]);
-            $("#image").on("change", function()
-            {
-                var files = !!this.files ? this.files : [];
-                if (!files.length || !window.FileReader) return;
-                if (/^image/.test( files[0].type)){
-                    var reader = new FileReader();
-                    reader.readAsDataURL(files[0]);
-                    
-                    reader.onloadend = function(){
-                        $("#imagePreview").html("<img class='image-preview' src="+this.result+" alt='image-preview'>")
-                    }
-                }
-            });
-
-            max_length = 300;
-            ChangeCounterText(0);
-            $()
-            $("#comment").on("input", function() {
-                $(this).val($(this).val().substr(0, max_length));
-                ChangeCounterText($(this).val().length);
-            });
-        });
-
-        function ChangeCounterText(amount){
-            $("#char-counter-text").html(amount + "/" + max_length);
-        }
-
-        function ReloadSearchResults(search_value){
-            $.ajax({
-                type: "GET",
-                url: "./php/post_search_manager.php?search_value="+ search_value + "&search_data="+1,
-                success: function (r) {  
-                    
-                }        
-            });
-        }
+        new SimpleDropit($('#image')[0]);
     </script>
 </body>
 

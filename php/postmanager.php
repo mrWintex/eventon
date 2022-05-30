@@ -5,10 +5,11 @@
 
     $postmanager = new PostManager();
 
+    $logged_user_id = (isset($_SESSION["user"]))? $_SESSION["user"]->GetId() : 0;
+
     //Načtení příspěvků
-    if(isset($_GET["filter"])){
-        $logged_user_id = (isset($_SESSION["user"]))? $_SESSION["user"]->GetId() : 0;
-        $postmanager->LoadPosts($logged_user_id, $_GET["filter"], $_GET["search_value"], $_GET["search_data"]);
+    if(isset($_POST["filter"])){
+        $postmanager->LoadPosts($logged_user_id, $_POST["filter"], $_POST["search_value"], $_POST["search_data"], $_POST["showcontrols"]);
     }
 
     //Like příspěvků

@@ -647,7 +647,7 @@ button {
 }
 
 .form-wrapper .account-form.addpost .form-content .post-image {
-  width: 600px !important;
+  width: 600px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -657,7 +657,6 @@ button {
 
 .form-wrapper .account-form.addpost .form-content .post-info {
   width: 500px;
-  margin-top: 20px;
 }
 
 .form-wrapper .account-form.addpost .form-content .post-info #comment {
@@ -669,8 +668,34 @@ button {
   margin: 0;
 }
 
+.form-wrapper .account-form.addpost .form-content .post-info .addpost-label {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.form-wrapper .account-form.addpost .form-content .post-info .addpost-label i {
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+.form-wrapper .account-form.addpost .form-content .post-info .addpost-label .mutted {
+  font-size: .8rem;
+  color: grey;
+}
+
 .form-wrapper .account-form.addpost .form-content .post-info .char-counter {
-  margin-top: 10px;
+  margin-block: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -770,124 +795,6 @@ button {
   margin-top: 10px;
 }
 
-.form-wrapper .account-form.addpost {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  max-width: unset;
-  width: auto;
-  height: auto;
-  padding-block: 100px;
-}
-
-.form-wrapper .account-form.addpost .post-image, .form-wrapper .account-form.addpost .post-info {
-  padding: 10px;
-}
-
-.form-wrapper .account-form.addpost .form-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-}
-
-.form-wrapper .account-form.addpost .form-content .post-image {
-  width: 400px;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-}
-
-.form-wrapper .account-form.addpost .form-content .post-info {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 500px;
-}
-
-.form-wrapper .account-form.addpost .form-content .post-info > div {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  width: 100%;
-}
-
-.form-wrapper .account-form.addpost .form-content .post-info #comment {
-  width: 100%;
-  max-width: 100%;
-  height: 150px;
-  max-height: 150px;
-  resize: none;
-  margin: 0;
-}
-
-.form-wrapper .account-form.addpost .form-content .post-info .char-counter {
-  margin-top: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: none;
-      -ms-flex-align: none;
-          align-items: none;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  font-size: .7rem;
-  width: 100%;
-}
-
-.form-wrapper .account-form.addpost .submit-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: right;
-      -ms-flex-pack: right;
-          justify-content: right;
-  -webkit-box-align: none;
-      -ms-flex-align: none;
-          align-items: none;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-}
-
-.form-wrapper .account-form.addpost .submit-container input[type="submit"] {
-  margin-left: 10px !important;
-}
-
 @media (max-width: 1230px) {
   .form-wrapper .account-form {
     height: unset;
@@ -938,38 +845,17 @@ button {
 }
 
 .profile-container {
-  height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: none;
-      -ms-flex-pack: none;
-          justify-content: none;
-  -webkit-box-align: none;
-      -ms-flex-align: none;
-          align-items: none;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  width: 100%;
 }
 
 .profile-container .profile-data-select {
-  width: 250px;
-  margin-top: 60px;
-  border-right: 1px solid #4a4a4a;
-  border-radius: 0px;
-}
-
-.profile-container .profile-data-select-item {
   width: 100%;
-  height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -977,36 +863,41 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  padding-right: 15px;
+  margin-top: 75px;
+}
+
+.profile-container .profile-data-select-item {
+  width: 50px;
+  height: 50px;
+  margin-inline: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   position: relative;
   cursor: pointer;
 }
 
-.profile-container .profile-data-select-item:first-child {
-  margin-top: 20px;
+.profile-container .profile-data-select-item i {
+  font-size: 1.5rem;
 }
 
 .profile-container .profile-data-select-item.active {
-  border-right: 2px solid #7d7d7d;
+  border-bottom: 2px solid #7d7d7d;
   border-radius: 0px;
 }
 
-.profile-container .profile-data-select-item::after {
-  content: '';
-  width: 0%;
-  height: 1px;
-  background-color: white;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  -webkit-transition: width 250ms;
-  transition: width 250ms;
-}
-
-.profile-container .profile-data-select-item:hover::after {
-  width: 50%;
+.profile-container .profile-data-select-item.active i {
+  color: #22cafd;
 }
 
 .main-navigation {
@@ -1375,10 +1266,39 @@ button {
 .post-container .post-wrapper .post-content .post-tags-tag {
   font-weight: 300;
   color: #22cafd;
+  cursor: pointer;
 }
 
 .post-container .post-wrapper .post-content .post-tags-tag:not(:last-child) {
   margin-right: 5px;
+}
+
+.post-container .post-wrapper .post-content .post-tags-tag:hover {
+  text-decoration: underline;
+}
+
+.post-container .post-wrapper .post-content .post-tags-tag::before {
+  content: '#';
+}
+
+.post-container .post-wrapper .post-content .edit-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: none;
+      -ms-flex-align: none;
+          align-items: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.post-container .post-wrapper .post-content .edit-controls i {
+  color: white;
 }
 
 @media (max-width: 1500px) {
@@ -1620,7 +1540,7 @@ button {
   width: 100%;
   background: #303030;
   height: auto;
-  padding: 10px;
+  padding: 5px;
 }
 
 .tag-container .tag-select .tag {
@@ -1667,7 +1587,7 @@ button {
   position: absolute;
   top: 100%;
   width: 100%;
-  background: #232323;
+  background: #282828;
   max-height: 150px;
 }
 
@@ -1690,5 +1610,14 @@ button {
   height: 50px;
   padding-left: 15px;
   cursor: pointer;
+}
+
+.tag-container .tag-autocomplete-item:not(:last-child) {
+  border-bottom: 0;
+}
+
+.tag-container .tag-autocomplete-item::before {
+  content: '#';
+  padding-right: 2px;
 }
 /*# sourceMappingURL=style.css.map */
