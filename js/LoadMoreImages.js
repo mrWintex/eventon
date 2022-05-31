@@ -61,7 +61,6 @@ $(document).ready(function () {
 function LoadMorePosts(clear = false) {
   if (busy === true) return;
   busy = true;
-  console.log($(".profile-data-select-item.active").attr("data-id") == 0);
   $.ajax({
     type: "POST",
     url: "./php/postmanager.php",
@@ -75,7 +74,6 @@ function LoadMorePosts(clear = false) {
       $load_image.css("visibility", "visible");
     },
     success: function (response) {
-      console.log(response);
       if (!response || response === " ") {
         $post_container.append("<div class='all-posts-alert'><span class='alert-text'>Nic dalšího tu není!<button class='alert-button' onclick='ScrollToTop()'><i class='fa-solid fa-arrow-up fa-bounce' style=' --fa-bounce-start-scale-x: 1; --fa-bounce-start-scale-y: 1; --fa-bounce-jump-scale-x: 1; --fa-bounce-jump-scale-y: 1; --fa-bounce-land-scale-x: 1; --fa-bounce-land-scale-y: 1; --fa-bounce-rebound: 0; --fa-bounce-height: -5px;'></i></a></span></button></div>");
         all_posts = true;

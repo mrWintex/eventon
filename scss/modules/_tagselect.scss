@@ -41,6 +41,7 @@
         width: 100%;
         background: darken($color: $background-color, $amount: 3);
         max-height: 50px * $item-count;
+        overflow: auto;
         &-item{
             @include border($default-border);
             @include flex($align-items: center);

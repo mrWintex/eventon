@@ -18,6 +18,11 @@ function OpenImage(target){
     window.open($(target).find("img").attr("src"));
 }
 
+function ShowConfirmButton(target){
+    $(target).closest(".control").addClass("confirm");
+    console.log("!");
+}
+
 //Like příspěvku
 function LikePost(target){
     //získání id příspěvku

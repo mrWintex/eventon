@@ -1297,8 +1297,34 @@ button {
           flex-direction: row;
 }
 
-.post-container .post-wrapper .post-content .edit-controls i {
+.post-container .post-wrapper .post-content .edit-controls .control {
+  position: relative;
+}
+
+.post-container .post-wrapper .post-content .edit-controls .control button {
+  pointer-events: all;
+  z-index: 5;
+}
+
+.post-container .post-wrapper .post-content .edit-controls .control i {
   color: white;
+}
+
+.post-container .post-wrapper .post-content .edit-controls .control .confirm-button {
+  opacity: 0;
+  position: absolute;
+  bottom: 0%;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+  -webkit-transition: 500ms all;
+  transition: 500ms all;
+}
+
+.post-container .post-wrapper .post-content .edit-controls .control.confirm .confirm-button {
+  opacity: 1;
+  bottom: 150%;
+  pointer-events: all;
 }
 
 @media (max-width: 1500px) {
@@ -1589,6 +1615,7 @@ button {
   width: 100%;
   background: #282828;
   max-height: 150px;
+  overflow: auto;
 }
 
 .tag-container .tag-autocomplete-item {
