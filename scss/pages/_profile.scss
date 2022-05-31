@@ -1,9 +1,45 @@
 .profile-container{
     width: 100%;
+    .profile-info{
+        margin-top:  $navigation-height;
+        background: rgb(49, 49, 49);
+        @include border($default-border, $side: bottom);
+        .user-info{
+            padding: 20px;
+            @include flex($align-items: center, $justify-content: center);
+            div{
+                @include flex($flex-direction: column, $align-items: center);
+                .icon{
+                    width: 90px;
+                    height: 90px;
+                    border-radius: 50%;
+                }
+                .username{
+                    margin-top: 10px;
+                    font-size: 1.5rem;
+                }
+                .reg-date{
+                    margin-top: 10px;
+                    font-size: .7rem;
+                    &::before{
+                        content: 'registrován: ';
+                        color: grey;
+                    }
+                }
+                .num-of-posts{
+                    font-size: .7rem;
+                    margin-top: 10px;   
+                    &::before{
+                        content: 'počet příspěvků: ';
+                        color: grey;
+                    }
+                }
+            }
+        }
+    }
     .profile-data-select{
         width: 100%;
         @include flex($justify-content: center, $align-items: center);
-        margin-top:  $navigation-height + 15;
         
         &-item{
             width: 50px;
