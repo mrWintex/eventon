@@ -16,6 +16,17 @@
 <body>
     <?php require("./phtml/navigation.phtml"); ?>
     <div class="profile-container">
+        <div class="profile-info">
+            <div class="user-info">
+                <div>
+                    <img class="icon" src="<?=$_SESSION["user"]->GetUserIcon()?>" alt="icon.jpg">
+                    <span class="username"><?=$_SESSION["user"]->GetUserName()?></span>
+                    <span class="reg-date"><?=date("j.m.Y", strtotime($_SESSION["user"]->GetRegistrationDate()));?></span>
+                    <span class="num-of-posts"><?=$_SESSION["user"]->GetNumberOfPosts()?></span>
+                </div>
+                
+            </div>
+        </div>
         <div class="profile-data-select">
             <div class="profile-data-select-item active" data-id="0"><i class="fa-solid fa-user-large"></i></div>
             <div class="profile-data-select-item" data-id="1"><i class="fa-solid fa-heart"></i></div>

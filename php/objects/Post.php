@@ -20,7 +20,7 @@
             $this->user_owner_object = $this->GetUserOwnerObject();
         }
 
-        public function CreatePost($logged_user_id, $show_controls=false){
+        public function RenderPost($logged_user_id, $show_controls=false){
             //Získá počet liků na tomto příspěvku
             $likes_count = Db::GetResult("SELECT COUNT(user) AS like_count FROM posts_likes WHERE post = ?", [$this->id_p])->fetch();
             //Získá tagy k tomouto příspěvku

@@ -60,6 +60,9 @@
         public function GetRegistrationDate(){ return $this->reg_date; }
         public function GetPassword(){ return $this->password; }
         public function IsAdmin(){ return ($this->admin)? true : false; }
+        public function GetNumberOfPosts() {
+            return Db::GetOneRow("SELECT COUNT(*) FROM posts WHERE user_owner = " . $this->GetId())[0];
+        }
 
         //settery
         public function ChangeUserName($new){ 
