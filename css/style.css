@@ -877,51 +877,75 @@ button {
           flex-direction: row;
 }
 
-.profile-container .profile-info .user-info div {
+.profile-container .profile-info .user-info .icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.profile-container .profile-info .user-info .user-info-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 20px;
+}
+
+.profile-container .profile-info .user-info .user-info-right .username {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.profile-container .profile-info .user-info .user-info-right .add-info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: none;
       -ms-flex-pack: none;
           justify-content: none;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
+  -webkit-box-align: none;
+      -ms-flex-align: none;
+          align-items: none;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
-.profile-container .profile-info .user-info div .icon {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-}
-
-.profile-container .profile-info .user-info div .username {
-  margin-top: 10px;
-  font-size: 1.5rem;
-}
-
-.profile-container .profile-info .user-info div .reg-date {
-  margin-top: 10px;
+.profile-container .profile-info .user-info .user-info-right .add-info .info-item {
   font-size: .7rem;
 }
 
-.profile-container .profile-info .user-info div .reg-date::before {
+.profile-container .profile-info .user-info .user-info-right .add-info .info-item:not(:last-child) {
+  margin-right: 15px;
+}
+
+.profile-container .profile-info .user-info .user-info-right .add-info .info-item::before {
+  color: grey;
+}
+
+.profile-container .profile-info .user-info .user-info-right .add-info .info-item.reg-date::before {
   content: 'registrován: ';
-  color: grey;
 }
 
-.profile-container .profile-info .user-info div .num-of-posts {
-  font-size: .7rem;
-  margin-top: 10px;
-}
-
-.profile-container .profile-info .user-info div .num-of-posts::before {
+.profile-container .profile-info .user-info .user-info-right .add-info .info-item.num-of-posts::before {
   content: 'počet příspěvků: ';
-  color: grey;
+}
+
+.profile-container .profile-info .user-info .user-info-right .add-info .info-item.num-of-likes::before {
+  content: 'počet liků od ostatních: ';
 }
 
 .profile-container .profile-data-select {
@@ -973,6 +997,27 @@ button {
 
 .profile-container .profile-data-select-item.active i {
   color: #22cafd;
+}
+
+@media (max-width: 615px) {
+  .profile-container .profile-info .user-info .user-info-right .add-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: none;
+        -ms-flex-pack: none;
+            justify-content: none;
+    -webkit-box-align: none;
+        -ms-flex-align: none;
+            align-items: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .profile-container .profile-info .user-info .user-info-right .add-info .info-item {
+    margin-top: 10px;
+  }
 }
 
 .main-navigation {

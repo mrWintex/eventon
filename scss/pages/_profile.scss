@@ -7,31 +7,45 @@
         .user-info{
             padding: 20px;
             @include flex($align-items: center, $justify-content: center);
-            div{
-                @include flex($flex-direction: column, $align-items: center);
-                .icon{
-                    width: 90px;
-                    height: 90px;
-                    border-radius: 50%;
-                }
+            .icon{
+                width: 90px;
+                height: 90px;
+                border-radius: 50%;
+                align-self: flex-start;
+            }
+            .user-info-right{
+                @include flex($flex-direction: column, $align-items: flex-start, $justify-content: flex-start);
+                margin-left: 20px;
                 .username{
                     margin-top: 10px;
+                    margin-bottom: 10px;
                     font-size: 1.5rem;
                 }
-                .reg-date{
-                    margin-top: 10px;
-                    font-size: .7rem;
-                    &::before{
-                        content: 'registrován: ';
-                        color: grey;
-                    }
-                }
-                .num-of-posts{
-                    font-size: .7rem;
-                    margin-top: 10px;   
-                    &::before{
-                        content: 'počet příspěvků: ';
-                        color: grey;
+                .add-info{
+                    @include flex();
+                    .info-item{
+                        font-size: .7rem;
+                        &:not(:last-child){
+                            margin-right: 15px;
+                        }
+                        &::before{
+                            color: grey;
+                        }
+                        &.reg-date{
+                            &::before{
+                                content: 'registrován: ';
+                            }
+                        }
+                        &.num-of-posts{
+                            &::before{
+                                content: 'počet příspěvků: ';
+                            }
+                        }
+                        &.num-of-likes{
+                            &::before{
+                                content: 'počet liků od ostatních: '
+                            }
+                        }
                     }
                 }
             }
@@ -55,6 +69,23 @@
                 @include border(2px solid lighten($background-color, 30), $side: bottom);
                 i{
                     color: $secondary-color;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 615px){
+    .profile-container{
+        .profile-info{
+            .user-info{
+                .user-info-right{
+                    .add-info{
+                        @include flex($flex-direction: column);
+                        .info-item{
+                            margin-top: 10px;
+                        }
+                    }
                 }
             }
         }
