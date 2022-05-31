@@ -1,9 +1,59 @@
 .profile-container{
     width: 100%;
+    .profile-info{
+        margin-top:  $navigation-height;
+        background: rgb(49, 49, 49);
+        @include border($default-border, $side: bottom);
+        .user-info{
+            padding: 20px;
+            @include flex($align-items: center, $justify-content: center);
+            .icon{
+                width: 90px;
+                height: 90px;
+                border-radius: 50%;
+                align-self: flex-start;
+            }
+            .user-info-right{
+                @include flex($flex-direction: column, $align-items: flex-start, $justify-content: flex-start);
+                margin-left: 20px;
+                .username{
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    font-size: 1.5rem;
+                }
+                .add-info{
+                    @include flex();
+                    .info-item{
+                        font-size: .7rem;
+                        &:not(:last-child){
+                            margin-right: 15px;
+                        }
+                        &::before{
+                            color: grey;
+                        }
+                        &.reg-date{
+                            &::before{
+                                content: 'registrován: ';
+                            }
+                        }
+                        &.num-of-posts{
+                            &::before{
+                                content: 'počet příspěvků: ';
+                            }
+                        }
+                        &.num-of-likes{
+                            &::before{
+                                content: 'počet liků od ostatních: '
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     .profile-data-select{
         width: 100%;
         @include flex($justify-content: center, $align-items: center);
-        margin-top:  $navigation-height + 15;
         
         &-item{
             width: 50px;
@@ -19,6 +69,23 @@
                 @include border(2px solid lighten($background-color, 30), $side: bottom);
                 i{
                     color: $secondary-color;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 615px){
+    .profile-container{
+        .profile-info{
+            .user-info{
+                .user-info-right{
+                    .add-info{
+                        @include flex($flex-direction: column);
+                        .info-item{
+                            margin-top: 10px;
+                        }
+                    }
                 }
             }
         }

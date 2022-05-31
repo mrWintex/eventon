@@ -11,7 +11,7 @@
             $this->showcontrols = $showcontrols;
 
             $this->InitializeStorageData();
-            $this->CreatePosts();
+            $this->RenderPosts();
         }
 
         public function LikePost($logged_user_id, $post_id){
@@ -20,11 +20,11 @@
             $post_object->LikePost($logged_user_id);
         }
 
-        private function CreatePosts(){
+        private function RenderPosts(){
             for($i = 0; $i < $this->post_num; $i++){
                 if(count($_SESSION["posts"]) === 0) return;
                 $post_obj = new Post($_SESSION["posts"][$i]);
-                $post_obj->CreatePost($this->logged_user_id, $this->showcontrols);
+                $post_obj->RenderPost($this->logged_user_id, $this->showcontrols);
                 unset($_SESSION["posts"][$i]);
             }
             $_SESSION["posts"] = array_values($_SESSION["posts"]);
@@ -62,13 +62,13 @@
                     "SELECT b.id_p, b.src, b.comment, b.add_date, b.user_owner, count(post) from posts_likes a right join posts b on b.id_p=a.post ".$this->Where()." GROUP BY b.id_p, b.src, b.comment, b.add_date, b.user_owner ORDER BY COUNT(post) desc",
                 ],
                 [
-                    "SELECT * FROM posts P LEFT JOIN tag_post TP ON P.id_p = TP.post ". $this->Where() ." ORDER BY add_date desc",
-                    "SELECT * FROM posts P LEFT JOIN tag_post TP ON P.id_p = TP.post ". $this->Where() ." ORDER BY add_date asc",
+                    "SELECT DISTINCT P.* FROM posts P LEFT JOIN tag_post TP ON P.id_p = TP.post ". $this->Where() ." ORDER BY add_date desc",
+                    "SELECT DISTINCT P.* FROM posts P LEFT JOIN tag_post TP ON P.id_p = TP.post ". $this->Where() ." ORDER BY add_date asc",
                     "SELECT b.id_p, b.src, b.comment, b.add_date, b.user_owner, count(post) FROM posts P LEFT JOIN tag_post TP ON P.id_p = TP.post ". $this->Where() ." GROUP BY b.id_p, b.src, b.comment, b.add_date, b.user_owner ORDER BY COUNT(post) desc",
                 ],
                 [
-                    "SELECT * FROM posts WHERE user_owner = " . $this->logged_user_id,
-                    "SELECT * FROM posts P INNER JOIN posts_likes PL ON P.id_p = PL.post WHERE PL.user = " . $this->logged_user_id,
+                    "SELECT * FROM posts WHERE user_owner = " . $this->logged_user_id." ORDER BY add_date desc",
+                    "SELECT * FROM posts P INNER JOIN posts_likes PL ON P.id_p = PL.post WHERE PL.user = " . $this->logged_user_id." ORDER BY P.add_date desc",
                 ]
                 
             ];

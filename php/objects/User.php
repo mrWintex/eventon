@@ -60,7 +60,12 @@
         public function GetRegistrationDate(){ return $this->reg_date; }
         public function GetPassword(){ return $this->password; }
         public function IsAdmin(){ return ($this->admin)? true : false; }
-
+        public function GetNumberOfPosts() {
+            return Db::GetOneRow("SELECT COUNT(*) FROM posts WHERE user_owner = " . $this->GetId())[0];
+        }
+        public function GetNumberOfTotalLikes(){
+            return Db::GetOneRow("SELECT COUNT(*) FROM posts_likes PL INNER JOIN posts P ON PL.post = P.id_p WHERE P.user_owner = " . $this->GetId())[0];
+        }
         //settery
         public function ChangeUserName($new){ 
             if(Db::Exists("users", "username", $new)) return false;

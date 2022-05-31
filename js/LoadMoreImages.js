@@ -40,6 +40,7 @@ $(document).ready(function () {
     }
   });
 
+  //profile page záložky
   $(".profile-data-select-item").on("click", function () {
     $(".profile-data-select-item").removeClass("active");
     $(this).addClass("active");

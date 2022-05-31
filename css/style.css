@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
 * {
   padding: 0;
@@ -669,18 +670,22 @@ button {
 }
 
 .form-wrapper .account-form.addpost .form-content .post-info .addpost-label {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
   width: 100%;
 }
 
@@ -848,6 +853,101 @@ button {
   width: 100%;
 }
 
+.profile-container .profile-info {
+  margin-top: 60px;
+  background: #313131;
+  border-bottom: 1px solid #4a4a4a;
+  border-radius: 0px;
+}
+
+.profile-container .profile-info .user-info {
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.profile-container .profile-info .user-info .icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.profile-container .profile-info .user-info .user-info-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 20px;
+}
+
+.profile-container .profile-info .user-info .user-info-right .username {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.profile-container .profile-info .user-info .user-info-right .add-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: none;
+      -ms-flex-pack: none;
+          justify-content: none;
+  -webkit-box-align: none;
+      -ms-flex-align: none;
+          align-items: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.profile-container .profile-info .user-info .user-info-right .add-info .info-item {
+  font-size: .7rem;
+}
+
+.profile-container .profile-info .user-info .user-info-right .add-info .info-item:not(:last-child) {
+  margin-right: 15px;
+}
+
+.profile-container .profile-info .user-info .user-info-right .add-info .info-item::before {
+  color: grey;
+}
+
+.profile-container .profile-info .user-info .user-info-right .add-info .info-item.reg-date::before {
+  content: 'registrován: ';
+}
+
+.profile-container .profile-info .user-info .user-info-right .add-info .info-item.num-of-posts::before {
+  content: 'počet příspěvků: ';
+}
+
+.profile-container .profile-info .user-info .user-info-right .add-info .info-item.num-of-likes::before {
+  content: 'počet liků od ostatních: ';
+}
+
 .profile-container .profile-data-select {
   width: 100%;
   display: -webkit-box;
@@ -863,7 +963,6 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  margin-top: 75px;
 }
 
 .profile-container .profile-data-select-item {
@@ -898,6 +997,27 @@ button {
 
 .profile-container .profile-data-select-item.active i {
   color: #22cafd;
+}
+
+@media (max-width: 615px) {
+  .profile-container .profile-info .user-info .user-info-right .add-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: none;
+        -ms-flex-pack: none;
+            justify-content: none;
+    -webkit-box-align: none;
+        -ms-flex-align: none;
+            align-items: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .profile-container .profile-info .user-info .user-info-right .add-info .info-item {
+    margin-top: 10px;
+  }
 }
 
 .main-navigation {
