@@ -34,15 +34,9 @@
         }
     }
 
-    function DeletePost($item_query, $delete_query){
+    function DeletePost($item_query){
         $post_object = new Post(Db::GetResult($item_query)->fetch());
-        $success = Db::ExecuteQuery($delete_query);
-        $post_path = dirname(__FILE__, 3) ."/". $post_object->GetSrc();
-        if($success){
-            if(file_exists($post_path)){
-                unlink($post_path);
-            }
-        }
+        $post_object->DeleteSelf();
     }
     function DeleteTag($delete_query){
         Db::ExecuteQuery($delete_query);

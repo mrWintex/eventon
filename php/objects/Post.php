@@ -49,6 +49,16 @@
             Db::ExecuteQuery($post_like_query, [$this->id_p, $user_id]);
         }
 
+        public function DeleteSelf(){
+            $success = Db::ExecuteQuery("DELETE FROM posts WHERE id_p = ?", [$this->id_p]);
+            $post_path = dirname(__FILE__, 3) ."/". $this->GetSrc();
+            if($success){
+                if(file_exists($post_path)){
+                    unlink($post_path);
+                }
+            }
+        }
+
         private function GetUserOwnerObject(){
             $user_data = Db::GetOneRow("SELECT * FROM users WHERE id_u = ?", [$this->user_owner]);
             return new User($user_data);

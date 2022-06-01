@@ -857,7 +857,8 @@ button {
 .profile-container .profile-info {
   margin-top: 60px;
   background: #353535;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
+  padding-top: 40px;
 }
 
 .profile-container .profile-info .user-info {
@@ -878,8 +879,8 @@ button {
 }
 
 .profile-container .profile-info .user-info .icon {
-  width: 90px;
-  height: 90px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   -ms-flex-item-align: start;
       align-self: flex-start;
@@ -918,7 +919,7 @@ button {
           flex-direction: row;
   margin-top: 10px;
   margin-bottom: 20px;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
 .profile-container .profile-info .user-info .user-info-right .username .profile-edit-button {
@@ -953,7 +954,7 @@ button {
 }
 
 .profile-container .profile-info .user-info .user-info-right .add-info .info-item {
-  font-size: .7rem;
+  font-size: .8rem;
 }
 
 .profile-container .profile-info .user-info .user-info-right .add-info .info-item:not(:last-child) {
@@ -1055,7 +1056,14 @@ button {
   width: 100%;
 }
 
-@media (max-width: 615px) {
+@media (max-width: 683px) {
+  .profile-container .profile-info .user-info .icon {
+    width: 90px;
+    height: 90px;
+  }
+  .profile-container .profile-info .user-info .user-info-right .username {
+    font-size: 1.5rem;
+  }
   .profile-container .profile-info .user-info .user-info-right .add-info {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1357,12 +1365,12 @@ button {
 }
 
 .post-container .post-wrapper .post-content .user-container {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: none;
-      -ms-flex-pack: none;
-          justify-content: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1374,20 +1382,89 @@ button {
   margin-bottom: 15px;
 }
 
-.post-container .post-wrapper .post-content .user-container .user-name {
+.post-container .post-wrapper .post-content .user-container .user-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: none;
+      -ms-flex-pack: none;
+          justify-content: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.post-container .post-wrapper .post-content .user-container .user-info .user-name {
   padding-top: 4px;
 }
 
-.post-container .post-wrapper .post-content .user-container .user-icon {
+.post-container .post-wrapper .post-content .user-container .user-info .user-icon {
   border-radius: 50%;
   width: 45px;
   height: 45px;
   margin-right: 15px;
 }
 
-.post-container .post-wrapper .post-content .user-container .moderator {
+.post-container .post-wrapper .post-content .user-container .user-info .moderator {
   font-size: 10px;
   width: 25px;
+  margin: 0;
+}
+
+.post-container .post-wrapper .post-content .user-container .edit-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: none;
+      -ms-flex-align: none;
+          align-items: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.post-container .post-wrapper .post-content .user-container .edit-controls .control {
+  position: relative;
+}
+
+.post-container .post-wrapper .post-content .user-container .edit-controls .control button {
+  pointer-events: all;
+  z-index: 5;
+  width: 40px;
+}
+
+.post-container .post-wrapper .post-content .user-container .edit-controls .control button i {
+  font-size: 1rem;
+  color: white;
+}
+
+.post-container .post-wrapper .post-content .user-container .edit-controls .control button:hover i {
+  color: #22cafd;
+}
+
+.post-container .post-wrapper .post-content .user-container .edit-controls .control .confirm-button {
+  opacity: 0;
+  position: absolute;
+  bottom: 0%;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+  -webkit-transition: 500ms all;
+  transition: 500ms all;
+}
+
+.post-container .post-wrapper .post-content .user-container .edit-controls .control.confirm .confirm-button {
+  opacity: 1;
+  bottom: 150%;
+  pointer-events: all;
 }
 
 .post-container .post-wrapper .post-content .post-comment {
@@ -1455,52 +1532,6 @@ button {
 
 .post-container .post-wrapper .post-content .post-tags-tag::before {
   content: '#';
-}
-
-.post-container .post-wrapper .post-content .edit-controls {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: none;
-      -ms-flex-align: none;
-          align-items: none;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-}
-
-.post-container .post-wrapper .post-content .edit-controls .control {
-  position: relative;
-}
-
-.post-container .post-wrapper .post-content .edit-controls .control button {
-  pointer-events: all;
-  z-index: 5;
-}
-
-.post-container .post-wrapper .post-content .edit-controls .control i {
-  color: white;
-}
-
-.post-container .post-wrapper .post-content .edit-controls .control .confirm-button {
-  opacity: 0;
-  position: absolute;
-  bottom: 0%;
-  left: 0;
-  z-index: 1;
-  pointer-events: none;
-  -webkit-transition: 500ms all;
-  transition: 500ms all;
-}
-
-.post-container .post-wrapper .post-content .edit-controls .control.confirm .confirm-button {
-  opacity: 1;
-  bottom: 150%;
-  pointer-events: all;
 }
 
 @media (max-width: 1500px) {

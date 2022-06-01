@@ -14,6 +14,11 @@
 
     //Like příspěvků
     if(isset($_GET["postid"]) && isset($_SESSION["user"])){
-        $postmanager->LikePost($_SESSION["user"]->GetId(), $_GET["postid"]);
+        $postmanager->LikePost($logged_user_id, $_GET["postid"]);
+    }
+
+    //Mazání příspěvku
+    if(isset($_POST["pid_delete"])){
+        $postmanager->DeletePost($logged_user_id, $_POST["pid_delete"]);
     }
 ?>

@@ -1,6 +1,6 @@
 <?php
     class PostManager{
-        private $post_num = 2;
+        private $post_num = 4;
         private $filter_id, $searched_data, $searched_value, $logged_user_id, $showcontrols;
 
         public function LoadPosts($logged_user_id, $filter_id, $searched_value, $searched_data, $showcontrols){
@@ -19,7 +19,16 @@
             $post_object = new Post($post_data);
             $post_object->LikePost($logged_user_id);
         }
-
+        
+        public function DeletePost($logged_user_id, $post_id){
+            $post_data = Db::GetOneRow("SELECT * FROM posts WHERE id_p = ?", [$post_id]);
+            $post_object = new Post($post_data);
+            if($post_object->GetUserOwner() === $logged_user_id){
+                $post_object->DeleteSelf();
+                unset($_SESSION["posts"]);
+            }
+        }
+        
         private function RenderPosts(){
             for($i = 0; $i < $this->post_num; $i++){
                 if(count($_SESSION["posts"]) === 0) return;
@@ -29,6 +38,7 @@
             }
             $_SESSION["posts"] = array_values($_SESSION["posts"]);
         }
+
 
         private function InitializeStorageData(){
             if(!isset($_SESSION["search_value"])){

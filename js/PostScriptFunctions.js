@@ -45,8 +45,16 @@ function LikePost(target){
     });
 }
 
-function DeletePosts(target){
-
+function DeletePost(target){
+    let post_id = $(target).closest(".post-container").attr("id");
+    $.ajax({
+        type: "POST",
+        url: "./php/postmanager.php",
+        data:{
+            pid_delete: post_id
+        }
+    });
+    LoadMorePosts(true);
 }
 
 //Funkce pro přesunutí na vrch stránky

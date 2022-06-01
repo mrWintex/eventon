@@ -3,13 +3,14 @@
     .profile-info{
         margin-top:  $navigation-height;
         background: lighten($color: $background-color, $amount: 2);
-        padding-bottom: 20px;
+        padding-bottom: 40px;
+        padding-top: 40px;
         .user-info{
             padding: 20px;
             @include flex($align-items: center, $justify-content: center);
             .icon{
-                width: 90px;
-                height: 90px;
+                width: 100px;
+                height: 100px;
                 border-radius: 50%;
                 align-self: flex-start;
             }
@@ -20,7 +21,7 @@
                     @include flex($align-items: center);
                     margin-top: 10px;
                     margin-bottom: 20px;
-                    font-size: 1.5rem;
+                    font-size: 1.7rem;
                     .profile-edit-button{
                         text-decoration: none;
                         color: $secondary-color;
@@ -38,7 +39,7 @@
                 .add-info{
                     @include flex();
                     .info-item{
-                        font-size: .7rem;
+                        font-size: .8rem;
                         &:not(:last-child){
                             margin-right: 15px;
                         }
@@ -114,11 +115,18 @@
     }
 }
 
-@media (max-width: 615px){
+@media (max-width: 683px){
     .profile-container{
         .profile-info{
             .user-info{
+                .icon{
+                    width: 90px;
+                    height: 90px;
+                }
                 .user-info-right{
+                    .username{
+                        font-size: 1.5rem;
+                    }
                     .add-info{
                         @include flex($flex-direction: column);
                         .info-item{

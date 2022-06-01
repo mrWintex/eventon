@@ -12,7 +12,7 @@
     if(isset($_GET["delete_query"])){
         switch($_GET["data_index"]){
             case 0: DeleteUser($_GET["item_query"], $_GET["delete_query"]); break;
-            case 1: DeletePost($_GET["item_query"], $_GET["delete_query"]); break;
+            case 1: DeletePost($_GET["item_query"]); break;
             case 2: DeleteTag($_GET["delete_query"]); break;
         }
     }

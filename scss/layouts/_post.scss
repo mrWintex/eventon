@@ -56,24 +56,67 @@
             }
 
             .user-container {
-                @include flex($display: inline-flex, $align-items: center);
+                @include flex($justify-content: space-between, $align-items: center);
                 width: 100%;
                 margin-bottom: 15px;
 
-                .user-name {
-                    padding-top: 4px;
+                .user-info{
+                    @include flex($align-items: center);
+                    .user-name {
+                        padding-top: 4px;
+                    }
+    
+                    .user-icon {
+                        @include rounded(50%);
+                        width: $post-icon-size;
+                        height: $post-icon-size;
+                        margin-right: 15px;
+                    }
+    
+                    .moderator {
+                        font-size: 10px;
+                        width: 25px;
+                        margin: 0;
+                    }
                 }
-
-                .user-icon {
-                    @include rounded(50%);
-                    width: $post-icon-size;
-                    height: $post-icon-size;
-                    margin-right: 15px;
-                }
-
-                .moderator {
-                    font-size: 10px;
-                    width: 25px;
+                .edit-controls {
+                    @include flex($justify-content: flex-end);
+                    .control {
+                        position: relative;
+                        
+                        button{
+                            pointer-events: all;
+                            z-index: 5;
+                            width: 40px;
+                            i {
+                                font-size: 1rem;
+                                color: $primary-color;
+                            }
+                            &:hover{
+                                i{
+                                    color: $secondary-color;
+                                }
+                            }
+                        }
+                        
+                        .confirm-button {
+                            opacity: 0;
+                            position: absolute;
+                            bottom: 0%;
+                            left: 0;
+                            z-index: 1;
+                            pointer-events: none;
+                            transition: 500ms all;
+                        }
+    
+                        &.confirm{
+                            .confirm-button {
+                                opacity: 1;
+                                bottom: 150%;
+                                pointer-events: all;
+                            }
+                        }
+                    }
                 }
             }
 
@@ -135,39 +178,6 @@
 
                     &::before {
                         content: '#';
-                    }
-                }
-            }
-
-            .edit-controls {
-                @include flex($justify-content: flex-end);
-                .control {
-                    position: relative;
-                    
-                    button{
-                        pointer-events: all;
-                        z-index: 5;
-                    }
-                    i {
-                        color: $primary-color;
-                    }
-                    
-                    .confirm-button {
-                        opacity: 0;
-                        position: absolute;
-                        bottom: 0%;
-                        left: 0;
-                        z-index: 1;
-                        pointer-events: none;
-                        transition: 500ms all;
-                    }
-
-                    &.confirm{
-                        .confirm-button {
-                            opacity: 1;
-                            bottom: 150%;
-                            pointer-events: all;
-                        }
                     }
                 }
             }
