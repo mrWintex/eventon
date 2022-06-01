@@ -19,6 +19,7 @@ body {
   color: white;
   font-family: "Spartan", sans-serif;
   font-weight: 600;
+  position: relative;
 }
 
 button {
@@ -855,9 +856,8 @@ button {
 
 .profile-container .profile-info {
   margin-top: 60px;
-  background: #313131;
-  border-bottom: 1px solid #4a4a4a;
-  border-radius: 0px;
+  background: #353535;
+  padding-bottom: 20px;
 }
 
 .profile-container .profile-info .user-info {
@@ -903,9 +903,37 @@ button {
 }
 
 .profile-container .profile-info .user-info .user-info-right .username {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: none;
+      -ms-flex-pack: none;
+          justify-content: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-size: 1.5rem;
+}
+
+.profile-container .profile-info .user-info .user-info-right .username .profile-edit-button {
+  text-decoration: none;
+  color: #22cafd;
+  padding: 5px 10px 2px 10px;
+  margin-left: 15px;
+  font-family: 'Spartan';
+  font-size: .8rem;
+  border: 1px solid #22cafd;
+  border-radius: 2px;
+}
+
+.profile-container .profile-info .user-info .user-info-right .username .profile-edit-button:hover {
+  text-decoration: underline;
 }
 
 .profile-container .profile-info .user-info .user-info-right .add-info {
@@ -949,7 +977,6 @@ button {
 }
 
 .profile-container .profile-data-select {
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -963,12 +990,18 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  border-bottom: 1px solid #4a4a4a;
+  border-radius: 0px;
+  background: #353535;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 60px;
+  width: 100%;
+  z-index: 100;
 }
 
 .profile-container .profile-data-select-item {
-  width: 50px;
-  height: 50px;
-  margin-inline: 25px;
+  padding: 10px 25px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -986,17 +1019,40 @@ button {
   cursor: pointer;
 }
 
-.profile-container .profile-data-select-item i {
-  font-size: 1.5rem;
+.profile-container .profile-data-select-item:not(:last-child) {
+  margin-right: 10px;
 }
 
-.profile-container .profile-data-select-item.active {
-  border-bottom: 2px solid #7d7d7d;
-  border-radius: 0px;
+.profile-container .profile-data-select-item i {
+  margin-right: 10px;
+  font-size: .8rem;
+}
+
+.profile-container .profile-data-select-item .text {
+  padding-top: 5px;
+  font-size: .8rem;
+}
+
+.profile-container .profile-data-select-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 0%;
+  height: 1px;
+  background-color: #22cafd;
+  -webkit-transition: all 250ms;
+  transition: all 250ms;
 }
 
 .profile-container .profile-data-select-item.active i {
   color: #22cafd;
+}
+
+.profile-container .profile-data-select-item.active::after {
+  width: 100%;
 }
 
 @media (max-width: 615px) {
@@ -1027,7 +1083,7 @@ button {
   top: 0;
   min-width: 350px;
   width: 100%;
-  z-index: 10;
+  z-index: 101;
   font-size: 0;
   text-align: right;
   color: white;

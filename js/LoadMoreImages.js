@@ -42,8 +42,11 @@ $(document).ready(function () {
 
   //profile page záložky
   $(".profile-data-select-item").on("click", function () {
+    if($(this).hasClass("active")) return;
     $(".profile-data-select-item").removeClass("active");
     $(this).addClass("active");
+    all_posts = false;
+    ScrollToTop(1);
     LoadMorePosts(true);
   });
 

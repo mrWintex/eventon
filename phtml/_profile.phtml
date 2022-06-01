@@ -21,7 +21,7 @@
             <div class="user-info">
                 <img class="icon" src="<?= $_SESSION["user"]->GetUserIcon() ?>" alt="icon.jpg">
                 <div class="user-info-right">
-                    <span class="username"><?= $_SESSION["user"]->GetUserName() ?></span>
+                    <div class="username"><span class="text"></span><?= $_SESSION["user"]->GetUserName() ?></span><a href="settings.php" class="profile-edit-button">Upravit</a></div>
                     <div class="add-info">
                         <span class="info-item reg-date"><?= date("j.m.Y", strtotime($_SESSION["user"]->GetRegistrationDate())); ?></span>
                         <span class="info-item num-of-posts"><?= $_SESSION["user"]->GetNumberOfPosts() ?></span>
@@ -31,8 +31,8 @@
             </div>
         </div>
         <div class="profile-data-select">
-            <div class="profile-data-select-item active" data-id="0"><i class="fa-solid fa-user-large"></i></div>
-            <div class="profile-data-select-item" data-id="1"><i class="fa-solid fa-heart"></i></div>
+            <div class="profile-data-select-item active" data-id="0"><i class="fa-solid fa-user-large"></i><span class="text">PŘÍSPĚVKY</span></div>
+            <div class="profile-data-select-item" data-id="1"><i class="fa-solid fa-heart"></i><span class="text">OBLÍBENÉ</span></div>
         </div>
         <div id="posts-container">
         </div>
