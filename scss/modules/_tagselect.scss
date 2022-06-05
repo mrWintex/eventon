@@ -39,22 +39,26 @@
         position: absolute;
         top: 100%;
         width: 100%;
-        background: darken($color: $background-color, $amount: 3);
+        background-color: darken($color: $background-color, $amount: 6);
         max-height: 50px * $item-count;
         overflow: auto;
+        @include custom-scrollbar;
         &-item{
-            @include border($default-border);
             @include flex($align-items: center);
             height: 50px;
             padding-left: 15px;
+            background: lig;
             cursor: pointer;
             
             &:not(:last-child){
                 border-bottom: 0;
             }
-            &::before{
+            &:not(.create-item)::before{
                 content: '#';
                 padding-right: 2px;
+            }
+            &:hover{
+                background-color: darken($color: $background-color, $amount: 4);
             }
         }
     }

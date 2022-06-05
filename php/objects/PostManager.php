@@ -74,20 +74,19 @@
                 [
                     "SELECT DISTINCT P.* FROM posts P LEFT JOIN tag_post TP ON P.id_p = TP.post ". $this->Where() ." ORDER BY add_date desc",
                     "SELECT DISTINCT P.* FROM posts P LEFT JOIN tag_post TP ON P.id_p = TP.post ". $this->Where() ." ORDER BY add_date asc",
-                    "SELECT b.id_p, b.src, b.comment, b.add_date, b.user_owner, count(post) FROM posts P LEFT JOIN tag_post TP ON P.id_p = TP.post ". $this->Where() ." GROUP BY b.id_p, b.src, b.comment, b.add_date, b.user_owner ORDER BY COUNT(post) desc",
+                    "SELECT P.id_p, P.src, P.comment, P.add_date, P.user_owner, count(PL.post) from posts_likes PL right join posts P on P.id_p = PL.post LEFT JOIN tag_post TP on P.id_p = TP.post ". $this->Where() ." GROUP BY P.id_p, P.src, P.comment, P.add_date, P.user_owner ORDER BY COUNT(PL.post) desc"
                 ],
                 [
                     "SELECT * FROM posts WHERE user_owner = " . $this->logged_user_id." ORDER BY add_date desc",
                     "SELECT * FROM posts P INNER JOIN posts_likes PL ON P.id_p = PL.post WHERE PL.user = " . $this->logged_user_id." ORDER BY P.add_date desc",
                 ]
-                
             ];
             return $posts_queries[$this->searched_data][$this->filter_id];
         }
 
         private function Where(){
             if($this->searched_value == -1) return "";
-            $data = ["user_owner", "tag"];
+            $data = ["user_owner", "TP.tag"];
             return "WHERE ". $data[$this->searched_data] . " = " . $this->searched_value;
         }
     }

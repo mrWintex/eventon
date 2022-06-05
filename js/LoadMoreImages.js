@@ -2,7 +2,7 @@ $(document).ready(function () {
   //===PROMĚNNÉ===
   busy = false;
   all_posts = false;
-  offset = 50;
+  offset = 80;
   item_selected = false;
 
   $load_image = $("#loader-image");
@@ -30,6 +30,7 @@ function LoadMorePosts(clear = false) {
     data: getData(),
     beforeSend: function () {
       $load_image.css("visibility", "visible");
+      if(clear) $post_container.empty();
     },
     success: function (response) {
       if (!response || response === " ") {

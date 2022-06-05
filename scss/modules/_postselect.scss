@@ -23,6 +23,14 @@
                 @include post-selector-item;
                 width: 500px;
             }
+            #reset-button{
+                font-size: 1rem;
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                cursor: pointer;
+            }
             #{$c}-results{
                 width: 100%;
                 max-height: $item-height * $item-count;
@@ -32,6 +40,8 @@
                 overflow: auto;
                 font-size: 1rem;
                 z-index: 5;
+
+                @include custom-scrollbar;
 
                 &-list{
                     list-style: none;
@@ -54,6 +64,34 @@
         &-select{
             @include border($default-border);
             @include post-selector-item;
+        }
+    }
+}
+
+@media (max-width: 811px) {
+    .posts-selector{
+        @include flex($justify-content: center, $flex-direction: column);
+        width: 100%;   
+        &-filter{
+            order: 2;
+            width: 100%;
+            &-select{
+                width: 100%;
+            }
+        }
+        &-search{
+            $c: &;
+            margin-bottom: 15px;
+            &-container{
+                width: 100%;
+    
+                #{$c}-input{
+                    width: 100%;
+                }
+                #{$c}-results{
+                    width: 100%;
+                }
+            }
         }
     }
 }

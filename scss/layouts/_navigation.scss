@@ -34,6 +34,10 @@
 
         &.logo{
             float: left;
+            a{
+                color: white;
+                text-decoration: none;
+            }
         }
 
         &.profile{
@@ -56,7 +60,6 @@
             @include flex(flex, center, left);
             width: 40px;
             height: 40px;
-            padding-right: 15px;
             white-space: nowrap;
             overflow: hidden;
             transition: width .5s;
@@ -107,6 +110,39 @@
                     &:hover{
                         color: $secondary-color;
                     }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .main-navigation{
+        &-item{
+            padding-inline: 10px;
+            .icon{
+                @include icon-preset(45px);
+                margin: 0;
+            }
+            &.logo{
+                padding-left: 25px;
+            }
+            &.profile{ 
+                span{
+                    font-size: 0;
+                }
+            }
+            &-link{
+                &:not(.addpost-button){
+                    font-size: .8rem;
+                }
+                &.basic-button{
+                    padding: 5px;
+                }
+                
+                &.fancy-button{
+                    @include fancy-button;
+                    padding-inline: 20px;
                 }
             }
         }

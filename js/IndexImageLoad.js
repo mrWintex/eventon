@@ -41,10 +41,21 @@ $(function ($) {
             LoadMorePosts(true);
         }
     });
+
+    $("#reset-button").on("click", function(){
+        $post_search.val("");
+        if(item_selected === false) return;
+        all_posts = false;
+        item_selected = false;
+
+        $post_search.attr("data-id", -1);
+        LoadMorePosts(true);
+    });
 });
 
 //Vyhledání tagu po kliknutí na něj u příspevku
 function TagSearch(tag) {
+    if($post_search.val() === $(tag).text()) return;
     item_selected = true;
     all_posts = false;
 

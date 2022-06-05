@@ -36,7 +36,7 @@
 
             //Zjistí zda přihlášený uživatel dal like
             $user_liked = count(Db::GetAllRows("SELECT * FROM posts_likes WHERE post = ? AND user = ?", [$this->id_p, $logged_user_id]));
-            require(dirname(__FILE__, 3) . "\phtml\PostStructure.phtml");
+            require(dirname(__DIR__, 2) . "/phtml/PostStructure.phtml");
         }
 
         public function LikePost($user_id){

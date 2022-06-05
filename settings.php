@@ -19,7 +19,7 @@
         //Změna profilové ikony
         if($_FILES["icon"]["error"] !== 4){
             //kontrola
-
+            if($_FILES["icon"]["size"] > UserManager::MAX_ICON_SIZE) array_push($errors_form_1, "Ikona je příliš velká!");
             if(count($errors_form_1) == 0){
                 $_SESSION["user"]->ChangeUserIcon($_FILES["icon"]);
             }

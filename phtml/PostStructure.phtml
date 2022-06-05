@@ -2,13 +2,13 @@
     <div class="post-wrapper">
         <div class="image-container" onclick="OpenPost(this)" ondblclick="OpenImage(this)"><img class="post-image" src="<?=$this->src?>" alt="image<?=$this->id_p?>"></div>
         <div class="post-content">
-            <span class="user-container">
+            <div class="user-container">
             <div class="user-info"><img class="user-icon" src="<?=$icon_path?>" alt="user-icon<?=$this->user_owner?>"><h3 class="user-name"><?=$this->user_owner_object->GetUserName()?></h3><?php if($this->user_owner_object->IsAdmin()) :?><i class="fa-solid fa-check moderator"></i><?php endif ?></div>
             <?php if($show_controls === "true") : ?>
             <div class="edit-controls">
                 <div class="delete control"><button onclick="ShowConfirmButton(this)" type="button" class="delete-button"><i class="fa-solid fa-trash"></i></button><button class="confirm-button" type="button" onclick="DeletePost(this)"><i class="fa-solid fa-check fa-beat" style="--fa-beat-scale: 1.2;--fa-animation-duration: 1s"></i></button></div>
             </div>
-            <?php endif ?></span>
+            <?php endif ?></div>
             <p class="post-comment"><?=$this->comment?></p>
             <p class="post-tags"><?php foreach($tags as $tag) echo("<span class='post-tags-tag' onclick='TagSearch(this)' data-id=".$tag["id_t"].">". $tag["name"] . "</span>"); ?></p>
             <p class="post-date"><i class="fa-regular fa-calendar-days"></i><?=$date?></p>

@@ -2,102 +2,98 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css?v=<?= time() ?>">
-    <link rel="stylesheet" href="./css/fileupload/simpledropit.css?v=<?= time()?>">
-    <script src="https://kit.fontawesome.com/4489d876da.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="./js/NavigationMenu.js?v=<?= time(); ?>" type="text/javascript" defer></script>
-    <script src="./js/fileupload/simpledropit.min.js?v=<?= time(); ?>" type="text/javascript"></script>
-    <title>Document</title>
+    <?php require("./phtml/_defaultHeaderLinks.phtml"); ?>
+    <link rel="stylesheet" href="./css/fileupload/simpledropit.css">
+    <script src="./js/min/NavigationMenu.min.js" type="text/javascript" defer></script>
+    <script src="./js/fileupload/simpledropit.min.js" type="text/javascript"></script>
 </head>
 
 <body>
-    <?php require("./phtml/navigation.phtml"); ?>
-    <div class="back-button"><a href="index.php"><i class="fa-solid fa-arrow-left"></i></a></div>
-    <div class="settings-container">
-        <h1>Nastavení účtu</h1>
-        <section class="username-change">
-            <div class="section-headline">
-                <h3>Osobní údaje</h3>
-                <p>Zde je možnost změny ikony, jména nebo e-mailu</p>
-            </div>
-            <div class="section-content">
-                <form method="post" action="settings.php" enctype="multipart/form-data">
-                    <div class="form-item">
-                        <label for="new_username" class="form-item-label">UŽIVATELSKÉ JMÉNO</label>
-                        <input type="text" id="new_username" name="new_username" value="<?= $_SESSION["user"]->GetUserName() ?>">
-                    </div>
-                    <div class="form-item">
-                        <label for="user_email" class="form-item-label">EMAIL</label>
-                        <input type="email" id="user_email" name="user_email" value="<?= $_SESSION["user"]->GetEmail()?>" class="email-input">
-                    </div>
-                    <div class="form-item icon_upload">
-                        <img class="icon" src="<?=$_SESSION["user"]->GetUserIcon()?>" alt="user-icon">
-                        <div class="sd-box sd-advanced-upload">
-                            <div class="sd-box-wrapper">
-                                <div class="sd-label-wrapper">
-                                    <div class="sd-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
-                                    <span class="sd-box-dragndrop">Přetáhněte sem &nbsp;/&nbsp;</span>
-                                    <span class="sd-box-file-name"></span>
-                                    <label class="sd-label">Klikněte pro nahrátí<span class="sd-box-browse-file">File</span></label>
-                                    <input type="file" name="icon" id="icon_upload" multiple="">
+    <main>
+        <?php require("./phtml/navigation.phtml"); ?>
+        <div class="back-button"><a href="index.php"><i class="fa-solid fa-arrow-left"></i></a></div>
+        <div class="settings-container">
+            <h1>Nastavení účtu</h1>
+            <section class="username-change">
+                <div class="section-headline">
+                    <h3>Osobní údaje</h3>
+                    <p>Zde je možnost změny ikony, jména nebo e-mailu</p>
+                </div>
+                <div class="section-content">
+                    <form method="post" action="settings.php" enctype="multipart/form-data">
+                        <div class="form-item">
+                            <label for="new_username" class="form-item-label">UŽIVATELSKÉ JMÉNO</label>
+                            <input type="text" id="new_username" name="new_username" value="<?= $_SESSION["user"]->GetUserName() ?>">
+                        </div>
+                        <div class="form-item">
+                            <label for="user_email" class="form-item-label">EMAIL</label>
+                            <input type="email" id="user_email" name="user_email" value="<?= $_SESSION["user"]->GetEmail() ?>" class="email-input">
+                        </div>
+                        <div class="form-item icon_upload">
+                            <img class="icon" src="<?= $_SESSION["user"]->GetUserIcon() ?>" alt="user-icon">
+                            <div class="sd-box sd-advanced-upload">
+                                <div class="sd-box-wrapper">
+                                    <div class="sd-label-wrapper">
+                                        <div class="sd-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                                        <span class="sd-box-dragndrop">Přetáhněte sem &nbsp;/&nbsp;</span>
+                                        <span class="sd-box-file-name"></span>
+                                        <label class="sd-label">Klikněte pro nahrátí<span class="sd-box-browse-file">File</span></label>
+                                        <input type="file" name="icon" id="icon_upload" multiple="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-item submit">
-                        <div class="error-container">
-                            <?php 
-                                    if(count($errors_form_1) > 0)
-                                        foreach($errors_form_1 as $error) echo("<p class='error'>".$error."</p>");
-                                    else if(isset($_POST["save_profile"]))
-                                        echo("<p class='success'>Úspěšně uloženo!</p>");
-                            ?>
+                        <div class="form-item submit">
+                            <div class="error-container">
+                                <?php
+                                if (count($errors_form_1) > 0)
+                                    foreach ($errors_form_1 as $error) echo ("<p class='error'>" . $error . "</p>");
+                                else if (isset($_POST["save_profile"]))
+                                    echo ("<p class='success'>Úspěšně uloženo!</p>");
+                                ?>
+                            </div>
+                            <input type="submit" name="save_profile" value="Uložit">
                         </div>
-                        <input type="submit" name="save_profile" value="Uložit">
-                    </div>
-                </form>
-            </div>
-        </section>
-        <section id="password">
-            <div class="section-headline">
-                <h3>Změna hesla</h3>
-                <p>Zde si můžete změnit své heslo</p>
-            </div>
-            <div class="section-content">
-                <form method="post" action="settings.php#passwd-change" id="passwd-change">
-                    <div class="form-item">
-                        <label for="current_passwd" class="form-item-label">STÁVAJÍCÍ HESLO</label>
-                        <input type="password" id="current_passwd" name="current_passwd">
-                    </div>
-                    <div class="form-item">
-                        <label for="new_passwd" class="form-item-label">NOVÉ HESLO</label>
-                        <input type="password" id="new_passwd" name="new_passwd">
-                    </div>
-                    <div class="form-item">
-                        <label for="confirm_new_passwd" class="form-item-label">POTVRDIT HESLO</label>
-                        <input type="password" id="confirm_new_passwd" name="confirm_new_passwd">
-                    </div>
-                    <div class="form-item submit">
-                    <div class="error-container">
-                            <?php 
-                                    if(count($errors_form_2) > 0)
-                                    foreach($errors_form_2 as $error) echo("<p class='error'>".$error."</p>");
-                                    else if(isset($_POST["change_passwd"]))
-                                        echo("<p class='success'>Úspěšně změněno!</p>");
-                            ?>
+                    </form>
+                </div>
+            </section>
+            <section id="password">
+                <div class="section-headline">
+                    <h3>Změna hesla</h3>
+                    <p>Zde si můžete změnit své heslo</p>
+                </div>
+                <div class="section-content">
+                    <form method="post" action="settings.php#passwd-change" id="passwd-change">
+                        <div class="form-item">
+                            <label for="current_passwd" class="form-item-label">STÁVAJÍCÍ HESLO</label>
+                            <input type="password" id="current_passwd" name="current_passwd">
                         </div>
-                        <input type="submit" value="Změnit" name="change_passwd">
-                    </div>
-                </form>
-            </div>
-        </section>
-    </div>
+                        <div class="form-item">
+                            <label for="new_passwd" class="form-item-label">NOVÉ HESLO</label>
+                            <input type="password" id="new_passwd" name="new_passwd">
+                        </div>
+                        <div class="form-item">
+                            <label for="confirm_new_passwd" class="form-item-label">POTVRDIT HESLO</label>
+                            <input type="password" id="confirm_new_passwd" name="confirm_new_passwd">
+                        </div>
+                        <div class="form-item submit">
+                            <div class="error-container">
+                                <?php
+                                if (count($errors_form_2) > 0)
+                                    foreach ($errors_form_2 as $error) echo ("<p class='error'>" . $error . "</p>");
+                                else if (isset($_POST["change_passwd"]))
+                                    echo ("<p class='success'>Úspěšně změněno!</p>");
+                                ?>
+                            </div>
+                            <input type="submit" value="Změnit" name="change_passwd">
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
     <script type="text/javascript">
-        $(function(){
+        $(function() {
             new SimpleDropit($('#icon_upload')[0]);
         });
     </script>

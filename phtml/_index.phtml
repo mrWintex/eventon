@@ -1,45 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">    
-<head>        
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://kit.fontawesome.com/4489d876da.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="./js/IndexImageLoad.js?v=<?= time(); ?>" type="text/javascript" defer></script>
-    <script src="./js/PostScriptFunctions.js?v=<?= time(); ?>" type="text/javascript" defer></script>
-    <script src="./js/NavigationMenu.js?v=<?=time(); ?>" type="text/javascript" defer></script>
-    <link rel="stylesheet" href="css/style.css?v=<?= time(); ?>" type="text/css">
-    <title>Document</title>    
+<html lang="en">
+
+<head>
+    <?php require("./phtml/_defaultHeaderLinks.phtml"); ?>
+    <script src="./js/min/IndexImageLoad.min.js" defer></script>
+    <script src="./js/min/PostScriptFunctions.min.js" defer></script>
+    <script src="./js/min/NavigationMenu.min.js" defer></script>
 </head>
+
 <body>
-    <div class="posts-selector">
-    <div class="posts-selector-filter">
-        <select class="posts-selector-filter-select" id="posts-selector-filter-input" name="posts-select-filter" title="filter">
-            <option value="0">Od nejnovějších</option>
-            <option value="1">Od nejstarších</option>
-            <option value="2">Od nejlépe hodnocených</option>
-        </select>
-    </div>
-    <div class="posts-selector-search">
-        <div class="posts-selector-search-container">
-            <input type="text" id="post-search" class="posts-selector-search-input" data-id="-1">
-            <div class="posts-selector-search-results">
-                <ul class="posts-selector-search-results-list">
-                </ul>
-                <div id="loader-image-post-selector" style="display: none;width:20px;margin:0 auto"><img style="width: 20px; height: 20px;"src="images/LoadingGif.gif" alt="loader"></div>
-            </div>
-        </div>
-        <select class="posts-selector-search-select" id="posts-selector-search-select">
-            <option value="0">Uživatel</option>
-            <option value="1">Tag</option>
-        </select>
-    </div>
-    </div>
     <main>
         <?php require("./phtml/navigation.phtml"); ?>
+        <div class="posts-selector">
+            <div class="posts-selector-filter">
+                <select class="posts-selector-filter-select" id="posts-selector-filter-input" name="posts-select-filter" title="filter">
+                    <option value="0">Od nejnovějších</option>
+                    <option value="1">Od nejstarších</option>
+                    <option value="2">Od nejlépe hodnocených</option>
+                </select>
+            </div>
+            <div class="posts-selector-search">
+                <div class="posts-selector-search-container">
+                    <input type="text" id="post-search" class="posts-selector-search-input" data-id="-1">
+                    <i class="fa-solid fa-xmark" id="reset-button"></i>
+                    <div class="posts-selector-search-results">
+                        <ul class="posts-selector-search-results-list">
+                        </ul>
+                        <div id="loader-image-post-selector" style="display: none;width:20px;margin:0 auto"><img style="width: 20px; height: 20px;" src="images/LoadingGif.gif" alt="loader"></div>
+                    </div>
+                </div>
+                <select class="posts-selector-search-select" id="posts-selector-search-select">
+                    <option value="0">Uživatel</option>
+                    <option value="1">Tag</option>
+                </select>
+            </div>
+        </div>
         <div id="posts-container">
         </div>
-        <div id="loader-image" style="visibility:hidden;width:50px;margin:50px auto"><img src="images/LoadingGif.gif" style="width:50px;height:50px"alt="loader"></div>
+        <div id="loader-image" style="visibility:hidden;width:50px;margin:50px auto"><img src="images/LoadingGif.gif" style="width:50px;height:50px" alt="loader"></div>
     </main>
 </body>
+
 </html>

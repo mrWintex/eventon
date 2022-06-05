@@ -4,6 +4,9 @@
         public const MIN_PASSWORD_LENGTH = 6;
         public const USERS_FOLDER = "users/";
         public const SUPPORTED_FILES = [ "image/jpeg", "image/png", "image/gif" ];
+        public const MAX_FILE_SIZE = 5 * 1024 * 1024;
+        public const MAX_ICON_SIZE = 1 * 1024 * 1024;
+        public const MAX_FILE_NAME_SIZE = 20;
         private $errors = [];
 
         function __construct(){
@@ -52,7 +55,7 @@
         
         function AddPost($user, $file, $post_data){
             if(!$this->ValidateFile($file)) return;
-            $directory = $user->GetUserFolderPath() . "/" . $file["name"];
+            $directory = $user->GetUserFolderPath() . "/" . $this->ShortFile($file["name"]);
             if (Db::ExecuteQuery("INSERT INTO posts (src, comment, user_owner) VALUES (?, ?, ?)", [$directory, htmlspecialchars($post_data["comment"]), $user->GetId()])) {
                 $this->AddTags($post_data, $directory);
                 move_uploaded_file($file["tmp_name"], $directory);
@@ -99,10 +102,12 @@
         }
         
         private function ValidateFile($file){
+            $verifyimg = getimagesize($file['tmp_name']);
             //Kontrola požadavků pro nahrátí na server
-            if (!in_array($_FILES["image"]["type"], self::SUPPORTED_FILES)) array_push($this->errors, "Nepodporovaný typ souboru!");
-            if (file_exists($_SESSION["user"]->GetUserFolderPath() . "/" . $_FILES["image"]["name"])) array_push($this->errors, "Tento soubor byl již nahrán!");
-            if ($_FILES["image"]["error"]) array_push($this->errors, "Kód chyby: {$_FILES['image']['error']}");
+            if (!in_array($verifyimg['mime'], self::SUPPORTED_FILES)) array_push($this->errors, "Nepodporovaný typ souboru!");
+            if (file_exists($_SESSION["user"]->GetUserFolderPath() . "/" . $this->ShortFile($file["name"]))) array_push($this->errors, "Tento soubor byl již nahrán!");
+            if ($file["error"]) array_push($this->errors, "Kód chyby: {$file['error']}");
+            if ($file["size"] > self:: MAX_FILE_SIZE) array_push($this->errors, "Soubor je příliš velký!");
             return (count($this->errors) == 0)? true : false;
         }
         // ======
@@ -111,6 +116,9 @@
             if(count($this->errors) > 0){
                 echo($this->errors[0]);
             }
+        }
+        function ShortFile($file_name){
+            return $file_name;
         }
         function GetErrorCount() { return count($this->errors); }
     }
