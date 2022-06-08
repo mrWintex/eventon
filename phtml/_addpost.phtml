@@ -57,7 +57,10 @@
                             </div>
                         </div>
                         <div class="submit-container form-item">
-                            <div><?php $user_manager->PrintErrors() ?></div>
+                            <div><?php if($user_manager->GetErrorCount() > 0) {
+                                echo('<i class="fa-solid fa-circle-exclamation error"></i>');
+                                $user_manager->PrintErrors();
+                            } ?></div>
                             <input type="submit" value="Potvrdit" name="addpost">
                         </div>
                     </div>

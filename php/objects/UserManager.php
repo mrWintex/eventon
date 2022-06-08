@@ -16,6 +16,10 @@
 
         
         function Register($username, $email, $password_1, $password_2){
+            $username = UserManager::ClearStr($username);
+            $email = UserManager::ClearStr($email);
+            $password_1 = UserManager::ClearStr($password_1);
+            $password_2 = UserManager::ClearStr($password_2);
             if(!$this->ValidateRegistration($username, $email, $password_1, $password_2)) return;
             
             //Přidání záznamu do databáze
@@ -39,6 +43,8 @@
         
         
         function Login($email, $password){
+            $email = UserManager::ClearStr($email);
+            $password = UserManager::ClearStr($password);
             if(!$this->ValidateLogin($email, $password)) return;
             
             $user = Db::GetOneRow("SELECT * FROM users WHERE email = ? AND password = ?", [$email, hash("sha256",$password)]);
@@ -56,7 +62,7 @@
         function AddPost($user, $file, $post_data){
             if(!$this->ValidateFile($file)) return;
             $directory = $user->GetUserFolderPath() . "/" . $this->ShortFile($file["name"]);
-            if (Db::ExecuteQuery("INSERT INTO posts (src, comment, user_owner) VALUES (?, ?, ?)", [$directory, htmlspecialchars($post_data["comment"]), $user->GetId()])) {
+            if (Db::ExecuteQuery("INSERT INTO posts (src, comment, user_owner) VALUES (?, ?, ?)", [$directory, UserManager::ClearStr($post_data["comment"]), $user->GetId()])) {
                 $this->AddTags($post_data, $directory);
                 move_uploaded_file($file["tmp_name"], $directory);
                 header("location: index.php");
@@ -102,11 +108,15 @@
         }
         
         private function ValidateFile($file){
+            if($file["error"] === 4) {
+                array_push($this->errors, "Nebyl zvolen obrázek!");
+                return false;
+            }
             $verifyimg = getimagesize($file['tmp_name']);
             //Kontrola požadavků pro nahrátí na server
             if (!in_array($verifyimg['mime'], self::SUPPORTED_FILES)) array_push($this->errors, "Nepodporovaný typ souboru!");
             if (file_exists($_SESSION["user"]->GetUserFolderPath() . "/" . $this->ShortFile($file["name"]))) array_push($this->errors, "Tento soubor byl již nahrán!");
-            if ($file["error"]) array_push($this->errors, "Kód chyby: {$file['error']}");
+            if ($file["error"]) array_push($this->errors, "Kód chyby: ". $file['error']);
             if ($file["size"] > self:: MAX_FILE_SIZE) array_push($this->errors, "Soubor je příliš velký!");
             return (count($this->errors) == 0)? true : false;
         }
@@ -121,5 +131,11 @@
             return $file_name;
         }
         function GetErrorCount() { return count($this->errors); }
+
+        public static function ClearStr($string){
+            $res = str_replace( array( '\'', '"',
+            ',' , ';', '<', '>', '\\', '/', '%', '='), '', $string);
+            return $res;
+        }
     }
 ?>

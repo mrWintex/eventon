@@ -185,6 +185,7 @@ button {
 
 .settings-container {
   margin: 0 auto;
+  padding-top: 100px;
   width: 70%;
 }
 
@@ -742,6 +743,12 @@ button {
 
 .form-wrapper .account-form.addpost .submit-container input[type="submit"] {
   margin-left: 10px !important;
+}
+
+.form-wrapper .account-form.addpost .submit-container .error {
+  color: red;
+  margin-right: 15px;
+  font-size: 20px;
 }
 
 .form-wrapper .account-form .sd-box {
@@ -1395,6 +1402,7 @@ button {
   opacity: 0;
   -webkit-transition: all 500ms, opacity 100ms linear;
   transition: all 500ms, opacity 100ms linear;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .post-container.active-post .post-content {
@@ -1536,18 +1544,21 @@ button {
 }
 
 .post-container .post-wrapper .post-content .post-like-button {
+  -webkit-tap-highlight-color: transparent !important;
   margin-top: 40px;
   font-size: .9rem;
   cursor: pointer;
 }
 
 .post-container .post-wrapper .post-content .post-like-button i {
+  -webkit-tap-highlight-color: transparent !important;
   color: white;
   -webkit-transition: all 500ms;
   transition: all 500ms;
 }
 
 .post-container .post-wrapper .post-content .post-like-button.liked i {
+  -webkit-tap-highlight-color: transparent !important;
   color: #22cafd;
 }
 

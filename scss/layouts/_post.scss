@@ -40,7 +40,7 @@
         .post-content {
             position: relative;
             right: 500px;
-
+            
             margin-right: -480px;
             margin-left: 80px;
             width: 400px;
@@ -48,6 +48,7 @@
             font-weight: 100;
             opacity: 0;
             transition: all 500ms, opacity 100ms linear;
+            -webkit-tap-highlight-color: transparent;
 
             @at-root #{$c}.active-post .post-content {
                 right: 0;
@@ -148,16 +149,19 @@
             }
 
             .post-like-button {
+                -webkit-tap-highlight-color: transparent !important;
                 margin-top: 40px;
                 font-size: .9rem;
                 cursor: pointer;
 
                 i {
+                    -webkit-tap-highlight-color: transparent !important;
                     color: $primary-color;
                     transition: all 500ms;
                 }
 
                 &.liked i {
+                    -webkit-tap-highlight-color: transparent !important;
                     color: $secondary-color;
                 }
             }
