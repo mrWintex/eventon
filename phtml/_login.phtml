@@ -16,7 +16,7 @@
                 <h2>Přihlášení</h2>
                 <div class="form-item">
                     <label for="email">E-MAIL</label>
-                    <input type="email" name="email" id="email">
+                    <input type="email" name="email" id="email" value="<?php if(isset($_POST["email"])) echo($_POST["email"]);?>">
                 </div>
 
                 <div class="form-item">

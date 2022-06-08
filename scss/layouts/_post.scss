@@ -64,6 +64,10 @@
                     @include flex($align-items: center);
                     .user-name {
                         padding-top: 4px;
+                        cursor: pointer;
+                        &:hover{
+                            text-decoration: underline;
+                        }
                     }
     
                     .user-icon {
@@ -71,6 +75,7 @@
                         width: $post-icon-size;
                         height: $post-icon-size;
                         margin-right: 15px;
+                        cursor: pointer;
                     }
     
                     .moderator {

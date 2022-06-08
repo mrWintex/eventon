@@ -1,4 +1,4 @@
-$.getScript("./js/LoadMoreImages.js");
+$.getScript("./js/min/LoadMoreImages.min.js");
 
 $(function ($) {
     getData = () => {

@@ -1439,6 +1439,11 @@ button {
 
 .post-container .post-wrapper .post-content .user-container .user-info .user-name {
   padding-top: 4px;
+  cursor: pointer;
+}
+
+.post-container .post-wrapper .post-content .user-container .user-info .user-name:hover {
+  text-decoration: underline;
 }
 
 .post-container .post-wrapper .post-content .user-container .user-info .user-icon {
@@ -1446,6 +1451,7 @@ button {
   width: 45px;
   height: 45px;
   margin-right: 15px;
+  cursor: pointer;
 }
 
 .post-container .post-wrapper .post-content .user-container .user-info .moderator {

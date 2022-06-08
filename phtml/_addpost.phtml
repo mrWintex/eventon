@@ -36,7 +36,7 @@
                                                 </div>
                                             </div>
                                         </label>
-                                        <input type="file" name="image" id="image">
+                                        <input type="file" name="image" id="image" accept="<?= implode(", ", UserManager::SUPPORTED_FILES)?>">
                                     </div>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                     <div class="post-info">
                         <div class="form-item">
                             <label for="comment" class="addpost-label"><span><i class="fa-solid fa-message"></i>Komentář</span></label>
-                            <textarea name="comment" id="comment"></textarea>
+                            <textarea name="comment" id="comment"><?php if(isset($_POST["comment"])) echo($_POST["comment"]);?></textarea>
                             <div class="char-counter"><span id="char-counter-text">0/0</span></div>
                         </div>
                         <div class="form-item tag-container">

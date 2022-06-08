@@ -6,7 +6,7 @@ getData = () => {
         showcontrols: false
     };
 };
-$.getScript("./js/LoadMoreImages.js");
+$.getScript("./js/min/LoadMoreImages.min.js");
 
 $(function ($) {
     $post_filter = $("#posts-selector-filter-input");
@@ -62,6 +62,19 @@ function TagSearch(tag) {
     $post_search.val($(tag).text());
     $post_search.attr("data-id", $(tag).attr("data-id"));
     $post_search_data.val(1);
+
+    ScrollToTop(1);
+    LoadMorePosts(true);
+}
+
+function UserSearch(user){
+    if($post_search.val() === $(user).find(".user-name").text()) return;
+    item_selected = true;
+    all_posts = false;
+
+    $post_search.val($(user).find(".user-name").text());
+    $post_search.attr("data-id", $(user).attr("data-id"));
+    $post_search_data.val(0);
 
     ScrollToTop(1);
     LoadMorePosts(true);
