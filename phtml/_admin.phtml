@@ -26,6 +26,10 @@
                         </tbody>
                 </table>
             </div>
+            <div>
+                <input type="checkbox" name="allow-upload" id="allow-upload" <?php if(UserManager::GetUploadSettings() === "true") :?> checked <?php endif ?>>
+                <label for="allow-upload">Povolit upload souborů</label>
+            </div>
         </div>
     </main>
 </body>

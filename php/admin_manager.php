@@ -1,4 +1,7 @@
 <?php
+
+use function PHPSTORM_META\type;
+
     require_once(__DIR__ . "/functions/admin_functions.php");
     require_once(__DIR__ . "/class_autoloader.php");
 
@@ -33,5 +36,11 @@
         if($body_items){
             foreach($body_items as $body_item) GetTableData($body_item);
         }
+    }
+
+    if(isset($_GET["allow_upload"])){
+        echo($_GET["allow_upload"]);
+        UserManager::ChangeUploadSettings($_GET["allow_upload"]);
+        echo(UserManager::GetUploadSettings());
     }
 ?>

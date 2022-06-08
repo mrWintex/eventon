@@ -1,5 +1,11 @@
 $(function(){
     ReloadTable();
+
+    $("#allow-upload").on("change", function(){
+        SendToServer("./php/admin_manager.php?allow_upload="+this.checked, (r) => {
+            console.log(r);
+        });
+    });
 });
 
 //Data pro dotazy

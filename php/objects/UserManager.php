@@ -3,15 +3,20 @@
         public const MAX_USERNAME_LENGTH = 18;
         public const MIN_PASSWORD_LENGTH = 6;
         public const USERS_FOLDER = "users/";
-        public const SUPPORTED_FILES = [ "image/jpeg", "image/png", "image/gif" ];
+        public const SUPPORTED_FILES = [ "image/jpeg", "image/png", "image/gif", "image/jpg" ];
         public const MAX_FILE_SIZE = 5 * 1024 * 1024;
         public const MAX_ICON_SIZE = 1 * 1024 * 1024;
         public const MAX_FILE_NAME_SIZE = 20;
+        public const UPLOAD_SETTINGS_NAME = "/upload.txt";
+
         private $errors = [];
 
         function __construct(){
             if(!file_exists(self::USERS_FOLDER))
                 mkdir(self::USERS_FOLDER);
+            if(!file_exists(dirname(__DIR__, 2) . self::UPLOAD_SETTINGS_NAME)){
+                self::ChangeUploadSettings("true");
+            }
         }
 
         
@@ -108,13 +113,13 @@
         }
         
         private function ValidateFile($file){
+            if (self::GetUploadSettings() === "false") array_push($this->errors, "Nahrávání je dočasně nedostupné!");
             if($file["error"] === 4) {
                 array_push($this->errors, "Nebyl zvolen obrázek!");
                 return false;
             }
-            $verifyimg = getimagesize($file['tmp_name']);
             //Kontrola požadavků pro nahrátí na server
-            if (!in_array($verifyimg['mime'], self::SUPPORTED_FILES)) array_push($this->errors, "Nepodporovaný typ souboru!");
+            if (!in_array($file["type"], self::SUPPORTED_FILES)) array_push($this->errors, "Nepodporovaný typ souboru!");
             if (file_exists($_SESSION["user"]->GetUserFolderPath() . "/" . $this->ShortFile($file["name"]))) array_push($this->errors, "Tento soubor byl již nahrán!");
             if ($file["error"]) array_push($this->errors, "Kód chyby: ". $file['error']);
             if ($file["size"] > self:: MAX_FILE_SIZE) array_push($this->errors, "Soubor je příliš velký!");
@@ -136,6 +141,21 @@
             $res = str_replace( array( '\'', '"',
             ',' , ';', '<', '>', '\\', '/', '%', '='), '', $string);
             return $res;
+        }
+
+        public static function ChangeUploadSettings($value){
+            $dir = dirname(__DIR__, 2) . self::UPLOAD_SETTINGS_NAME;
+            $file = fopen($dir, "w");
+            fputs($file, $value);
+            fclose($file);
+        }
+
+        public static function GetUploadSettings(){
+            $dir = dirname(__DIR__, 2) . self::UPLOAD_SETTINGS_NAME;
+            $file = fopen($dir, "r");
+            $value = fread($file, filesize($dir));
+            fclose($file);
+            return $value;
         }
     }
 ?>
